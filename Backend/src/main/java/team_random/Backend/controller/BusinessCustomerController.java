@@ -14,10 +14,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-public class LoginController {
-
+public class BusinessCustomerController {
     @Autowired
     public CustomerService customerService;
+
+    @RequestMapping(value = "/register/business", method = RequestMethod.GET)
+    public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response){
+        ModelAndView mav = new ModelAndView("register");
+        mav.addObject("Customer", new Customer());
+
+        return mav;
+    }
+
+    @RequestMapping(value = "/registerProcess", method = RequestMethod.POST)
+    public ModelAndView addCustomer(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("Customer") Customer customer){
+        customerService.register(customer);
+        return new ModelAndView("Welcome", "First Name", customer.getName());
+    }
 
     @RequestMapping (value = "/login", method = RequestMethod.GET)
     public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response){
@@ -40,6 +53,4 @@ public class LoginController {
         }
         return mav;
     }
-
-
 }

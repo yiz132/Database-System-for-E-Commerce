@@ -1,31 +1,27 @@
 package team_random.Backend.model;
 
-import javax.persistence.Entity;
+import javax.persistence.Column;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table (name = "Customer")
 
 public class Customer {
     @Id
     @GeneratedValue
-    private int id;
-    private String name;
-    private String password;
-    private String address;
+    protected int id;
+    protected String name;
+    protected String password;
+    protected String address;
+
+    @Enumerated
+    @Column(name = "role")
+    private Customer_Role role;
 
     public Customer(){
 
     }
 
-    public Customer(int id, String name, String password, String address){
-        this.id = id;
-        this.name = name;
-        this.password = password;
-        this.address = address;
-    }
+    public void setId(int id){this.id = id;}
 
     public void setName(String name){
         this.name = name;
@@ -38,6 +34,8 @@ public class Customer {
     public void setAddress(String address){
         this.address = address;
     }
+
+    public int getId(){return id;}
 
     public String getName(){
         return this.name;
