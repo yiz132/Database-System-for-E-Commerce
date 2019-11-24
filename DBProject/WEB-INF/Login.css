@@ -9,13 +9,12 @@ body, html {
 
 #LogoDiv{
     width: 240px;
-    height: 240px;
+    height: 140px;
     position: absolute;
     left: 50%;
-    top: 0%;
     margin-left: -120px;
     background-size: cover;
-    background-image: url(../src/image/Logo.png);
+    background-image: url("../src/image/Logo.png");
 }
 
 #RegisterDiv{

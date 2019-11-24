@@ -1,22 +1,19 @@
-$(document).ready(function () {
+function NewUser(){
     var name = $('#UserName-register').val();
+    alert(name);
     var password = $('#SecondPassword-register').val();
-    const Url='';
-    $('.Information-submit').click(function () {
-        $.ajax({
-            url:Url,
-            type: 'post',
-            data: {
-                name: name,
-                password: password,
+    const Url="";
+    $.ajax({
+        type: "post",
+        url: Url,
+        data: {
+            name: name,
+            password: password,
 
-            },
-            dataType: 'json',
-            success:function (msg) {
-                alert("success!");
-
-            }
-        })
-
-    })
-})
+        },
+        dataType: "json",
+        success: function(msg){
+            alert("success!");
+        }
+    });
+}
