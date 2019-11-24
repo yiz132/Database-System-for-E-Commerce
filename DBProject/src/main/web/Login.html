@@ -2,27 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Random</title>
-    <link rel="stylesheet" type="text/css" href="../resources/Login.css" />
+    <title>Random-Sign up</title>
+    <link rel="stylesheet" type="text/css" href="Login.css" />
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="Login.js"></script>
 
 </head>
 <body>
 
-
+<div id="RegisterDiv">
+    <div class="Input_div"><input type="text" id="UserName-register" name="UserName" class="Information-input" placeholder="someone@example.com"  )></div>
+    <!--        <div id="UserName-result" >An email address is required</div>-->
+    <div class="Input_div"><input type="password" id="FirstPassword-register" name="FirstPassword"  class="Information-input" id="FirstPassword-input" placeholder="Password" maxlength="24"  )></div>
+    <!--        <div id="Password-result" ></div>-->
+    <div class="Input_div"><input type="password" id="SecondPassword-register" name="SecondPassword" class="Information-input" id="SecondPassword-input" placeholder="Confirm Password" maxlength="24" )></div>
+    <!--        <div id="SecondPassword-result" ></div>-->
+    <div>
+        <form action="" method="get">
+            <label for="Character1" class="radioButton"><input name="Character" id="Character1" type="radio" value="HomeCustomer" checked="checked" hidden/>HomeCustomer </label>
+            <label for="Character2" class="radioButton" ><input  name="Character" id="Character2" type="radio" value="BusinessCustomer" hidden/>BusinessCustomer </label>
+            <label for="Character3" class="radioButton" ><input name="Character" id="Character3" type="radio" value="SalesPerson" hidden/>SalesPerson </label>
+            <label for="Character4" class="radioButton" ><input name="Character" id="Character4" type="radio" value="SalesPerson" hidden/>StoreManger </label>
+            <label for="Character5" class="radioButton" ><input name="Character" id="Character5" type="radio" value="SalesPerson" hidden/>RegionManger </label>
+        </form>
     </div>
-    <div id="RegisterDiv">
-        <div class="Input_div"><input type="text" id="UserName-register" name="UserName" class="Information-input" placeholder="someone@example.com"  )></div>
-<!--        <div id="UserName-result" >An email address is required</div>-->
-        <div class="Input_div"><input type="password" id="FirstPassword-register" name="FirstPassword"  class="Information-input" id="FirstPassword-input" placeholder="Password" maxlength="24"  )></div>
-<!--        <div id="Password-result" ></div>-->
-        <div class="Input_div"><input type="password" id="SecondPassword-register" name="SecondPassword" class="Information-input" id="SecondPassword-input" placeholder="Confirm Password" maxlength="24" )></div>
-<!--        <div id="SecondPassword-result" ></div>-->
-        <button id="Information-submit" class="Information-submit" onclick="NewUser()" >Sign up</button>
+<!--    <div class="CharacterDiv">-->
+<!--    <div class="Character" id="MoreCustomer">Customer</div>-->
+<!--    <div class="Character" id="MoreSalesPerson">SalesPerson</div>-->
+<!--    </div>-->
 
-    </div>
+    <button id="Information-submit" class="Information-submit" onclick="NewUser()" >Sign up</button>
 
+
+</div>
+
+<div id="LogoDiv">
+
+</div>
 
 </body>
 </html>
