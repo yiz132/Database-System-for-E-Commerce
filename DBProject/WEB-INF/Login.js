@@ -1,39 +1,22 @@
-function NewUser()
-{
-
+$(document).ready(function () {
     var name = $('#UserName-register').val();
     var password = $('#SecondPassword-register').val();
-    //var Crt;
+    const Url='';
+    $('.Information-submit').click(function () {
+        $.ajax({
+            url:Url,
+            type: 'post',
+            data: {
+                name: name,
+                password: password,
 
-     // var Y = $('#CharacterChoose').offset().left;
-     // if(Y<119){
-     //     Crt="homecus";
-         $.post(
-             //"./Register.php",
-             {
-                 name:name,
-                 password:password,
-                 //crt:Crt
-             },
-             function(result){
-                 //window.location='homecus.html';
-                 alert('login!');
-             });
-    // }
-    //  else{
-    //      Crt="buscus"
-    //      $.post(
-    //          "./Register.php",
-    //          {
-    //              name:name,
-    //      //      password:password,
-    //              crt:Crt
-    //          },
-    //          function(result){
-    //              window.location='buscus.html';
-    //          });
-    //  }
+            },
+            dataType: 'json',
+            success:function (msg) {
+                alert("success!");
 
+            }
+        })
 
-
-}
+    })
+})

@@ -65,18 +65,13 @@ body, html {
 
 .Information-submit{
     margin: auto;
-<<<<<<< HEAD
-    height: 40px;
-    width: 200px;
-=======
+
     height: 42px;
     width: 202px;
->>>>>>> 61479a4b641575b0876fa31a5e0bbeaae5a88e9c
     border-radius: 5px;
     border:1px solid lightpink;
     background-color: lightpink;
     font-size: 15px;
-    outline:none;
     color: white;
 }
 .Information-submit:hover{
