@@ -2,10 +2,9 @@ package team_random.DBProject.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import team_random.DBProject.model.HomeCustomer;
-import team_random.DBProject.repository.HomeCustomerRepository;
 import team_random.DBProject.service.HomeCustomerService;
 
 @Controller
@@ -14,6 +13,12 @@ public class HomeCustomerController {
 
     @Autowired
     private HomeCustomerService homeCustomerService;
+
+    @GetMapping("/welcome")
+    public String welcome(@RequestParam(name = "name", required = false, defaultValue="World")String name, Model model){
+        model.addAttribute("name",name);
+        return "welcome";
+    }
 
     @PostMapping(path = "/register")
     public @ResponseBody
