@@ -1,0 +1,30 @@
+<component name="libraryTable">
+  <library name="JAX-WS-Glassfish / JAX-WS 2.2 RI / Metro 1.X / JWSDP 2.2" type="JAX-WS">
+    <properties version="Glassfish / JAX-WS 2.2 RI / Metro 1.X / JWSDP 2.2" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Backend/lib/javax.annotation.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Backend/lib/gmbal-api-only.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Backend/lib/jaxws-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Backend/lib/ha-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Backend/lib/jaxb-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Backend/lib/jsr181-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Backend/lib/FastInoset.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Backend/lib/management-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Backend/lib/mimepull.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Backend/lib/policy.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Backend/lib/saaj-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Backend/lib/mail.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Backend/lib/stax-ex.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Backend/lib/stax2-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Backend/lib/streambuffer.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Backend/lib/jaxws-tools.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Backend/lib/saaj-impl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Backend/lib/jaxb-impl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Backend/lib/woodstox-core-asl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Backend/lib/jaxws-rt.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Backend/lib/jaxb-xjc.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
