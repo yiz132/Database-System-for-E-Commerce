@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import team_random.DBProject.model.HomeCustomer;
 import team_random.DBProject.service.HomeCustomerService;
 
+@CrossOrigin
 @Controller
 @RequestMapping(path = "/dbproject")
 public class HomeCustomerController {
