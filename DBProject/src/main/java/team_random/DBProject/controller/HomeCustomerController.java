@@ -6,12 +6,14 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import team_random.DBProject.model.HomeCustomer;
 import team_random.DBProject.repository.HomeCustomerRepository;
+import team_random.DBProject.service.HomeCustomerService;
 
 @Controller
 @RequestMapping(path = "/dbproject")
 public class HomeCustomerController {
+
     @Autowired
-    private HomeCustomerRepository homeCustomerDao;
+    private HomeCustomerService homeCustomerService;
 
     @PostMapping(path = "/register")
     public @ResponseBody
@@ -26,25 +28,16 @@ public class HomeCustomerController {
         customer.setAge(age);
         customer.setGender(gender);
         customer.setIncome(income);
-        homeCustomerDao.save(customer);
+        homeCustomerService.save(customer);
         return "Saved";
     }
 
-    @RequestMapping(path = "/login/home")
-    public ModelAndView loginPage(@RequestParam(value = "error",required = false)String error,@RequestParam(value = "logout", required = false) String logout){
-        ModelAndView mav = new ModelAndView();
-        if (error != null) {
-            mav.addObject("error","Invalid Credentials provided.");
-        }
-        if (logout != null) {
-            mav.addObject("message","Logged out successfully");
-        }
-        mav.setViewName("loginPage");
-        return mav;
-    }
-
-    @GetMapping(path = "/all")
-    public @ResponseBody Iterable<HomeCustomer> getAllHomeCustomers(){
-        return homeCustomerDao.findAll();
+    @PostMapping(path = "/login/home")
+    public @ResponseBody String login(@RequestParam String name,@RequestParam String password){
+        HomeCustomer homeCustomer = homeCustomerService.findByName(name);
+        if (homeCustomer == null) return "Invalid name or password";
+        String password_record = homeCustomer.getPassword();
+        if (!password.equals(password_record)) return "Invalid name or password";
+        return "logged in";
     }
 }
