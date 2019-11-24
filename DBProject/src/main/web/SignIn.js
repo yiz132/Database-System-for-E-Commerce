@@ -6,7 +6,7 @@ function SignIn(){
     var name = $('#UserName-register').val();
     //alert(name);
     var password = $('#FirstPassword-register').val();
-    const Url="http://localhost:8080/dbproject/login/home";
+    const Url="http://localhost:8080/dbproject/home/signin";
     $.ajax({
         type: "post",
         url: Url,

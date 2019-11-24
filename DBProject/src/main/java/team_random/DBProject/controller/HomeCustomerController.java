@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import team_random.DBProject.model.HomeCustomer;
 import team_random.DBProject.service.HomeCustomerService;
+import team_random.DBProject.service.ProductService;
 
 @CrossOrigin
 @Controller
@@ -14,6 +15,9 @@ public class HomeCustomerController {
     @Autowired
     private HomeCustomerService homeCustomerService;
 
+    @Autowired
+    private ProductService productService;
+/*
     @PostMapping(path = "/register")
     public @ResponseBody
     String addNewUser(@RequestParam String name, @RequestParam String password){
@@ -23,8 +27,8 @@ public class HomeCustomerController {
         homeCustomerService.save(customer);
         return "Saved";
     }
+ */
 
-/*
     @PostMapping(path = "/register")
     public @ResponseBody
     String addNewUser(@RequestParam String name, @RequestParam String password,
@@ -42,7 +46,6 @@ public class HomeCustomerController {
         return "Saved";
     }
 
- */
 
     @PostMapping(path = "/signin")
     public @ResponseBody String signin(@RequestParam String name,@RequestParam String password){
@@ -53,5 +56,9 @@ public class HomeCustomerController {
         return "signed in";
     }
 
-    //@PostMapping(path = "")
+    @PostMapping(path = "/product/search")
+    public @ResponseBody String searchProduct(@RequestParam String name){
+        return productService.findByName(name).toString();
+    }
+
 }

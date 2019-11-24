@@ -60,4 +60,8 @@ public class Product {
     public String getDescription(){
         return description;
     }
+
+    public String toString(){
+        return "Name:" + getName()+",Price:"+getPrice()+",Category:"+getCategory()+",Inventory:"+getInventory();
+    }
 }
