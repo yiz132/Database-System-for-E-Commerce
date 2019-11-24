@@ -18,12 +18,13 @@ public class BusinessCustomerController {
     @PostMapping(path = "/register")
     public @ResponseBody
     String addNewUser(@RequestParam String name, @RequestParam String password,
-                      @RequestParam String address, @RequestParam String marriage_status,
-                      @RequestParam int age, @RequestParam String gender, @RequestParam int income){
+                      @RequestParam String address, @RequestParam int gross, @RequestParam String category){
         BusinessCustomer customer = new BusinessCustomer();
         customer.setName(name);
         customer.setPassword(password);
         customer.setAddress(address);
+        customer.setGross(gross);
+        customer.setCategory(category);
         businessCustomerService.save(customer);
         return "Saved";
     }

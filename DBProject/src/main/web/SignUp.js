@@ -10,14 +10,13 @@ function NewUser(){
         }
     }
 
-    const Url="http://localhost:8080/dbproject/register";
+    const Url="http://localhost:8080/dbproject/home/register";
     $.ajax({
         type: "post",
         url: Url,
         data: {
             name: name,
-            password: password,
-            //role: role,
+            password: password
         },
         dataType: "json",
         success: function(msg){

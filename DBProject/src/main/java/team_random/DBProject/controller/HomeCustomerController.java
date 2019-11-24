@@ -13,7 +13,7 @@ public class HomeCustomerController {
 
     @Autowired
     private HomeCustomerService homeCustomerService;
-/*
+
     @PostMapping(path = "/register")
     public @ResponseBody
     String addNewUser(@RequestParam String name, @RequestParam String password){
@@ -23,11 +23,12 @@ public class HomeCustomerController {
         homeCustomerService.save(customer);
         return "Saved";
     }
-    */
+
+/*
     @PostMapping(path = "/register")
     public @ResponseBody
     String addNewUser(@RequestParam String name, @RequestParam String password,
-                      @RequestParam String address, @RequestParam String marriage_status,
+                      @RequestParam String address,@RequestParam String marriage_status,
     @RequestParam int age,@RequestParam String gender, @RequestParam int income){
         HomeCustomer customer = new HomeCustomer();
         customer.setName(name);
@@ -40,6 +41,8 @@ public class HomeCustomerController {
         homeCustomerService.save(customer);
         return "Saved";
     }
+
+ */
 
     @PostMapping(path = "/signin")
     public @ResponseBody String signin(@RequestParam String name,@RequestParam String password){
