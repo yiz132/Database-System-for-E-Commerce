@@ -14,7 +14,7 @@ body, html {
     left: 50%;
     margin-left: -120px;
     background-size: cover;
-    background-image: url("../src/image/Logo.png");
+    background-image: url("../../image/Logo.png");
 }
 
 #RegisterDiv{
