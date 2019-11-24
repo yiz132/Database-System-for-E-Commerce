@@ -11,6 +11,7 @@ public class HomeCustomer{
     private String name;
     private String password;
     private String address;
+    private int account;
     private String marriage_status;
     private int age;
     private String gender;
@@ -18,8 +19,6 @@ public class HomeCustomer{
     public HomeCustomer(){
         super();
     }
-
-    public void setId(int id){this.id = id;}
 
     public int getId(){ return id;}
 
@@ -46,6 +45,10 @@ public class HomeCustomer{
     public String getAddress(){
         return this.address;
     }
+
+    public void setAccount(int account){this.account = account;}
+
+    public int getAccount(){return account;}
 
     public void setMarriage_status(String status){
         marriage_status = status;

@@ -17,8 +17,7 @@ function NewUser(){
         data: {
             name: name,
             password: password,
-            role: role,
-
+            //role: role,
         },
         dataType: "json",
         success: function(msg){
