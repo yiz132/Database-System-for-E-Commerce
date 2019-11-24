@@ -1,5 +1,5 @@
 function SignUp_jump() {
-    window.location.href = "Login.html"
+    window.location.href = "SignUp.html"
 }
 
 function SignIn(){
@@ -16,8 +16,14 @@ function SignIn(){
 
         },
         dataType: "json",
-        success: function(msg){
+        success: function(msg) {
             alert("success!");
+            var data = '';
+            if (msg != '') {
+                data = eval("(" + msg + ")");
+                alert(data);
+            }
         }
+
     });
 }
