@@ -74,8 +74,6 @@ public class HomeCustomerController {
         if (homeCustomer == null) return null;
         String password_record = homeCustomer.getPassword();
         if (!password.equals(password_record)) return null;
-        //Map<String,String> map = new HashMap<>();
-        //map.put(name,password);
         return homeCustomer;
     }
 
