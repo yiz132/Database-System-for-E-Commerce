@@ -43,18 +43,4 @@ public class BusinessCustomerController {
         return "signed in";
     }
 
-    @PostMapping(path ="/addproduct")
-    public @ResponseBody String addProduct(@RequestParam String name,@RequestParam int price,
-                                           @RequestParam String category,@RequestParam int inventory,
-                                           @RequestParam(required = false) String description){
-        Product product = new Product();
-        product.setName(name);
-        product.setPrice(price);
-        product.setCategory(category);
-        product.setInventory(inventory);
-        product.setDescription(description);
-        productService.save(product);
-        return "product added";
-    }
-
 }
