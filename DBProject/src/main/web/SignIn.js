@@ -6,7 +6,7 @@ function SignIn(){
     var name = $('#UserName-register').val();
     //alert(name);
     var password = $('#FirstPassword-register').val();
-    const Url="http://localhost:8080/dbproject/home/signin";
+    var Url="http://localhost:8080/dbproject/home/signin";
     $.ajax({
         type: "post",
         url: Url,
@@ -17,12 +17,18 @@ function SignIn(){
         },
         dataType: "json",
         success: function(msg) {
-            alert("success!");
-            var data = '';
-            if (msg != '') {
-                data = eval("(" + msg + ")");
-                alert(data);
-            }
+            var jsonObject = JSON.parse(msg);
+            alert(jsonObject.username);
+            //alert("success!");
+            // var data = '';
+            // if (msg != '') {
+            //     //data = eval("(" + msg + ")");
+            //     alert(msg);
+            // }
+        },
+        error: function (request, status, error) {
+            alert(request.responseText);
+
         }
 
     });

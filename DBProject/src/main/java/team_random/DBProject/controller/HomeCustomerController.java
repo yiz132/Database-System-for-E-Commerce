@@ -17,7 +17,7 @@ public class HomeCustomerController {
 
     @Autowired
     private ProductService productService;
-/*
+
     @PostMapping(path = "/register")
     public @ResponseBody
     String addNewUser(@RequestParam String name, @RequestParam String password){
@@ -27,8 +27,8 @@ public class HomeCustomerController {
         homeCustomerService.save(customer);
         return "Saved";
     }
- */
 
+/*
     @PostMapping(path = "/register")
     public @ResponseBody
     String addNewUser(@RequestParam String name, @RequestParam String password,
@@ -45,6 +45,8 @@ public class HomeCustomerController {
         homeCustomerService.save(customer);
         return "Saved";
     }
+
+ */
 
 
     @PostMapping(path = "/signin")

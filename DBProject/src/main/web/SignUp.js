@@ -9,8 +9,7 @@ function NewUser(){
             break;
         }
     }
-
-    const Url="http://localhost:8080/dbproject/home/register";
+    var Url="http://localhost:8080/dbproject/home/register";
     $.ajax({
         type: "post",
         url: Url,
@@ -20,7 +19,13 @@ function NewUser(){
         },
         dataType: "json",
         success: function(msg){
-            alert("success!");
+            alert(msg);
+            //alert(request.responseText);
+        },
+        error: function (request, status, error) {
+            //alert(request.responseText);
+            //alert(1);
+
         }
     });
 }
