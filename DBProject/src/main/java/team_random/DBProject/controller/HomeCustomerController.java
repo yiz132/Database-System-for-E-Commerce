@@ -69,14 +69,14 @@ public class HomeCustomerController {
 
  */
     @PostMapping(path = "/signin")
-    public @ResponseBody Map<String,String> signin(@RequestParam String name, @RequestParam String password){
+    public @ResponseBody HomeCustomer signin(@RequestParam String name, @RequestParam String password){
         HomeCustomer homeCustomer = homeCustomerService.findByName(name);
         if (homeCustomer == null) return null;
         String password_record = homeCustomer.getPassword();
         if (!password.equals(password_record)) return null;
-        Map<String,String> map = new HashMap<>();
-        map.put(name,password);
-        return map;
+        //Map<String,String> map = new HashMap<>();
+        //map.put(name,password);
+        return homeCustomer;
     }
 
     @PostMapping(path = "/product/search")

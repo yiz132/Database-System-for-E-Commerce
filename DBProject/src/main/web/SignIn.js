@@ -24,6 +24,5 @@ function SignIn(){
                 alert(data);
             }
         }
-
     });
 }
