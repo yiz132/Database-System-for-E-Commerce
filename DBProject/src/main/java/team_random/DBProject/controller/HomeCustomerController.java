@@ -69,7 +69,7 @@ public class HomeCustomerController {
 
  */
     @PostMapping(path = "/signin")
-    public Map<String,String> signin(@RequestParam String name, @RequestParam String password){
+    public @ResponseBody Map<String,String> signin(@RequestParam String name, @RequestParam String password){
         HomeCustomer homeCustomer = homeCustomerService.findByName(name);
         if (homeCustomer == null) return null;
         String password_record = homeCustomer.getPassword();
