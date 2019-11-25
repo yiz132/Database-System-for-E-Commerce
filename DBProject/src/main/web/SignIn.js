@@ -30,6 +30,5 @@ function SignIn(){
             alert(request.responseText);
 
         }
-
     });
 }
