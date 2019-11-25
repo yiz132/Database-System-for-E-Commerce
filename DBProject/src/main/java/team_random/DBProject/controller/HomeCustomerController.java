@@ -1,11 +1,21 @@
 package team_random.DBProject.controller;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import team_random.DBProject.model.HomeCustomer;
+import team_random.DBProject.model.Product;
+import team_random.DBProject.model.Transaction;
 import team_random.DBProject.service.HomeCustomerService;
 import team_random.DBProject.service.ProductService;
+import team_random.DBProject.service.TransactionService;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.springframework.data.repository.init.ResourceReader.Type.JSON;
 
 @CrossOrigin
 @Controller
@@ -18,6 +28,9 @@ public class HomeCustomerController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private TransactionService transactionService;
+/*
     @PostMapping(path = "/register")
     public @ResponseBody
     String addNewUser(@RequestParam String name, @RequestParam String password){
@@ -27,13 +40,12 @@ public class HomeCustomerController {
         homeCustomerService.save(customer);
         return "Saved";
     }
-
-/*
+ */
     @PostMapping(path = "/register")
     public @ResponseBody
     String addNewUser(@RequestParam String name, @RequestParam String password,
-                      @RequestParam String address,@RequestParam String marriage_status,
-    @RequestParam int age,@RequestParam String gender, @RequestParam int income){
+                      @RequestParam(required = false) String address,@RequestParam(required = false) String marriage_status,
+    @RequestParam(required = false) int age,@RequestParam(required = false) String gender, @RequestParam(required = false) int income){
         HomeCustomer customer = new HomeCustomer();
         customer.setName(name);
         customer.setPassword(password);
@@ -45,10 +57,7 @@ public class HomeCustomerController {
         homeCustomerService.save(customer);
         return "Saved";
     }
-
- */
-
-
+/*
     @PostMapping(path = "/signin")
     public @ResponseBody String signin(@RequestParam String name,@RequestParam String password){
         HomeCustomer homeCustomer = homeCustomerService.findByName(name);
@@ -58,9 +67,35 @@ public class HomeCustomerController {
         return "signed in";
     }
 
+ */
+    @PostMapping(path = "/signin")
+    public @ResponseBody Map<String,String> signin(@RequestParam String name, @RequestParam String password){
+        HomeCustomer homeCustomer = homeCustomerService.findByName(name);
+        if (homeCustomer == null) return null;
+        String password_record = homeCustomer.getPassword();
+        if (!password.equals(password_record)) return null;
+        Map<String,String> map = new HashMap<>();
+        map.put(name,password);
+        return map;
+    }
+
     @PostMapping(path = "/product/search")
     public @ResponseBody String searchProduct(@RequestParam String name){
         return productService.findByName(name).toString();
+    }
+
+    @PostMapping(path = "/product/checkout")
+    public @ResponseBody String checkout(@RequestParam int id, @RequestParam int customer_id,@RequestParam int counts){
+        Product product = productService.findById(id);
+        int inventory = product.getInventory();
+        if (inventory < counts) return "Inventory is not enough, only "+inventory+" remains";
+        Transaction transaction = new Transaction();
+        transaction.setCustomerId(customer_id);
+        Date date = new Date();
+        transaction.setDate(date);
+        transaction.setCustomerId(counts);
+        transactionService.save(transaction);
+        return "Successfully purchased";
     }
 
 }
