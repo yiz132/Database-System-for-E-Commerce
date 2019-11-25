@@ -12,6 +12,10 @@ import team_random.DBProject.service.ProductService;
 import team_random.DBProject.service.TransactionService;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.springframework.data.repository.init.ResourceReader.Type.JSON;
 
 @CrossOrigin
 @Controller
@@ -53,7 +57,7 @@ public class HomeCustomerController {
         homeCustomerService.save(customer);
         return "Saved";
     }
-
+/*
     @PostMapping(path = "/signin")
     public @ResponseBody String signin(@RequestParam String name,@RequestParam String password){
         HomeCustomer homeCustomer = homeCustomerService.findByName(name);
@@ -61,6 +65,18 @@ public class HomeCustomerController {
         String password_record = homeCustomer.getPassword();
         if (!password.equals(password_record)) return "Invalid name or password";
         return "signed in";
+    }
+
+ */
+    @PostMapping(path = "/signin")
+    public Map<String,String> signin(@RequestParam String name, @RequestParam String password){
+        HomeCustomer homeCustomer = homeCustomerService.findByName(name);
+        if (homeCustomer == null) return null;
+        String password_record = homeCustomer.getPassword();
+        if (!password.equals(password_record)) return null;
+        Map<String,String> map = new HashMap<>();
+        map.put(name,password);
+        return map;
     }
 
     @PostMapping(path = "/product/search")
