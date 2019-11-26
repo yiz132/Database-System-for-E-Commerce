@@ -4,7 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import team_random.DBProject.model.Product;
+import team_random.DBProject.model.Transaction;
 import team_random.DBProject.service.ProductService;
+import team_random.DBProject.service.TransactionService;
+
+import java.util.List;
 
 @CrossOrigin
 @Controller
@@ -12,6 +16,8 @@ import team_random.DBProject.service.ProductService;
 public class SalespersonController {
     @Autowired
     private ProductService productService;
+    @Autowired
+    private TransactionService transactionService;
 
     @PostMapping(path ="/addproduct")
     public @ResponseBody
@@ -26,5 +32,19 @@ public class SalespersonController {
         product.setDescription(description);
         productService.save(product);
         return "product added";
+    }
+
+    //list transactions based on store id
+    @PostMapping(path = "/storemanager/showTransactions")
+    public @ResponseBody
+    List<Transaction> showStoreTrans(@RequestParam int storeId){
+        return transactionService.findByStoreId(storeId);
+    }
+
+    //list transactions based on region id
+    @PostMapping(path = "/regionmanager/showTransactions")
+    public @ResponseBody
+    List<Transaction> showRegionTrans(@RequestParam int regionId){
+        return transactionService.findByRegionId(regionId);
     }
 }

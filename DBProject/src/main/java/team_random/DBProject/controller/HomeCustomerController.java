@@ -1,6 +1,7 @@
 package team_random.DBProject.controller;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import org.hibernate.mapping.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,7 @@ import team_random.DBProject.service.TransactionService;
 
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 import static org.springframework.data.repository.init.ResourceReader.Type.JSON;
 
@@ -78,8 +79,9 @@ public class HomeCustomerController {
     }
 
     @PostMapping(path = "/product/search")
-    public @ResponseBody String searchProduct(@RequestParam String name){
-        return productService.findByName(name).toString();
+    public @ResponseBody
+    Product searchProduct(@RequestParam String name){
+        return productService.findByName(name);
     }
 
     @PostMapping(path = "/product/checkout")
