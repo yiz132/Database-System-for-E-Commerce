@@ -17,8 +17,14 @@ function SignIn(){
         },
         dataType: "json",
         success: function(msg) {
-            var jsonObject = JSON.parse(msg);
-            alert(jsonObject.username);
+            var data=eval(msg);
+            //alert(data);
+            var str = JSON.stringify(data);
+            //alert(str);
+            var obj = JSON.parse(str);
+            alert(obj.name);
+
+
             //alert("success!");
             // var data = '';
             // if (msg != '') {
