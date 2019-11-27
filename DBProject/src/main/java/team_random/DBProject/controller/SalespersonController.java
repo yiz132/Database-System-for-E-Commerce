@@ -23,13 +23,15 @@ public class SalespersonController {
     public @ResponseBody
     String addProduct(@RequestParam String name, @RequestParam int price,
                       @RequestParam String category, @RequestParam int inventory,
-                      @RequestParam(required = false) String description) {
+                      @RequestParam(required = false) String description,
+                      @RequestParam(required = false) String picture) {
         Product product = new Product();
         product.setName(name);
         product.setPrice(price);
         product.setCategory(category);
         product.setInventory(inventory);
         product.setDescription(description);
+        product.setPicture(picture);
         productService.save(product);
         return "product added";
     }
