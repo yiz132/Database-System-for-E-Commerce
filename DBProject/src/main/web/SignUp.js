@@ -1,3 +1,7 @@
+function Locate() {
+    $("html,body").animate({scrollTop:"0" + "px"}, 500);
+}
+
 function Detail() {
     var radios = document.getElementsByName('Character');
     for (var i = 0, length = radios.length; i < length; i++) {

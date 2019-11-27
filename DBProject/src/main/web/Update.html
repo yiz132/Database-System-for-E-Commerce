@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random-UpdateProduct</title>
+    <link rel="stylesheet" type="text/css" href="Update.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <script type= "text/javascript" src= "AjaxFileUpload.js" ></script>
+    <script src="Update.js"></script>
+</head>
+<body>
+<div class="TopBar" >
+    <div id="LogoDiv" class="LogoDiv"></div>
+</div>
+<div>
+    <div class="UpdateDiv">
+        <input type="text" id="Update_name" name="Update_name" class="Information-input" placeholder="Product Name"  )>
+        <input type="number" id="Update_price" name="Update_price" class="Information-input" style="top: 170px; width: 170px" placeholder="Product Price"  )>
+        <input type="number" id="Update_stock" name="Update_stock" class="Information-input" style="top: 170px; left: 330px; width: 170px" placeholder="Product Number"  )>
+        <input type="text" id="Update_category" name="Update_category" class="Information-input" style="top: 240px;" placeholder="Product Category"  )>
+        <input type="text" id="Update_inventory" name="Update_inventory" class="Information-input" style="top: 310px;" placeholder="Product Inventory"  )>
+        <textarea id="Update_description" name="Update_description" class="Information-input"  style="top: 380px;height: 100px; resize:none; padding-top: 10px" placeholder="Product Description"  )></textarea>
+        <div id="Upload_ProductPhoto" class="Upload_ProductPhoto"></div>
+        <label for="FileUpload" id="Upload_Photo" name="Upload_Photo" class="Upload_button" style="height: 52px;padding-top: 18px;">Choose Photo</label>
+        <input type="file" id="FileUpload" onchange="OnloadProductPhoto()" name="FileUpload" class="File" >
+        <button id="Upload_Product" name="Upload_Product" class="Upload_button" onclick="UploadProduct()" style="left: 880px">Update Product</button>
+
+
+    </div>
+
+</div>
+</body>
+</html>

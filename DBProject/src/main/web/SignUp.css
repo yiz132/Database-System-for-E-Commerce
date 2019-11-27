@@ -55,7 +55,13 @@ body, html {
     padding-left: 10px;
     color: lightgrey;
 }
-
+/*.Information-input:required{*/
+/*    border-color: red;*/
+/*}*/
+.Information-input:invalid{
+    border-color: red;
+    color: red
+}
 .Information-input:focus {
     outline:none;
     border: 1px solid lightpink;
@@ -124,6 +130,7 @@ body, html {
     background-color: lightpink;
     font-size: 15px;
     color: white;
+    outline: none;
 }
 .Information-submit:hover{
     filter: brightness(1.3);

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random</title>
+    <link rel="stylesheet" type="text/css" href="Scan.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <script src="Scan.js"></script>
+</head>
+<body>
+<div class="TopBar" >
+    <div id="LogoDiv" class="LogoDiv"></div>
+<!--    <i class="SearchLogo" id="SearchLogo"></i>-->
+    <input type="text" class="SearchInput" onKeyDown="SearchPress()" placeholder="Search key words here"></input>
+    <button id="SearchProductButton" onclick="SearchProduct()" style="display: none"></button>
+</div>
+<table id="ProductList" class="List" border="1"></table>
+</body>
+</html>
