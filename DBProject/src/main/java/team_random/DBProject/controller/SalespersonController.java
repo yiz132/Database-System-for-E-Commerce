@@ -9,6 +9,7 @@ import team_random.DBProject.model.Transaction;
 import team_random.DBProject.service.ProductService;
 import team_random.DBProject.service.TransactionService;
 
+import java.io.File;
 import java.util.List;
 
 @CrossOrigin
@@ -25,7 +26,7 @@ public class SalespersonController {
     String addProduct(@RequestParam String name, @RequestParam int price,
                       @RequestParam String category, @RequestParam int inventory,
                       @RequestParam(required = false) String description,
-                      @RequestParam(required = false) Text picture) {
+                      @RequestParam(required = false) File picture) {
         Product product = new Product();
         product.setName(name);
         product.setPrice(price);

@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.File;
 
 @Entity
 @Table(name = "Products")
@@ -18,7 +19,7 @@ public class Product {
     private String category;
     private int inventory;
     private String description;
-    private Text picture; //url of picture
+    private File picture;
 
     public int getId(){
         return id;
@@ -64,11 +65,11 @@ public class Product {
         return description;
     }
 
-    public void setPicture(Text picture){
+    public void setPicture(File picture){
         this.picture = picture;
     }
 
-    public Text getPicture(){
+    public File getPicture(){
         return picture;
     }
 
