@@ -7,20 +7,24 @@ function UploadProduct(){
     var category = $('#Update_category').val();
     var inventory = $('#Update_inventory').val();
     var description = $('#Update_description').val();
-    var photoUrl = document.getElementById('PhotoUrl').value;
-    alert(photoUrl);
+    //var photoUrl = document.getElementById('PhotoUrl').value;
+    var photo = document.getElementById('FileUpload').files[0];
+    //alert(photo);
     //update product
     var Url="http://localhost:8080/dbproject/salesperson/addproduct";
     $.ajax({
         type: "post",
         url: Url,
+        // processData: false,
+        // contentType: false,
         data: {
+
             name: name,
             price: price,
             category: category,
             inventory: inventory,
             description: description,
-            photoUrl: photoUrl
+            photo: photo
         },
         dataType: "json",
         success: function(msg){
