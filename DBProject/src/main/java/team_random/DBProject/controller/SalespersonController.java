@@ -3,6 +3,7 @@ package team_random.DBProject.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.w3c.dom.Text;
 import team_random.DBProject.model.Product;
 import team_random.DBProject.model.Transaction;
 import team_random.DBProject.service.ProductService;
@@ -24,7 +25,7 @@ public class SalespersonController {
     String addProduct(@RequestParam String name, @RequestParam int price,
                       @RequestParam String category, @RequestParam int inventory,
                       @RequestParam(required = false) String description,
-                      @RequestParam(required = false) String picture) {
+                      @RequestParam(required = false) Text picture) {
         Product product = new Product();
         product.setName(name);
         product.setPrice(price);

@@ -1,5 +1,7 @@
 package team_random.DBProject.model;
 
+import org.w3c.dom.Text;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,7 +18,7 @@ public class Product {
     private String category;
     private int inventory;
     private String description;
-    private String picture; //url of picture
+    private Text picture; //url of picture
 
     public int getId(){
         return id;
@@ -62,11 +64,11 @@ public class Product {
         return description;
     }
 
-    public void setPicture(String picture){
+    public void setPicture(Text picture){
         this.picture = picture;
     }
 
-    public String getPicture(){
+    public Text getPicture(){
         return picture;
     }
 
