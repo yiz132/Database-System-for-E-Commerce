@@ -1,9 +1,12 @@
 package team_random.DBProject.model;
 
+import org.w3c.dom.Text;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.File;
 
 @Entity
 @Table(name = "Products")
@@ -16,7 +19,7 @@ public class Product {
     private String category;
     private int inventory;
     private String description;
-    private String picture; //url of picture
+    private File picture;
 
     public int getId(){
         return id;
@@ -62,11 +65,11 @@ public class Product {
         return description;
     }
 
-    public void setPicture(String picture){
+    public void setPicture(File picture){
         this.picture = picture;
     }
 
-    public String getPicture(){
+    public File getPicture(){
         return picture;
     }
 
