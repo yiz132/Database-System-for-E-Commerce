@@ -1,0 +1,50 @@
+
+
+
+//What are the aggregate sales  and profit of the products.
+
+
+select P.name,sum(number),sum(number)*price AS profit
+from  `transact`T, `product`P
+where T.product_id=P.id 
+GROUP BY P.name
+
+
+
+//What are the top product categories.
+
+
+select P.name,P.category
+from  `transact`T, `product`P
+where T.product_id=P.id 
+GROUP BY P.	category
+HAVING sum(number)>= all(select sum(number)
+from  `transact`T, `product`P
+where T.product_id=P.id 
+GROUP BY P.	category
+)
+
+
+//How do the various regions compare by sales volume?
+
+select R.region_name  ,sum(number)AS sales_value
+from `region`R,`store`S,`salesperson`SP,`transact`T, `product`P
+where R.id=S.region_id AND S.id=SP.store_id AND SP.product_id=P.id AND P.id=T.product_id
+group by R.id
+
+
+
+
+
+//Which  businesses are buying given products the most?
+
+
+select B.b_id
+from  `transact`T, `customer_business`B,`product`P
+where T.customer_id=B.b_id AND T.product_id=P.id AND P.name='1'
+GROUP BY B.b_id
+HAVING sum(number)>= all(select sum(number)
+from  `transact`T, `customer_business`B,`product`P
+where T.customer_id=B.b_id AND T.product_id=P.id AND P.name='1'
+GROUP BY B.b_id)
+
