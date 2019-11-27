@@ -7,6 +7,8 @@ function UploadProduct(){
     var category = $('#Update_category').val();
     var inventory = $('#Update_inventory').val();
     var description = $('#Update_description').val();
+    var photoUrl = document.getElementById('PhotoUrl').value;
+    alert(photoUrl);
     //update product
     var Url="";
     $.ajax({
@@ -18,6 +20,7 @@ function UploadProduct(){
             category: category,
             inventory: inventory,
             description: description,
+            photoUrl: photoUrl
         },
         dataType: "json",
         success: function(msg){
@@ -38,7 +41,10 @@ function OnloadProductPhoto() {
 
     fr.onload = function () {
         document.getElementById('Upload_ProductPhoto').style.backgroundImage ="url(" + fr.result + ")";
+        document.getElementById('PhotoUrl').value = fr.result;
     };
+
     fr.readAsDataURL(imgFile);
+
 
 }
