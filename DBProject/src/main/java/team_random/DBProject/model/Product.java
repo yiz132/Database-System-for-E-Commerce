@@ -16,6 +16,7 @@ public class Product {
     private String category;
     private int inventory;
     private String description;
+    private String picture; //url of picture
 
     public int getId(){
         return id;
@@ -59,6 +60,14 @@ public class Product {
 
     public String getDescription(){
         return description;
+    }
+
+    public void setPicture(String picture){
+        this.picture = picture;
+    }
+
+    public String getPicture(){
+        return picture;
     }
 
     public String toString(){

@@ -10,7 +10,7 @@ function UploadProduct(){
     var photoUrl = document.getElementById('PhotoUrl').value;
     alert(photoUrl);
     //update product
-    var Url="";
+    var Url="http://localhost:8080/dbproject/salesperson/addproduct";
     $.ajax({
         type: "post",
         url: Url,

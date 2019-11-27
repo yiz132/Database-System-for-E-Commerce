@@ -1,6 +1,7 @@
 package team_random.DBProject.repository;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 import team_random.DBProject.model.Transaction;
 
 import java.util.ArrayList;
