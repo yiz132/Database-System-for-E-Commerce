@@ -8,7 +8,7 @@ function UploadProduct(){
     var inventory = $('#Update_inventory').val();
     var description = $('#Update_description').val();
     //update product
-    var Url="";
+    var Url="http://localhost:8080/dbproject/salesperson/addproduct";
     $.ajax({
         type: "post",
         url: Url,
