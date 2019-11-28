@@ -7,34 +7,31 @@ function UploadProduct(){
     var category = $('#Update_category').val();
     var inventory = $('#Update_inventory').val();
     var description = $('#Update_description').val();
-    //var photoUrl = document.getElementById('PhotoUrl').value;
-    // var photo = document.getElementById('FileUpload').files[0];
-    // var formData = new FormData();
-    // formData.append("file", photo);
-    alert(new FormData($('#uploadForm')[0]));
+    var photoUrl = document.getElementById('PhotoUrl').value;
+    //alert(photoUrl);
     //update product
     var Url="http://localhost:8080/dbproject/salesperson/addproduct";
     $.ajax({
         type: "post",
         url: Url,
+        // processData: false,
+        // contentType: false,
         data: {
+
             name: name,
             price: price,
             category: category,
             inventory: inventory,
             description: description,
-            photo: new FormData($('#uploadForm')[0])
-
+            photo: photoUrl
         },
-        processData: false,
-        contentType: false,
         dataType: "json",
         success: function(msg){
             alert(msg);
             //alert(request.responseText);
         },
         error: function (request, status, error) {
-            alert(request.responseText);
+            //alert(request.responseText);
             //alert(1);
 
         }
