@@ -18,7 +18,6 @@ function UploadProduct(){
         // processData: false,
         // contentType: false,
         data: {
-
             name: name,
             price: price,
             category: category,
@@ -32,7 +31,7 @@ function UploadProduct(){
             //alert(request.responseText);
         },
         error: function (request, status, error) {
-            //alert(request.responseText);
+            alert(request.responseText);
             //alert(1);
 
         }
