@@ -23,7 +23,7 @@ function UploadProduct(){
             category: category,
             inventory: inventory,
             description: description,
-            photo: photoUrl
+            picture: photoUrl
         },
         dataType: "json",
         success: function(msg){
