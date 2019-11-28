@@ -24,7 +24,9 @@
         <div id="Upload_ProductPhoto" class="Upload_ProductPhoto"></div>
         <input type="text" id="PhotoUrl" style="display: none">
         <label for="FileUpload" id="Upload_Photo" name="Upload_Photo" class="Upload_button" style="height: 52px;padding-top: 18px;">Choose Photo</label>
-        <input type="file" id="FileUpload" onchange="OnloadProductPhoto()" name="FileUpload" class="File" >
+        <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" id="FileUpload" onchange="OnloadProductPhoto()" name="FileUpload" class="File" accept="image/*"/>
+        </form>
         <button id="Upload_Product" name="Upload_Product" class="Upload_button" onclick="UploadProduct()" style="left: 880px">Update Product</button>
 
 

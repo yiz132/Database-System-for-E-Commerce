@@ -8,15 +8,15 @@ function UploadProduct(){
     var inventory = $('#Update_inventory').val();
     var description = $('#Update_description').val();
     //var photoUrl = document.getElementById('PhotoUrl').value;
-    var photo = document.getElementById('FileUpload').files[0];
-    //alert(photo);
+    // var photo = document.getElementById('FileUpload').files[0];
+    // var formData = new FormData();
+    // formData.append("file", photo);
+    alert(new FormData($('#uploadForm')[0]));
     //update product
     var Url="http://localhost:8080/dbproject/salesperson/addproduct";
     $.ajax({
         type: "post",
         url: Url,
-        // processData: false,
-        // contentType: false,
         data: {
 
             name: name,
@@ -24,8 +24,11 @@ function UploadProduct(){
             category: category,
             inventory: inventory,
             description: description,
-            photo: photo
+            photo: new FormData($('#uploadForm')[0])
+
         },
+        processData: false,
+        contentType: false,
         dataType: "json",
         success: function(msg){
             alert(msg);
