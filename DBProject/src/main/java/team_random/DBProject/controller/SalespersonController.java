@@ -25,22 +25,19 @@ public class SalespersonController {
 
     @PostMapping(path ="/addproduct")
     public @ResponseBody
-    String addProduct(@RequestParam String name, @RequestParam int price,
+    Product addProduct(@RequestParam String name, @RequestParam int price,
                       @RequestParam String category, @RequestParam int inventory,
                       @RequestParam(required = false) String description,
-                      @RequestParam(required = false) File picture) throws IOException {
+                      @RequestParam(required = false) String picture) throws IOException {
         Product product = new Product();
         product.setName(name);
         product.setPrice(price);
         product.setCategory(category);
         product.setInventory(inventory);
         product.setDescription(description);
-        if (picture != null) {
-            byte[] bPicture = Files.readAllBytes(picture.toPath());
-            product.setPicture(bPicture);
-        }
+        product.setPicture(picture);
         productService.save(product);
-        return "product added";
+        return product;
     }
 
     //list transactions based on store id
