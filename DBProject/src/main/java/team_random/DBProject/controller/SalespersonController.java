@@ -10,6 +10,8 @@ import team_random.DBProject.service.ProductService;
 import team_random.DBProject.service.TransactionService;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 
 @CrossOrigin
@@ -26,14 +28,15 @@ public class SalespersonController {
     String addProduct(@RequestParam String name, @RequestParam int price,
                       @RequestParam String category, @RequestParam int inventory,
                       @RequestParam(required = false) String description,
-                      @RequestParam(required = false) File picture) {
+                      @RequestParam(required = false) File picture) throws IOException {
         Product product = new Product();
         product.setName(name);
         product.setPrice(price);
         product.setCategory(category);
         product.setInventory(inventory);
         product.setDescription(description);
-        product.setPicture(picture);
+        byte[] bPicture = Files.readAllBytes(picture.toPath());
+        product.setPicture(bPicture);
         productService.save(product);
         return "product added";
     }

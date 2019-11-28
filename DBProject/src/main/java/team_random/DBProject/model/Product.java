@@ -19,7 +19,7 @@ public class Product {
     private String category;
     private int inventory;
     private String description;
-    private File picture;
+    private byte[] picture;
 
     public int getId(){
         return id;
@@ -65,11 +65,11 @@ public class Product {
         return description;
     }
 
-    public void setPicture(File picture){
+    public void setPicture(byte[] picture){
         this.picture = picture;
     }
 
-    public File getPicture(){
+    public byte[] getPicture(){
         return picture;
     }
 
