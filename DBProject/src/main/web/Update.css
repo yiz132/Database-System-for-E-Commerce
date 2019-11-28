@@ -68,6 +68,7 @@ body, html {
     border-radius: 10px;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     border: 1px solid lightpink;
 
 }

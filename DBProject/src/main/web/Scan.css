@@ -43,14 +43,46 @@ body, html {
     box-shadow: 0px 0px 5px white;
 }
 
-.List{
+.ProductDiv{
+    width: 400px;
+    height: 500px;
+    background-color: white;
+    border: 1px solid lightpink;
+    float: left;
+    margin-left: 60px;
+    margin-top: 100px;
+}
+.ProductDiv:hover{
+    box-shadow: 0px 0px 20px lightpink;
+}
 
-    width: 1400px;
-    border: 1px solid black;
-    position: absolute;
-    top: 100px;
-    left: 50%;
-    margin-left: -700px ;
+.ProductPhotoDiv{
+    width: 400px;
+    height: 400px;
+    border: none;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 
-
+.ProductNameDiv{
+    width: 300px;
+    height: 40px;
+    border:  none;
+    margin-left: 50px;
+    color: lightpink;
+    text-align: center;
+    font-size: 30px;
+    padding-top: 5px;
+}
+.ProductPriceDiv{
+    width: 300px;
+    height: 30px;
+    border: none;
+    margin-left: 50px;
+    margin-top: 10px;
+    color: lightpink;
+    font-weight: bold;
+    text-align: center;
+    font-size: 20px;
 }
