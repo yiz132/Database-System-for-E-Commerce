@@ -35,8 +35,10 @@ public class SalespersonController {
         product.setCategory(category);
         product.setInventory(inventory);
         product.setDescription(description);
-        byte[] bPicture = Files.readAllBytes(picture.toPath());
-        product.setPicture(bPicture);
+        if (picture != null) {
+            byte[] bPicture = Files.readAllBytes(picture.toPath());
+            product.setPicture(bPicture);
+        }
         productService.save(product);
         return "product added";
     }

@@ -18,7 +18,6 @@ function UploadProduct(){
         type: "post",
         url: Url,
         data: {
-
             name: name,
             price: price,
             category: category,
@@ -35,7 +34,7 @@ function UploadProduct(){
             //alert(request.responseText);
         },
         error: function (request, status, error) {
-            //alert(request.responseText);
+            alert(request.responseText);
             //alert(1);
 
         }
