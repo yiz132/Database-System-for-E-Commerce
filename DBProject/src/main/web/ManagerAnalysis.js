@@ -10,8 +10,3 @@ function SearchPress() {
     }
 
 }
-
-
-function SortChange(){
-    alert(document.getElementById('SortBy').value);
-}
