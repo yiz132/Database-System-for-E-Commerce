@@ -2,22 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Random-Analysis</title>
-    <link rel="stylesheet" type="text/css" href="ManagerAnalysis.css" />
+    <title>Random-StoreManager</title>
+    <link rel="stylesheet" type="text/css" href="StoreManagerIndex.css" />
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
-    <script src="ManagerAnalysis.js"></script>
+    <script src="StoreManagerIndex.js"></script>
 </head>
 <body>
 <div class="TopBar" >
     <div id="LogoDiv" class="LogoDiv"></div>
     <!--    <i class="SearchLogo" id="SearchLogo"></i>-->
     <input type="text" class="SearchInput" onKeyDown="SearchPress()" placeholder="Search key words here"></input>
-    <button id="SearchProductButton" onclick="SearchProduct()" style="display: none"></button>
+    <button id="SearchBusinessButton" onclick="SearchBusiness()" style="display: none"></button>
     <select id="Sort" name="Sort" onchange="SortChange()" class="SortDiv">
         <option value ="SortBy" >SORT BY</option>
-        <option value ="PriceHighToLow">PRICE (HIGH TO LOW)</option>
-        <option value ="PriceLowToHigh">PRICE (LOW TO HIGH)</option>
+        <option value ="ProfitHighToLow">PROFIT (HIGH TO LOW)</option>
+        <option value ="ProfitLowToHigh">PROFIT (LOW TO HIGH)</option>
+        <option value ="SalesSHighToLow">SALES (HIGH TO LOW)</option>
+        <option value ="SalesLowToHigh">SALES (LOW TO HIGH)</option>
     </select>
 </div>
 </body>
