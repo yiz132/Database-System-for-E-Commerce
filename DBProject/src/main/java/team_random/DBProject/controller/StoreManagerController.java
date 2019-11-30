@@ -23,18 +23,17 @@ public class StoreManagerController {
     @PostMapping(path = "/register")
     public @ResponseBody
     String register(@RequestParam String name, @RequestParam String password, @RequestParam String email,
-                    @RequestParam int salary, @RequestParam String storeName,
-                    @RequestParam String storeAddress, @RequestParam String storeRegion){
+                    @RequestParam int salary, @RequestParam String store_name,
+                    @RequestParam String store_address, @RequestParam String store_region){
         StoreManager storeManager = new StoreManager();
         storeManager.setName(name);
         storeManager.setPassword(password);
         storeManager.setEmail(email);
         storeManager.setSalary(salary);
-        storeManager.setStoreName(storeName);
-        storeManager.setStoreAddress(storeAddress);
-        storeManager.setStoreRegion(storeRegion);
+        storeManager.setStoreName(store_name);
+        storeManager.setStoreAddress(store_address);
+        storeManager.setStoreRegion(store_region);
         storeManagerService.save(storeManager);
         return "Successfully registered as a store manager";
     }
-
 }
