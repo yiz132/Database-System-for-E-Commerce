@@ -218,13 +218,13 @@ function NewStoreManager(){
     var name = $('#UserName-register').val();
     var password = $('#SecondPassword-register').val();
     var role = "StoreManager";
-    var email = $('#Salesperson_Email').val();
+    var email = $('#StoreManager_Email').val();
     var job_title = "StoreManager";
-    var salary = $('#SalesPerson_Salary').val();
+    var salary = $('#StoreManager_Salary').val();
     var store_name = $('#StoreManager_StoreName').val();
     var store_address = $('#StoreManager_StoreAddress').val();
     var store_region = $('#StoreManager_StoreRegion').val();
-
+    alert(email);
     var Url="http://localhost:8080/dbproject/home/register";
     $.ajax({
         type: "post",

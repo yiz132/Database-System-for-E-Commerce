@@ -1,4 +1,4 @@
-function SearchProduct() {
+function SearchBusiness() {
 
 }
 
@@ -6,7 +6,7 @@ function SearchPress() {
 
     if(event.keyCode==13)
     {
-        SearchProduct();
+        SearchBusiness();
     }
 
 }

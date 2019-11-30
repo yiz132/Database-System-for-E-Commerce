@@ -14,6 +14,11 @@
     <!--    <i class="SearchLogo" id="SearchLogo"></i>-->
     <input type="text" class="SearchInput" onKeyDown="SearchPress()" placeholder="Search key words here"></input>
     <button id="SearchProductButton" onclick="SearchProduct()" style="display: none"></button>
+    <select id="Sort" name="Sort" onchange="SortChange()" class="SortDiv">
+        <option value ="SortBy" >SORT BY</option>
+        <option value ="PriceHighToLow">PRICE (HIGH TO LOW)</option>
+        <option value ="PriceLowToHigh">PRICE (LOW TO HIGH)</option>
+    </select>
 </div>
 </body>
 </html>
