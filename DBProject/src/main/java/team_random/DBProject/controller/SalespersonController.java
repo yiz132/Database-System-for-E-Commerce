@@ -30,7 +30,7 @@ public class SalespersonController {
     @PostMapping(path = "/register")
     public @ResponseBody
     String register(@RequestParam String name, @RequestParam String password, @RequestParam(required = false) String email,
-                    @RequestParam(required = false) String title, @RequestParam int salary){
+                    @RequestParam String title, @RequestParam int salary){
         Salesperson person = new Salesperson();
         person.setName(name);
         person.setPassword(password);

@@ -188,7 +188,7 @@ function NewSalesPerson(){
     var job_title = $('#SalesPerson_JobTitle').val();
     var salary = $('#SalesPerson_Salary').val();
 
-    var Url="http://localhost:8080/dbproject/home/register";
+    var Url="http://localhost:8080/dbproject/salesperson/register";
     $.ajax({
         type: "post",
         url: Url,
@@ -197,9 +197,8 @@ function NewSalesPerson(){
             password: password,
             role: role,
             email: email,
-            job_title: job_title,
+            title: job_title,
             salary: salary
-
         },
         dataType: "json",
         success: function(msg){
