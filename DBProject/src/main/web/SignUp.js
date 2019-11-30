@@ -11,12 +11,33 @@ function Detail() {
         }
     }
     if(role == 'HomeCustomer'){
+
+        document.getElementById("HomeCustomerDiv").style.display="none";
+        document.getElementById("HomeCustomer-submit").style.display="none";
+        document.getElementById("BusinessCustomerDiv").style.display="none";
+        document.getElementById("BusinessCustomer-submit").style.display="none";
+        document.getElementById("SalesPersonDiv").style.display="none";
+        document.getElementById("SalesPerson-submit").style.display="none"
+        document.getElementById("StoreManagerDiv").style.display="none";
+        document.getElementById("StoreManager-submit").style.display="none";
+        document.getElementById("RegionManagerDiv").style.display="none";
+        document.getElementById("RegionManager-submit").style.display="none";
+
         document.getElementById("HomeCustomerDiv").style.display="block";
         document.getElementById("HomeCustomer-submit").style.display="block";
         document.getElementById("LogoDivBottom").style.display="block";
         $("html,body").animate({scrollTop:"1000" + "px"}, 500);
     }
     else if(role == 'BusinessCustomer'){
+        document.getElementById("HomeCustomerDiv").style.display="none";
+        document.getElementById("HomeCustomer-submit").style.display="none";
+        document.getElementById("SalesPersonDiv").style.display="none";
+        document.getElementById("SalesPerson-submit").style.display="none"
+        document.getElementById("StoreManagerDiv").style.display="none";
+        document.getElementById("StoreManager-submit").style.display="none";
+        document.getElementById("RegionManagerDiv").style.display="none";
+        document.getElementById("RegionManager-submit").style.display="none";
+
         document.getElementById("BusinessCustomerDiv").style.display="block";
         document.getElementById("BusinessCustomer-submit").style.display="block";
         document.getElementById("LogoDivBottom").style.display="block";
@@ -24,6 +45,15 @@ function Detail() {
 
     }
     else if(role == 'SalesPerson'){
+        document.getElementById("HomeCustomerDiv").style.display="none";
+        document.getElementById("HomeCustomer-submit").style.display="none";
+        document.getElementById("BusinessCustomerDiv").style.display="none";
+        document.getElementById("BusinessCustomer-submit").style.display="none";
+        document.getElementById("StoreManagerDiv").style.display="none";
+        document.getElementById("StoreManager-submit").style.display="none";
+        document.getElementById("RegionManagerDiv").style.display="none";
+        document.getElementById("RegionManager-submit").style.display="none";
+
         document.getElementById("SalesPersonDiv").style.display="block";
         document.getElementById("SalesPerson-submit").style.display="block"
         document.getElementById("LogoDivBottom").style.display="block";;
@@ -31,6 +61,15 @@ function Detail() {
 
     }
     else if(role == 'StoreManager'){
+        document.getElementById("HomeCustomerDiv").style.display="none";
+        document.getElementById("HomeCustomer-submit").style.display="none";
+        document.getElementById("BusinessCustomerDiv").style.display="none";
+        document.getElementById("BusinessCustomer-submit").style.display="none";
+        document.getElementById("SalesPersonDiv").style.display="none";
+        document.getElementById("SalesPerson-submit").style.display="none"
+        document.getElementById("RegionManagerDiv").style.display="none";
+        document.getElementById("RegionManager-submit").style.display="none";
+
         document.getElementById("StoreManagerDiv").style.display="block";
         document.getElementById("StoreManager-submit").style.display="block";
         document.getElementById("LogoDivBottom").style.display="block";
@@ -38,6 +77,16 @@ function Detail() {
 
     }
     else if(role == 'RegionManager'){
+
+        document.getElementById("HomeCustomerDiv").style.display="none";
+        document.getElementById("HomeCustomer-submit").style.display="none";
+        document.getElementById("BusinessCustomerDiv").style.display="none";
+        document.getElementById("BusinessCustomer-submit").style.display="none";
+        document.getElementById("SalesPersonDiv").style.display="none";
+        document.getElementById("SalesPerson-submit").style.display="none"
+        document.getElementById("StoreManagerDiv").style.display="none";
+        document.getElementById("StoreManager-submit").style.display="none";
+
         document.getElementById("RegionManagerDiv").style.display="block";
         document.getElementById("RegionManager-submit").style.display="block";
         document.getElementById("LogoDivBottom").style.display="block";
