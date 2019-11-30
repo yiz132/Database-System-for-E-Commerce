@@ -8,7 +8,7 @@ function UploadProduct(){
     var inventory = $('#Update_inventory').val();
     var description = $('#Update_description').val();
     var photoUrl = document.getElementById('PhotoUrl').value;
-    //alert(photoUrl);
+    alert(photoUrl);
     //update product
     var Url="http://localhost:8080/dbproject/salesperson/addproduct";
     $.ajax({
@@ -17,7 +17,6 @@ function UploadProduct(){
         // processData: false,
         // contentType: false,
         data: {
-
             name: name,
             price: price,
             category: category,

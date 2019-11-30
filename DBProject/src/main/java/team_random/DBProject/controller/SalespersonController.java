@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.w3c.dom.Text;
 import team_random.DBProject.model.Product;
+import team_random.DBProject.model.Salesperson;
 import team_random.DBProject.model.Transaction;
 import team_random.DBProject.service.ProductService;
+import team_random.DBProject.service.SalespersonService;
 import team_random.DBProject.service.TransactionService;
 
 import java.io.File;
@@ -22,6 +24,22 @@ public class SalespersonController {
     private ProductService productService;
     @Autowired
     private TransactionService transactionService;
+    @Autowired
+    private SalespersonService salespersonService;
+
+    @PostMapping(path = "/register")
+    public @ResponseBody
+    String register(@RequestParam String name, @RequestParam String password, @RequestParam(required = false) String email,
+                    @RequestParam String title, @RequestParam int salary){
+        Salesperson person = new Salesperson();
+        person.setName(name);
+        person.setPassword(password);
+        if (email != null) person.setEmail(email);
+        person.setTitle(title);
+        person.setSalary(salary);
+        salespersonService.save(person);
+        return "Successfully registered!";
+    }
 
     @PostMapping(path ="/addproduct")
     public @ResponseBody

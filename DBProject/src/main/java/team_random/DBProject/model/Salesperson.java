@@ -12,6 +12,7 @@ public class Salesperson {
     @GeneratedValue
     private int id;
     private String name;
+    private String password;
     private String email;
     private String title;
     private int pid; //product id
@@ -28,6 +29,14 @@ public class Salesperson {
 
     public String getName(){
         return name;
+    }
+
+    public void setPassword(String password){
+        this.password = password;
+    }
+
+    public String getPassword(){
+        return password;
     }
 
     public void setEmail(String email){
