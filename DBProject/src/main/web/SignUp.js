@@ -225,7 +225,7 @@ function NewStoreManager(){
     var store_address = $('#StoreManager_StoreAddress').val();
     var store_region = $('#StoreManager_StoreRegion').val();
     alert(email);
-    var Url="http://localhost:8080/dbproject/home/register";
+    var Url="http://localhost:8080/dbproject/storemanager/register";
     $.ajax({
         type: "post",
         url: Url,
