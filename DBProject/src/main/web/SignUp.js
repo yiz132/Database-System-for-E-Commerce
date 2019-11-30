@@ -224,7 +224,7 @@ function NewStoreManager(){
     var store_address = $('#StoreManager_StoreAddress').val();
     var store_region = $('#StoreManager_StoreRegion').val();
 
-    var Url="http://localhost:8080/dbproject/home/register";
+    var Url="http://localhost:8080/dbproject/storemanager/register";
     $.ajax({
         type: "post",
         url: Url,
@@ -233,7 +233,7 @@ function NewStoreManager(){
             password: password,
             role: role,
             email: email,
-            job_title: job_title,
+            title: job_title,
             salary: salary,
             store_name: store_name,
             store_address: store_address,
@@ -270,7 +270,7 @@ function NewRegionManager(){
             password: password,
             role: role,
             email: email,
-            job_title: job_title,
+            title: job_title,
             salary: salary,
             region_name: region_name,
         },
