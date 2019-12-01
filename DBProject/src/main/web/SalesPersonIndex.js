@@ -38,3 +38,17 @@ function SortChange(){
         }
     });
 }
+$(document).ready(function(){
+$('#ListTable').on('click','tr', function() {
+    EnterUpdate();
+    });
+});
+
+function EnterUpdate(){
+    var P_id = 1;
+    window.location.href = "Update.html?value=" + P_id;
+}
+
+function AddNewProduct(){
+    window.location.href = "Update.html";
+}

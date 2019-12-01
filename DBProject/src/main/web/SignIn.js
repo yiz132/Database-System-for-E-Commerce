@@ -68,7 +68,6 @@ function SignIn(){
             // //alert(str);
             // var obj = JSON.parse(str);
             // alert(obj.name);
-
             //传回role给前端
 
         },

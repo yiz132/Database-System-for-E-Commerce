@@ -22,7 +22,7 @@
         <option value ="StockLowToHigh">STOCK (LOW TO HIGH)</option>
     </select>
 </div>
-<table class="List" >
+<table id="ListTable" class="List" >
     <tr style="height: 10px;">
         <th style="height: 10px; border: 1px  lightpink; border-style: none none solid none;">Photo</th>
         <th style="height: 10px;  border: 1px  lightpink; border-style: none none solid none;">Name</th>
@@ -34,7 +34,12 @@
         <td>Phone</td>
         <td>100</td>
         <td>21</td>
+        <p id="P_id" style="display: none">1</p>
     </tr>
+
 </table>
+<button id="AddNewProduct" class="FloatDiv" onclick="AddNewProduct()">
+    Add New Product
+</button>
 </body>
 </html>
