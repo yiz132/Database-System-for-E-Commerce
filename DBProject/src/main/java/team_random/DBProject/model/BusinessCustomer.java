@@ -7,20 +7,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Business_Customers")
-public class BusinessCustomer {
-    @Id
-    @GeneratedValue
-    private int id;
+public class BusinessCustomer extends Customer{
     private String name;
     private String password;
     private String address;
     private int account;
     private int gross;
     private String category;
-
-    public int getId(){
-        return this.id;
-    }
 
     public void setName(String name){
         this.name = name;

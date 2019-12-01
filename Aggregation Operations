@@ -50,7 +50,11 @@ GROUP BY B.b_id)
 
 //Show transactions with a given store id:
 
-SELECT DISTINCT * FROM transactions t, products p, salespersons sp WHERE sp.id = 10 AND sp.pid = t.pid
+SELECT DISTINCT t.id,t.cid,t.date,t.num,t.pid FROM transactions t, products p, salespersons sp WHERE sp.sid = 10 AND sp.pid = t.pid
+
+//Show trans with a given region id;
+SELECT DISTINCE t.id,t.cid,t.date,t.num,t.pid FROM transactions t, products p, salespersons sp, regions r WHERE sp.id = r.manager_id AND sp.pid = t.pid AND r.rid = 1?
+
 
 
 
