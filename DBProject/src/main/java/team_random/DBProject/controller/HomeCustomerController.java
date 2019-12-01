@@ -46,8 +46,8 @@ public class HomeCustomerController {
     public @ResponseBody
     HomeCustomer addNewUser(@RequestParam String name, @RequestParam String password,
                       @RequestParam(required = false) String address,@RequestParam(required = false) String marriage_status,
-    @RequestParam(required = false) int age,@RequestParam(required = false) String gender, @RequestParam(required = false) int income){\
-        if (homeCustomerService.findByName(name) != null) return null
+    @RequestParam(required = false) int age,@RequestParam(required = false) String gender, @RequestParam(required = false) int income){
+        if (homeCustomerService.findByName(name) != null) return null;
         HomeCustomer customer = new HomeCustomer();
         customer.setName(name);
         customer.setPassword(password);
