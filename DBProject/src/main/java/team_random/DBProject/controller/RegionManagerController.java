@@ -3,6 +3,7 @@ package team_random.DBProject.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import team_random.DBProject.model.Region;
 import team_random.DBProject.model.RegionManager;
 import team_random.DBProject.service.ProductService;
 import team_random.DBProject.service.RegionManagerService;
@@ -33,5 +34,12 @@ public class RegionManagerController {
         return "Successfully registered as a region manager";
     }
 
-
+    @PostMapping(path = "/signin")
+    public @ResponseBody
+    RegionManager signin(@RequestParam String name,@RequestParam String password){
+        RegionManager manager = regionManagerService.findByName(name);
+        if (manager == null) return null;
+        if (!manager.getPassword().equals(password)) return null;
+        return manager;
+    }
 }

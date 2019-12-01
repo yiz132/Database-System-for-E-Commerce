@@ -41,6 +41,15 @@ public class SalespersonController {
         return "Successfully registered!";
     }
 
+    @PostMapping(path = "/signin")
+    public @ResponseBody
+    Salesperson signin(@RequestParam String name,@RequestParam String password){
+        Salesperson salesperson = salespersonService.findByName(name);
+        if (salesperson == null) return null;
+        if (!salesperson.getPassword().equals(password)) return null;
+        return salesperson;
+    }
+
     @PostMapping(path ="/addproduct")
     public @ResponseBody
     Product addProduct(@RequestParam String name, @RequestParam int price,
@@ -58,17 +67,11 @@ public class SalespersonController {
         return product;
     }
 
-    //list transactions based on store id
-    @PostMapping(path = "/storemanager/showTransactions")
-    public @ResponseBody
-    List<Transaction> showStoreTrans(@RequestParam int storeId){
-        return transactionService.findByStoreId(storeId);
-    }
 
     //list transactions based on region id
     @PostMapping(path = "/regionmanager/showTransactions")
     public @ResponseBody
     List<Transaction> showRegionTrans(@RequestParam int regionId){
-        return transactionService.findByRegionId(regionId);
+        return null;
     }
 }

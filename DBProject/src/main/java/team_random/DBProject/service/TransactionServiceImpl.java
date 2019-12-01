@@ -20,14 +20,4 @@ public class TransactionServiceImpl implements TransactionService {
     public Transaction findById(int id) {
         return transactionRepository.findById(id);
     }
-
-    @Override
-    public List<Transaction> findByStoreId(int storeId) {
-        return transactionRepository.findByStoreId(storeId);
-    }
-
-    @Override
-    public List<Transaction> findByRegionId(int regionId) {
-        return transactionRepository.findByRegionId(regionId);
-    }
 }
