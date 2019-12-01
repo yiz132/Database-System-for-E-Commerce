@@ -2,42 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Random-StoreManager</title>
-    <link rel="stylesheet" type="text/css" href="StoreManagerIndex.css" />
+    <title>Random-OrderReview</title>
+    <link rel="stylesheet" type="text/css" href="OrderReview.css" />
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
-    <script src="StoreManagerIndex.js"></script>
+    <script src="OrderReview.js"></script>
 </head>
 <body>
 <div class="TopBar" >
     <div id="LogoDiv" class="LogoDiv"></div>
     <!--    <i class="SearchLogo" id="SearchLogo"></i>-->
     <input type="text" class="SearchInput" onKeyDown="SearchPress()" placeholder="Search key words here"></input>
-    <button id="SearchBusinessButton" onclick="SearchBusiness()" style="display: none"></button>
+    <button id="SearchOrderButton" onclick="SearchOrder()" style="display: none"></button>
     <select id="Sort" name="Sort" onchange="SortChange()" class="SortDiv">
         <option value ="SortBy" >SORT BY</option>
-        <option value ="ProfitHighToLow">PROFIT (HIGH TO LOW)</option>
-        <option value ="ProfitLowToHigh">PROFIT (LOW TO HIGH)</option>
-        <option value ="SalesSHighToLow">SALES (HIGH TO LOW)</option>
-        <option value ="SalesLowToHigh">SALES (LOW TO HIGH)</option>
+        <option value ="PriceHighToLow">TOTAL</option>
+        <option value ="PriceLowToHigh">DATE</option>
     </select>
 </div>
 <table class="List" >
     <tr style="height: 10px;">
         <th style="height: 10px; border: 1px  lightpink; border-style: none none solid none;">Photo</th>
         <th style="height: 10px;  border: 1px  lightpink; border-style: none none solid none;">Name</th>
-        <th style="height: 10px;  border: 1px  lightpink; border-style: none none solid none;">Price</th>
-        <th style="height: 10px;  border: 1px  lightpink; border-style: none none solid none;">Sales</th>
-        <th style="height: 10px;  border: 1px  lightpink; border-style: none none solid none;">Profit</th>
-        <th style="height: 10px;  border: 1px  lightpink; border-style: none none solid none;">Stock</th>
+        <th style="height: 10px;  border: 1px  lightpink; border-style: none none solid none;">Total</th>
+        <th style="height: 10px;  border: 1px  lightpink; border-style: none none solid none;">Date</th>
     </tr>
     <tr>
         <td style="width: 90px;background-image: url(../web/image/sample.jpg); background-size: cover"></td>
         <td>Phone</td>
-        <td>100</td>
-        <td>100</td>
-        <td>10000</td>
-        <td>21</td>
+        <td>1000</td>
+        <td>11/21/2019</td>
     </tr>
 </table>
 </body>
