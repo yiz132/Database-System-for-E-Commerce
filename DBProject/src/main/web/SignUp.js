@@ -132,12 +132,10 @@ function NewHomeCustomer(){
         },
         dataType: "json",
         success: function(msg){
-            alert(msg);
-            //alert(request.responseText);
+            window.location.href =  "Scan.html?value=" + name;
         },
         error: function (request, status, error) {
-            //alert(request.responseText);
-            //alert(1);
+            alert("Sign up failed");
 
         }
     });
@@ -168,12 +166,10 @@ function NewBusinessCustomer(){
         },
         dataType: "json",
         success: function(msg){
-            alert(msg);
-            //alert(request.responseText);
+            window.location.href =  "Scan.html?value=" + name;
         },
         error: function (request, status, error) {
-            //alert(request.responseText);
-            //alert(1);
+            alert("Sign up failed");
 
         }
     });
@@ -202,12 +198,10 @@ function NewSalesPerson(){
         },
         dataType: "json",
         success: function(msg){
-            alert(msg);
-            //alert(request.responseText);
+            window.location.href =  "SalesPersonIndex.html?value=" + name;
         },
         error: function (request, status, error) {
-            //alert(request.responseText);
-            //alert(1);
+            alert("Sign up failed");
 
         }
     });
@@ -241,12 +235,10 @@ function NewStoreManager(){
         },
         dataType: "json",
         success: function(msg){
-            alert(msg);
-            //alert(request.responseText);
+            window.location.href =  "StoreManagerIndex.html?value=" + name;
         },
         error: function (request, status, error) {
-            //alert(request.responseText);
-            //alert(1);
+            alert("Sign up failed");
 
         }
     });
@@ -274,12 +266,10 @@ function NewRegionManager(){
         },
         dataType: "json",
         success: function(msg){
-            alert(msg);
-            //alert(request.responseText);
+            window.location.href =  "RegionManagerIndex.html?value=" + name;
         },
         error: function (request, status, error) {
-            //alert(request.responseText);
-            //alert(1);
+            alert("Sign up failed");
 
         }
     });

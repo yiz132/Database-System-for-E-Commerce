@@ -61,15 +61,12 @@ function SignIn(){
         },
         dataType: "json",
         success: function(msg) {
-             var data=eval(msg);
-             var str = JSON.stringify(data);
-             //var obj = JSON.parse(str);
-             alert(str);
-             if (str == 'null'){
-                 alert("Username or password is wrong");
-             }
+             // var data=eval(msg);
+             // var str = JSON.stringify(data);
+             // var obj = JSON.parse(str);
+             //alert(1);
 
-            else if(role == 'HomeCustomer'){
+            if(role == 'HomeCustomer'){
                 window.location.href =  "Scan.html?value=" + name;
 
             }
@@ -93,7 +90,8 @@ function SignIn(){
 
         },
         error: function (request, status, error) {
-           // alert(request.responseText);
+            //alert(request.responseText);
+            alert("Username or password is wrong");
 
         }
     });
