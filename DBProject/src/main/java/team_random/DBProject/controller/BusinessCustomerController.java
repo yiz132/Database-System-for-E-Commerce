@@ -43,4 +43,10 @@ public class BusinessCustomerController {
         return customer;
     }
 
+    @PostMapping(path = "/product/search")
+    public @ResponseBody
+    Product searchProduct(@RequestParam String name){
+        return productService.findByName(name);
+    }
+
 }
