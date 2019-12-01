@@ -2,11 +2,8 @@ package team_random.DBProject.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
 import team_random.DBProject.model.Transaction;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface TransactionRepository extends JpaRepository<Transaction, Integer> {
