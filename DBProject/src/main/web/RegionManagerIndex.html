@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random-RegionManager</title>
+    <link rel="stylesheet" type="text/css" href="RegionManagerIndex.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <script src="RegionManagerIndex.js"></script>
+</head>
+<body>
+<div class="TopBar" >
+    <div id="LogoDiv" class="LogoDiv"></div>
+    <!--    <i class="SearchLogo" id="SearchLogo"></i>-->
+    <input type="text" class="SearchInput" onKeyDown="SearchPress()" placeholder="Search key words here"></input>
+    <button id="SearchBusinessButton" onclick="SearchBusiness()" style="display: none"></button>
+    <select id="Sort" name="Sort" onchange="SortChange()" class="SortDiv">
+        <option value ="SortBy" >SORT BY</option>
+        <option value ="Companies">COMPANIES</option>
+        <option value ="Regions">REGIONS</option>
+    </select>
+</div>
+</body>
+</html>

@@ -15,7 +15,15 @@
     <!--        <div id="UserName-result" >An email address is required</div>-->
     <div class="Input_div"><input type="password" id="FirstPassword-register" name="FirstPassword"  class="Information-input" id="FirstPassword-input" placeholder="Password" maxlength="24"  )></div>
     <!--        <div id="Password-result" ></div>-->
-
+    <div>
+        <form action="" method="get">
+            <label for="Character1" class="radioButton"><input name="Character" id="Character1" type="radio" value="HomeCustomer" checked="checked" hidden/>HomeCustomer </label>
+            <label for="Character2" class="radioButton" ><input name="Character" id="Character2" type="radio" value="BusinessCustomer" hidden/>BusinessCustomer </label>
+            <label for="Character3" class="radioButton" ><input name="Character" id="Character3" type="radio" value="SalesPerson" hidden/>SalesPerson </label>
+            <label for="Character4" class="radioButton" ><input name="Character" id="Character4" type="radio" value="StoreManager" hidden/>StoreManger </label>
+            <label for="Character5" class="radioButton" ><input name="Character" id="Character5" type="radio" value="RegionManager" hidden/>RegionManger </label>
+        </form>
+    </div>
 
 
     <button id="Information-submit" class="Information-submit" onclick="SignIn()" >Sign in</button>

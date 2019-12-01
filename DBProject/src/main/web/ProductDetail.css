@@ -69,8 +69,9 @@ body, html {
     font-size: 20px;
     position: absolute;
     top: 550px;
-    left: 800px;
+    left: 900px;
     border: 1px solid lightpink;
+    border-style: none none solid none ;
     color: dimgrey;
     padding-left: 10px;
 }
@@ -81,6 +82,18 @@ body, html {
     color: black;
     box-shadow: 0px 0px 5px lightpink;
 }
+
+.StockDiv{
+    width: 100px;
+    height: 50px;
+    font-size: 40px;
+    position: absolute;
+    top: 542px;
+    left: 800px;
+    color: #ff6a80;
+    font-family: "Microsoft Sans Serif";
+}
+
 
 .CheckOut{
     width: 220px;
