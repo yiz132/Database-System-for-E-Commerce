@@ -44,9 +44,10 @@ public class HomeCustomerController {
  */
     @PostMapping(path = "/register")
     public @ResponseBody
-    String addNewUser(@RequestParam String name, @RequestParam String password,
+    HomeCustomer addNewUser(@RequestParam String name, @RequestParam String password,
                       @RequestParam(required = false) String address,@RequestParam(required = false) String marriage_status,
-    @RequestParam(required = false) int age,@RequestParam(required = false) String gender, @RequestParam(required = false) int income){
+    @RequestParam(required = false) int age,@RequestParam(required = false) String gender, @RequestParam(required = false) int income){\
+        if (homeCustomerService.findByName(name) != null) return null
         HomeCustomer customer = new HomeCustomer();
         customer.setName(name);
         customer.setPassword(password);
@@ -56,7 +57,7 @@ public class HomeCustomerController {
         customer.setGender(gender);
         customer.setIncome(income);
         homeCustomerService.save(customer);
-        return "Saved";
+        return customer;
     }
 /*
     @PostMapping(path = "/signin")
