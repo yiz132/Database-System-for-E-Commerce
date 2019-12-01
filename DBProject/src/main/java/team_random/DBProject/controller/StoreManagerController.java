@@ -25,9 +25,10 @@ public class StoreManagerController {
 
     @PostMapping(path = "/register")
     public @ResponseBody
-    String register(@RequestParam String name, @RequestParam String password, @RequestParam String email,
+    StoreManager register(@RequestParam String name, @RequestParam String password, @RequestParam String email,
                     @RequestParam int salary, @RequestParam String store_name,
                     @RequestParam String store_address, @RequestParam String store_region){
+        if (storeManagerService.findByName(name) != null) return null;
         StoreManager storeManager = new StoreManager();
         storeManager.setName(name);
         storeManager.setPassword(password);
@@ -37,7 +38,7 @@ public class StoreManagerController {
         storeManager.setStoreAddress(store_address);
         storeManager.setStoreRegion(store_region);
         storeManagerService.save(storeManager);
-        return "Successfully registered as a store manager";
+        return storeManager;
     }
 
     @PostMapping(path = "/signin")

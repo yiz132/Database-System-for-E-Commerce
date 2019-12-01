@@ -6,7 +6,7 @@ import team_random.DBProject.model.HomeCustomer;
 import team_random.DBProject.repository.HomeCustomerRepository;
 
 @Service
-public class HomeCustomerImpl implements HomeCustomerService {
+public class HomeCustomerServiceImpl implements HomeCustomerService {
     @Autowired
     private HomeCustomerRepository homeCustomerRepository;
 
