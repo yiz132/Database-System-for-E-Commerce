@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Home_Customers")
-public class HomeCustomer{
+public class HomeCustomer extends Customer{
     private String name;
     private String password;
     private String address;
@@ -13,9 +13,6 @@ public class HomeCustomer{
     private int age;
     private String gender;
     private int income;
-    public HomeCustomer(){
-        super();
-    }
 
     public void setName(String name){
         this.name = name;
