@@ -38,3 +38,7 @@ function SortChange(){
         }
     });
 }
+
+function AddNewProduct(){
+    window.location.href = "Update.html";
+}

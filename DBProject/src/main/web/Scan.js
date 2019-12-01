@@ -39,3 +39,8 @@ function SortChange(){
         }
     });
 }
+
+function EnterDetail(){
+     var P_id = 1;
+     window.location.href = "ProductDetail.html?value=" + P_id;
+}

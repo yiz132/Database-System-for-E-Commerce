@@ -84,3 +84,19 @@ tr{
 tr:hover{
     box-shadow: 0px 0px 5px lightpink;
 }
+.FloatDiv{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    border: 1px solid lightpink;
+    position:fixed;
+    bottom:0px;
+    right: 0px;
+    text-align: center;
+    color: dimgrey;
+    font-size: 20px;
+    font-family: "Microsoft Sans Serif";
+}
+.FloatDiv:hover{
+    box-shadow: 0px 0px 5px lightpink;
+}
