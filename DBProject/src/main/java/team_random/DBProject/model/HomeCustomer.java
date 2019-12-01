@@ -5,9 +5,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Home_Customers")
 public class HomeCustomer{
-    @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
-    private int id;
     private String name;
     private String password;
     private String address;
@@ -19,8 +16,6 @@ public class HomeCustomer{
     public HomeCustomer(){
         super();
     }
-
-    public int getId(){ return id;}
 
     public void setName(String name){
         this.name = name;

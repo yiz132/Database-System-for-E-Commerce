@@ -5,9 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import team_random.DBProject.model.Region;
 import team_random.DBProject.model.RegionManager;
+import team_random.DBProject.model.Transaction;
 import team_random.DBProject.service.ProductService;
 import team_random.DBProject.service.RegionManagerService;
 import team_random.DBProject.service.TransactionService;
+
+import java.util.List;
 
 @CrossOrigin
 @Controller
@@ -41,5 +44,11 @@ public class RegionManagerController {
         if (manager == null) return null;
         if (!manager.getPassword().equals(password)) return null;
         return manager;
+    }
+    //list transactions based on store id
+    @PostMapping(path = "/showTransactions")
+    public @ResponseBody
+    List<Transaction> showStoreTrans(@RequestParam int regionId){
+        return regionManagerService.findByRegionId(regionId);
     }
 }
