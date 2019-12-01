@@ -70,7 +70,8 @@ public class HomeCustomerController {
 
  */
     @PostMapping(path = "/signin")
-    public @ResponseBody HomeCustomer signin(@RequestParam String name, @RequestParam String password){
+    public @ResponseBody
+    HomeCustomer signin(@RequestParam String name, @RequestParam String password){
         HomeCustomer homeCustomer = homeCustomerService.findByName(name);
         if (homeCustomer == null) return null;
         String password_record = homeCustomer.getPassword();
@@ -97,5 +98,7 @@ public class HomeCustomerController {
         transactionService.save(transaction);
         return "Successfully purchased";
     }
+
+
 
 }
