@@ -11,7 +11,7 @@ import team_random.DBProject.service.ProductService;
 
 @CrossOrigin
 @Controller
-@RequestMapping(path = "/dbproject/Business")
+@RequestMapping(path = "/dbproject/business")
 public class BusinessCustomerController {
 
     @Autowired
@@ -35,12 +35,12 @@ public class BusinessCustomerController {
     }
 
     @PostMapping(path = "/signin")
-    public @ResponseBody String signin(@RequestParam String name,@RequestParam String password){
+    public @ResponseBody BusinessCustomer signin(@RequestParam String name,@RequestParam String password){
         BusinessCustomer customer = businessCustomerService.findByName(name);
-        if (customer == null) return "Invalid name or password";
+        if (customer == null) return null;
         String password_record = customer.getPassword();
-        if (!password.equals(password_record)) return "Invalid name or password";
-        return "signed in";
+        if (!password.equals(password_record)) return null;
+        return customer;
     }
 
 }

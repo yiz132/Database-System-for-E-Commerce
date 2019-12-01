@@ -153,17 +153,16 @@ function NewBusinessCustomer(){
     var company_gross = $('#BusinessCustomer_Gross').val();
     var account = $('#BusinessCustomer_Account').val();
 
-    var Url="http://localhost:8080/dbproject/home/register";
+    var Url="http://localhost:8080/dbproject/business/register";
     $.ajax({
         type: "post",
         url: Url,
         data: {
             name: name,
             password: password,
-            role: role,
             address: address,
-            company_category: company_category,
-            company_gross: company_gross,
+            category: company_category,
+            gross: company_gross,
             account: account
 
         },
@@ -262,16 +261,14 @@ function NewRegionManager(){
     var salary = $('#RegionManager_Salary').val();
     var region_name = $('#RegionManager_RegionName').val();
 
-    var Url="http://localhost:8080/dbproject/home/register";
+    var Url="http://localhost:8080/dbproject/regionmanager/register";
     $.ajax({
         type: "post",
         url: Url,
         data: {
             name: name,
             password: password,
-            role: role,
             email: email,
-            job_title: job_title,
             salary: salary,
             region_name: region_name,
         },

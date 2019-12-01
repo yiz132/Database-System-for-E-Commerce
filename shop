@@ -22,6 +22,17 @@ CREATE TABLE `shop`.`store` (
     ON UPDATE NO ACTION);
 	
 	
+	
+	CREATE TABLE `shop`.`product` (
+  `id` INT  NOT NULL COMMENT '',
+  `description` TEXT   COMMENT '',
+  `name` VARCHAR(45) COMMENT '',
+  `inventory` INT  COMMENT '',
+  `category` VARCHAR(45)  COMMENT '',
+  `price` INT  COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '');
+	
+	
 CREATE TABLE `shop`.`salesperson` (
   `id` INT NOT NULL COMMENT '',
   `store_id` INT NOT NULL COMMENT '',
@@ -43,16 +54,30 @@ CREATE TABLE `shop`.`salesperson` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 	
+	CREATE TABLE `shop`.`store_manager` (
+  `id` INT NOT NULL COMMENT '',
+  `SM_id` INT NOT NULL COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '',
+  CONSTRAINT `workas_store`
+    FOREIGN KEY (`SM_id`)
+    REFERENCES `shop`.`salesperson` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION);
 	
 	
-CREATE TABLE `shop`.`product` (
-  `id` INT  NOT NULL COMMENT '',
-  `description` TEXT   COMMENT '',
-  `name` VARCHAR(45) COMMENT '',
-  `inventory` INT  COMMENT '',
-  `category` VARCHAR(45)  COMMENT '',
-  `price` INT  COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '')
+	CREATE TABLE `shop`.`region_manager` (
+  `id` INT NOT NULL COMMENT '',
+  `RM_id` INT NOT NULL COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '',
+  CONSTRAINT `workas_region`
+    FOREIGN KEY (`RM_id`)
+    REFERENCES `shop`.`salesperson` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION);
+	
+	
+	
+
   
   
   
@@ -61,7 +86,7 @@ CREATE TABLE `shop`.`product` (
   `id` INT NOT NULL COMMENT '',
   `address` VARCHAR(45) NOT NULL COMMENT '',
   `account` INT  NOT NULL COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '')
+  PRIMARY KEY (`id`)  COMMENT '');
   
   
   
@@ -75,7 +100,7 @@ CREATE TABLE `shop`.`product` (
     FOREIGN KEY (`h_id`)
     REFERENCES `shop`.`customer` (`id`)
     ON DELETE CASCADE
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION);
   
   
   CREATE TABLE `shop`.`customer_business` (
@@ -87,7 +112,7 @@ CREATE TABLE `shop`.`product` (
     FOREIGN KEY (`b_id`)
     REFERENCES `shop`.`customer` (`id`)
     ON DELETE CASCADE
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION);
   
   
    CREATE TABLE `shop`.`transact` (

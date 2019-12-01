@@ -19,25 +19,25 @@ function Detail() {
         }
     }
     if(role == 'HomeCustomer'){
-        jumpURL = '';
+        jumpURL = 'http://localhost:8080/dbproject/home/signin';
 
     }
     else if(role == 'BusinessCustomer'){
-        jumpURL = '';
+        jumpURL = 'http://localhost:8080/dbproject/business/signin';
 
 
     }
     else if(role == 'SalesPerson'){
-        jumpURL = '';
+        jumpURL = 'http://localhost:8080/dbproject/salesperson/signin';
 
 
     }
     else if(role == 'StoreManager'){
-        jumpURL = '';
+        jumpURL = 'http://localhost:8080/dbproject/storemanager/signin';
 
     }
     else if(role == 'RegionManager'){
-        jumpURL = '';
+        jumpURL = 'http://localhost:8080/dbproject/regionmanager/signin';
 
     }
     else{ // infinite

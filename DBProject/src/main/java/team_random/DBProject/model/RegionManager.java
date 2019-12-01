@@ -1,13 +1,15 @@
 package team_random.DBProject.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Store_Managers")
-public class StoreManager {
+@Table (name = "Region_Managers")
+public class RegionManager {
     @Id
     @GeneratedValue
     private int id;
@@ -15,9 +17,7 @@ public class StoreManager {
     private String password;
     private String email;
     private int salary;
-    private String storeName;
-    private String storeAddress;
-    private String storeRegion;
+    private String region_name;
 
     public int getId(){
         return id;
@@ -55,27 +55,12 @@ public class StoreManager {
         return salary;
     }
 
-    public void setStoreName(String storeName){
-        this.storeName = storeName;
+    public void setRegion_name(String rName){
+        region_name = rName;
     }
 
-    public String getStoreName(){
-        return this.storeName;
+    public String getRegion_name(){
+        return region_name;
     }
 
-    public void setStoreAddress(String storeAddress){
-        this.storeAddress = storeAddress;
-    }
-
-    public String getStoreAddress(){
-        return this.storeAddress;
-    }
-
-    public void setStoreRegion(String regionName){
-        this.storeRegion = regionName;
-    }
-
-    public String getStoreRegion(){
-        return storeRegion;
-    }
 }

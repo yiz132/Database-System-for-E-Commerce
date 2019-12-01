@@ -9,6 +9,9 @@ import team_random.DBProject.service.ProductService;
 import team_random.DBProject.service.StoreManagerService;
 import team_random.DBProject.service.TransactionService;
 
+import java.sql.SQLException;
+import java.util.List;
+
 @CrossOrigin
 @Controller
 @RequestMapping(path = "/dbproject/storemanager")
@@ -35,5 +38,21 @@ public class StoreManagerController {
         storeManager.setStoreRegion(store_region);
         storeManagerService.save(storeManager);
         return "Successfully registered as a store manager";
+    }
+
+    @PostMapping(path = "/signin")
+    public @ResponseBody
+    StoreManager signin(@RequestParam String name,@RequestParam String password){
+        StoreManager manager = storeManagerService.findByName(name);
+        if (manager == null) return null;
+        if (!manager.getPassword().equals(password)) return null;
+        return manager;
+    }
+
+    //list transactions based on store id
+    @PostMapping(path = "/showTransactions")
+    public @ResponseBody
+    List<Transaction> showStoreTrans(@RequestParam int storeId){
+        return storeManagerService.findByStoreId(storeId);
     }
 }

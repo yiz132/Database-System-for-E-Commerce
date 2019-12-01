@@ -48,3 +48,9 @@ from  `transact`T, `customer_business`B,`product`P
 where T.customer_id=B.b_id AND T.product_id=P.id AND P.name='1'
 GROUP BY B.b_id)
 
+//Show transactions with a given store id:
+
+SELECT DISTINCT * FROM transactions t, products p, salespersons sp WHERE sp.id = 10 AND sp.pid = t.pid
+
+
+

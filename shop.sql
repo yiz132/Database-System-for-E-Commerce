@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2019 at 03:17 AM
+-- Generation Time: Dec 01, 2019 at 10:31 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -91,6 +91,19 @@ CREATE TABLE IF NOT EXISTS `region` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `region_manager`
+--
+
+CREATE TABLE IF NOT EXISTS `region_manager` (
+  `id` int(11) NOT NULL,
+  `RM_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `workas_region` (`RM_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `salesperson`
 --
 
@@ -121,6 +134,19 @@ CREATE TABLE IF NOT EXISTS `store` (
   `region_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `locate_in_idx` (`region_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `store_manager`
+--
+
+CREATE TABLE IF NOT EXISTS `store_manager` (
+  `id` int(11) NOT NULL,
+  `SM_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `workas_store` (`SM_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -157,6 +183,12 @@ ALTER TABLE `customer_home`
   ADD CONSTRAINT `customer_belonghome` FOREIGN KEY (`h_id`) REFERENCES `customer` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
+-- Constraints for table `region_manager`
+--
+ALTER TABLE `region_manager`
+  ADD CONSTRAINT `workas_region` FOREIGN KEY (`RM_id`) REFERENCES `salesperson` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
 -- Constraints for table `salesperson`
 --
 ALTER TABLE `salesperson`
@@ -168,6 +200,12 @@ ALTER TABLE `salesperson`
 --
 ALTER TABLE `store`
   ADD CONSTRAINT `locate_in` FOREIGN KEY (`region_id`) REFERENCES `region` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `store_manager`
+--
+ALTER TABLE `store_manager`
+  ADD CONSTRAINT `workas_store` FOREIGN KEY (`SM_id`) REFERENCES `salesperson` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `transact`
