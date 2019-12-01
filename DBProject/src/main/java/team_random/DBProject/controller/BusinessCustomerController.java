@@ -22,8 +22,9 @@ public class BusinessCustomerController {
 
     @PostMapping(path = "/register")
     public @ResponseBody
-    String addNewUser(@RequestParam String name, @RequestParam String password,
+    BusinessCustomer addNewUser(@RequestParam String name, @RequestParam String password,
                       @RequestParam String address, @RequestParam int gross, @RequestParam String category){
+        if (businessCustomerService.findByName(name) != null) return null;
         BusinessCustomer customer = new BusinessCustomer();
         customer.setName(name);
         customer.setPassword(password);
@@ -31,7 +32,7 @@ public class BusinessCustomerController {
         customer.setGross(gross);
         customer.setCategory(category);
         businessCustomerService.save(customer);
-        return "Saved";
+        return customer;
     }
 
     @PostMapping(path = "/signin")

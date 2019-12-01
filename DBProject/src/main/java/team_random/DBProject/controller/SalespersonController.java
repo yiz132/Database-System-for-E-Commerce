@@ -29,8 +29,9 @@ public class SalespersonController {
 
     @PostMapping(path = "/register")
     public @ResponseBody
-    String register(@RequestParam String name, @RequestParam String password, @RequestParam(required = false) String email,
+    Salesperson register(@RequestParam String name, @RequestParam String password, @RequestParam(required = false) String email,
                     @RequestParam String title, @RequestParam int salary){
+        if (productService.findByName(name) != null) return null;
         Salesperson person = new Salesperson();
         person.setName(name);
         person.setPassword(password);
@@ -38,7 +39,7 @@ public class SalespersonController {
         person.setTitle(title);
         person.setSalary(salary);
         salespersonService.save(person);
-        return "Successfully registered!";
+        return person;
     }
 
     @PostMapping(path = "/signin")

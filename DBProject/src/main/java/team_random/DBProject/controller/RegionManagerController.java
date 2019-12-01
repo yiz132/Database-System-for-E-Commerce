@@ -25,8 +25,9 @@ public class RegionManagerController {
 
     @PostMapping(path = "/register")
     public @ResponseBody
-    String register(@RequestParam String name, @RequestParam String password, @RequestParam String email,
+    RegionManager register(@RequestParam String name, @RequestParam String password, @RequestParam String email,
                     @RequestParam int salary, @RequestParam String region_name){
+        if (regionManagerService.findByName(name) != null) return null;
         RegionManager mana = new RegionManager();
         mana.setName(name);
         mana.setPassword(password);
@@ -34,7 +35,7 @@ public class RegionManagerController {
         mana.setSalary(salary);
         mana.setRegion_name(region_name);
         regionManagerService.save(mana);
-        return "Successfully registered as a region manager";
+        return mana;
     }
 
     @PostMapping(path = "/signin")
