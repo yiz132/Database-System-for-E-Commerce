@@ -178,7 +178,7 @@ function NewSalesPerson(){
     var name = $('#UserName-register').val();
     var password = $('#SecondPassword-register').val();
     var role = "SalesPerson";
-    var email = $('#Salesperson_Email').val();
+    var email = $('#SalesPerson_Email').val();
     console.log(email);
     var job_title = $('#SalesPerson_JobTitle').val();
     var salary = $('#SalesPerson_Salary').val();
