@@ -1,6 +1,8 @@
-var name = GetRequest();
-var stringA = JSON.stringify(name);
-alert(stringA);
+var id = GetRequest();
+var stringA = JSON.stringify(id);
+var obj = JSON.parse(stringA);
+ProductOnload();
+
 
 function GetRequest() {
     var url = location.search; //获取url中"?"符后的字串
@@ -15,8 +17,86 @@ function GetRequest() {
     return theRequest;
 }
 
+
+function  ProductOnload() {
+    var Url="";
+    $.ajax({
+        type: "post",
+        url: Url,
+        data: {
+            id: obj.value,
+        },
+        dataType: "json",
+        success: function(msg) {
+            var data=eval(msg);
+            var str = JSON.stringify(data);
+            var product = JSON.parse(str);
+            var picture = product.picture;
+            var name = product.name;
+            var price = product.price;
+            var sales = product.sales;
+            var profit = parseInt(price) * parseInt(sales);
+            var inventory = product.inventory;
+            document.getElementById('ListTable').innerText =document.getElementById('ListTable').innerText + "\n" +
+                "    <tr>\n" +
+                "        <td style=\"width: 90px;background-image: url("+picture+"); background-size: cover\"></td>\n" +
+                "        <td>"+name+"</td>\n" +
+                "        <td>"+price+"</td>\n" +
+                "        <td>"+sales+"</td>\n" +
+                "        <td>"+profit+"</td>\n" +
+                "        <td>"+inventory+"</td>\n" +
+                "    </tr>";
+
+        },
+        error: function (request, status, error) {
+            //alert(request.responseText);
+
+        }
+    });
+}
+
+
 function SearchBusiness() {
 
+    var keyWord = document.getElementById('SearchInput').value;
+    if (keyWord  == ''){
+        ProductOnload();
+    }
+    var Url="";
+    $.ajax({
+        type: "post",
+        url: Url,
+        data: {
+            keyword: keyWord,
+            id: obj.value,
+        },
+        dataType: "json",
+        success: function(msg) {
+            var data=eval(msg);
+            var str = JSON.stringify(data);
+            var product = JSON.parse(str);
+            var picture = product.picture;
+            var name = product.name;
+            var price = product.price;
+            var sales = product.sales;
+            var profit = parseInt(price) * parseInt(sales);
+            var inventory = product.inventory;
+            document.getElementById('ListTable').innerText =document.getElementById('ListTable').innerText + "\n" +
+                "    <tr>\n" +
+                "        <td style=\"width: 90px;background-image: url("+picture+"); background-size: cover\"></td>\n" +
+                "        <td>"+name+"</td>\n" +
+                "        <td>"+price+"</td>\n" +
+                "        <td>"+sales+"</td>\n" +
+                "        <td>"+profit+"</td>\n" +
+                "        <td>"+inventory+"</td>\n" +
+                "    </tr>";
+
+        },
+        error: function (request, status, error) {
+            //alert(request.responseText);
+
+        }
+    });
 }
 
 function SearchPress() {
@@ -36,17 +116,30 @@ function SortChange(){
         type: "post",
         url: Url,
         data: {
+            id: obj.value,
             sort: sort,
 
         },
         dataType: "json",
         success: function(msg) {
-            // var data=eval(msg);
-            // //alert(data);
-            // var str = JSON.stringify(data);
-            // //alert(str);
-            // var obj = JSON.parse(str);
-            // alert(obj.name);
+            var data=eval(msg);
+            var str = JSON.stringify(data);
+            var product = JSON.parse(str);
+            var picture = product.picture;
+            var name = product.name;
+            var price = product.price;
+            var sales = product.sales;
+            var profit = parseInt(price) * parseInt(sales);
+            var inventory = product.inventory;
+            document.getElementById('ListTable').innerText =document.getElementById('ListTable').innerText + "\n" +
+                "    <tr>\n" +
+                "        <td style=\"width: 90px;background-image: url("+picture+"); background-size: cover\"></td>\n" +
+                "        <td>"+name+"</td>\n" +
+                "        <td>"+price+"</td>\n" +
+                "        <td>"+sales+"</td>\n" +
+                "        <td>"+profit+"</td>\n" +
+                "        <td>"+inventory+"</td>\n" +
+                "    </tr>";
 
         },
         error: function (request, status, error) {
@@ -62,8 +155,7 @@ $(document).ready(function(){
 });
 
 function EnterProductSalesDetail(){
-    var P_id = 1;
-    window.location.href = "ProductSalesDetail.html?value=" + P_id;
+    window.location.href = "ProductSalesDetail.html?value=" + obj.id + "&pid" + obj.pid;
 }
 
 

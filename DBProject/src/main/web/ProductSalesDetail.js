@@ -1,5 +1,43 @@
 function SearchBusiness() {
 
+    var keyWord = document.getElementById('SearchInput').value;
+    if (keyWord  == ''){
+        OnloadProductInformation();
+    }
+    var Url="";
+    $.ajax({
+        type: "post",
+        url: Url,
+        data: {
+            keyword: keyWord,
+            id: obj.value,
+            pid: obj.pid
+        },
+        dataType: "json",
+        success: function(msg) {
+            var data=eval(msg);
+            var str = JSON.stringify(data);
+            var information = JSON.parse(str);
+            var product = information.product;
+            var customer = information.customer;
+            var transaction = information.Transaction;
+            var price =information.price;
+            var sales =information.sales;
+            var total = parseInt(price) * parseInt(sales);
+
+            document.getElementById('ListTable').innerText =document.getElementById('ListTable').innerText + "<tr>\n" +
+                "        <td>"+product+"</td>\n" +
+                "        <td>"+customer+"</td>\n" +
+                "        <td>"+transaction+"</td>\n" +
+                "        <td>"+total+"</td>\n" +
+                "    </tr>";
+
+        },
+        error: function (request, status, error) {
+            //alert(request.responseText);
+
+        }
+    });
 }
 
 function SearchPress() {
@@ -11,11 +49,41 @@ function SearchPress() {
 
 }
 
-var date = GetRequest();
-var stringDate = JSON.stringify(date);
-var obj = JSON.parse(stringDate);
-// alert(obj.value);
-// alert(obj.pid);
+var id = GetRequest();
+var stringA = JSON.stringify(id);
+var obj = JSON.parse(stringA);
+OnloadProductInformation();
+
+function OnloadProductInformation(){
+    $.ajax({
+        type: "post",
+        url: "",
+        data:{
+            id: obj.value,
+            pid: obj.pid},
+        dataType: "json",
+        success: function(msg) {
+            var data=eval(msg);
+            var str = JSON.stringify(data);
+            var information = JSON.parse(str);
+            var product = information.product;
+            var customer = information.customer;
+            var transaction = information.Transaction;
+            var price =information.price;
+            var sales =information.sales;
+            var total = parseInt(price) * parseInt(sales);
+
+            document.getElementById('ListTable').innerText =document.getElementById('ListTable').innerText + "<tr>\n" +
+                "        <td>"+product+"</td>\n" +
+                "        <td>"+customer+"</td>\n" +
+                "        <td>"+transaction+"</td>\n" +
+                "        <td>"+total+"</td>\n" +
+                "    </tr>";
+        },
+        error: function (request, status, error) {
+        }
+    });
+}
 
 function GetRequest() {
     var url = location.search; //获取url中"?"符后的字串
@@ -36,25 +104,35 @@ function GetRequest() {
 function SortChange(){
     //alert(document.getElementById('Sort').value);
     var sort = document.getElementById('Sort').value;
-    // if(sort == 'Stores'){
-    //     window.location.href =  "RegionManagerIndex.html?value=" + name;
-    // }
+
     var Url="";
     $.ajax({
         type: "post",
         url: Url,
         data: {
+            id : obj.value,
+            pid: obj.pid,
             sort: sort,
 
         },
         dataType: "json",
         success: function(msg) {
-            // var data=eval(msg);
-            // //alert(data);
-            // var str = JSON.stringify(data);
-            // //alert(str);
-            // var obj = JSON.parse(str);
-            // alert(obj.name);
+            var data=eval(msg);
+            var str = JSON.stringify(data);
+            var information = JSON.parse(str);
+            var product = information.product;
+            var customer = information.customer;
+            var transaction = information.Transaction;
+            var price =information.price;
+            var sales =information.sales;
+            var total = parseInt(price) * parseInt(sales);
+
+            document.getElementById('ListTable').innerText =document.getElementById('ListTable').innerText + "<tr>\n" +
+                "        <td>"+product+"</td>\n" +
+                "        <td>"+customer+"</td>\n" +
+                "        <td>"+transaction+"</td>\n" +
+                "        <td>"+total+"</td>\n" +
+                "    </tr>";
 
         },
         error: function (request, status, error) {

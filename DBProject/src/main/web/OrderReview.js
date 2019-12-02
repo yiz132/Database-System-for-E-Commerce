@@ -21,7 +21,7 @@ function OrderOnload() {
         type: "post",
         url: Url,
         data: {
-            name: obj.value,
+            id: obj.value,
         },
         dataType: "json",
         success: function(msg) {
@@ -32,7 +32,7 @@ function OrderOnload() {
             var name = order.name;
             var total = parseInt(order.price)  *parseInt(order.number) ;
             var date = order.date;
-            document.getElementById('List').style.innerText =document.getElementById('List').style.innerText + "\n" +
+            document.getElementById('List').innerText =document.getElementById('List').innerText + "\n" +
                 "    <tr>\n" +
                 "        <td style=\"width: 90px;background-image: url("+picture+"); background-size: cover\"></td>\n" +
                 "        <td>"+name<+"/td>\n" +
@@ -70,7 +70,7 @@ function SearchOrder() {
                 var name = order.name;
                 var total = parseInt(order.price)  *parseInt(order.number) ;
                 var date = order.date;
-                document.getElementById('List').style.innerText =document.getElementById('List').style.innerText + "\n" +
+                document.getElementById('List').innerText =document.getElementById('List').innerText + "\n" +
                     "    <tr>\n" +
                     "        <td style=\"width: 90px;background-image: url("+picture+"); background-size: cover\"></td>\n" +
                     "        <td>"+name<+"/td>\n" +
@@ -116,7 +116,7 @@ function SortChange(){
             var name = order.name;
             var total = parseInt(order.price)  *parseInt(order.number) ;
             var date = order.date;
-            document.getElementById('List').style.innerText =document.getElementById('List').style.innerText + "\n" +
+            document.getElementById('List').innerText =document.getElementById('List').innerText + "\n" +
                 "    <tr>\n" +
                 "        <td style=\"width: 90px;background-image: url("+picture+"); background-size: cover\"></td>\n" +
                 "        <td>"+name<+"/td>\n" +
