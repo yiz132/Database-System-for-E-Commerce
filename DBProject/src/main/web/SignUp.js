@@ -183,7 +183,7 @@ function NewSalesPerson(){
     var job_title = $('#SalesPerson_JobTitle').val();
     var salary = $('#SalesPerson_Salary').val();
 
-    var Url="http://localhost:8080/dbproject/home/register";
+    var Url="http://localhost:8080/dbproject/salesperson/register";
     $.ajax({
         type: "post",
         url: Url,
@@ -192,7 +192,7 @@ function NewSalesPerson(){
             password: password,
             role: role,
             email: email,
-            job_title: job_title,
+            title: job_title,
             salary: salary
 
         },
@@ -217,7 +217,7 @@ function NewStoreManager(){
     var store_name = $('#StoreManager_StoreName').val();
     var store_address = $('#StoreManager_StoreAddress').val();
     var store_region = $('#StoreManager_StoreRegion').val();
-    alert(email);
+    //alert(email);
     var Url="http://localhost:8080/dbproject/storemanager/register";
     $.ajax({
         type: "post",
