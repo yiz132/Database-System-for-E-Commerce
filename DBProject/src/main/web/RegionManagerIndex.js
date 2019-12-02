@@ -1,5 +1,38 @@
 function SearchBusiness() {
+    var keyWord = document.getElementById('SearchInput').value;
+    if (keyWord  == ''){
+        onloadManager();
+    }
+    var Url="";
+    $.ajax({
+        type: "post",
+        url: Url,
+        data: {
+            keyword: keyWord,
+            id: obj.value
 
+        },
+        dataType: "json",
+        success: function(msg) {
+            var data=eval(msg);
+            var str = JSON.stringify(data);
+            var manager = JSON.parse(str);
+            var regions = manager.regions;
+            var sales = manager.sales;
+            var profit = manager.profit;
+            document.getElementById('ListTable').innerText =document.getElementById('ListTable').innerText + "\n" +
+                "    <tr>\n" +
+                "        <td>"+regions+"</td>\n" +
+                "        <td>"+sales+"</td>\n" +
+                "        <td>"+profit+"</td>\n" +
+                "    </tr>";
+
+        },
+        error: function (request, status, error) {
+            //alert(request.responseText);
+
+        }
+    });
 }
 
 function SearchPress() {
@@ -11,9 +44,10 @@ function SearchPress() {
 
 }
 
-var name = GetRequest();
-var stringA = JSON.stringify(name);
-alert(stringA);
+var id = GetRequest();
+var stringA = JSON.stringify(id);
+var obj = JSON.parse(stringA);
+onloadManager();
 
 function GetRequest() {
     var url = location.search; //获取url中"?"符后的字串
@@ -28,6 +62,36 @@ function GetRequest() {
     return theRequest;
 }
 
+function onloadManager() {
+    var Url="";
+    $.ajax({
+        type: "post",
+        url: Url,
+        data: {
+            id: obj.value,
+        },
+        dataType: "json",
+        success: function(msg) {
+            var data=eval(msg);
+            var str = JSON.stringify(data);
+            var manager = JSON.parse(str);
+            var regions = manager.regions;
+            var sales = manager.sales;
+            var profit = manager.profit;
+            document.getElementById('ListTable').innerText =document.getElementById('ListTable').innerText + "\n" +
+                "    <tr>\n" +
+                "        <td>"+regions+"</td>\n" +
+                "        <td>"+sales+"</td>\n" +
+                "        <td>"+profit+"</td>\n" +
+                "    </tr>";
+
+        },
+        error: function (request, status, error) {
+            //alert(request.responseText);
+
+        }
+    });
+}
 
 
 //AUTO HIGH TO LOW
@@ -35,7 +99,7 @@ function SortChange(){
     //alert(document.getElementById('Sort').value);
     var sort = document.getElementById('Sort').value;
     if(sort == 'Stores'){
-        window.location.href =  "SortByStore.html?value=" + name;
+        window.location.href =  "SortByStore.html?value=" + obj.value;
     }
     var Url="";
     $.ajax({
@@ -43,16 +107,23 @@ function SortChange(){
         url: Url,
         data: {
             sort: sort,
+            id: obj.value
 
         },
         dataType: "json",
         success: function(msg) {
-            // var data=eval(msg);
-            // //alert(data);
-            // var str = JSON.stringify(data);
-            // //alert(str);
-            // var obj = JSON.parse(str);
-            // alert(obj.name);
+            var data=eval(msg);
+            var str = JSON.stringify(data);
+            var manager = JSON.parse(str);
+            var regions = manager.regions;
+            var sales = manager.sales;
+            var profit = manager.profit;
+            document.getElementById('ListTable').innerText =document.getElementById('ListTable').innerText + "\n" +
+                "    <tr>\n" +
+                "        <td>"+regions+"</td>\n" +
+                "        <td>"+sales+"</td>\n" +
+                "        <td>"+profit+"</td>\n" +
+                "    </tr>";
 
         },
         error: function (request, status, error) {
