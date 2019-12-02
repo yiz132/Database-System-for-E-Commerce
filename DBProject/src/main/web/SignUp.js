@@ -61,7 +61,7 @@ function Detail() {
 
         var Url="http://localhost:8080/dbproject/aggregation/showallstores";
         $.ajax({
-            type: "post",
+            type: "get",
             url: Url,
             dataType: "json",
             success: function(msg) {

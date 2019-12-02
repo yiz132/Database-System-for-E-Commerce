@@ -25,4 +25,9 @@ public class StoreServiceImpl implements StoreService {
     public List<String> findAllNames() {
         return storeRepository.findAllNames();
     }
+
+    @Override
+    public Store findByName(String name) {
+        return storeRepository.findByName(name);
+    }
 }

@@ -18,10 +18,7 @@ public class AggregationController {
     private TransactionService transactionService;
     @Autowired
     private ProductService productService;
-    @Autowired
-    private HomeCustomerService homeCustomerService;
-    @Autowired
-    private BusinessCustomerService businessCustomerService;
+
     @Autowired
     private StoreService storeService;
 
