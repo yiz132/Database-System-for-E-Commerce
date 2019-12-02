@@ -48,7 +48,7 @@ function ProductDetail(){
         type: "post",
         url: jumpURL,
         data: {
-            name: obj.value,
+            id: obj.value,
             pid: obj.pid,
 
         },
@@ -61,12 +61,12 @@ function ProductDetail(){
             var name = product.name;
             var price = product.price;
             var description = product.description;
-            var stock = product.stock;
-            document.getElementById('ProductPhoto').style.backgroundImage = 'url("+ picture +")';
+            var inventory = product.inventory;
+            document.getElementById('ProductPhoto').style.backgroundImage = 'url('+ picture +')';
             document.getElementById('ProductName').innerText = name;
             document.getElementById('ProductPrice').innerText = price;
             document.getElementById('ProductDescription').innerText = description;
-            document.getElementById('StockNumber').innerText = stock;
+            document.getElementById('StockNumber').innerText = inventory;
 
         },
         error: function (request, status, error) {

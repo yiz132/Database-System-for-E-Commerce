@@ -1,5 +1,42 @@
-//new product  update product
+var id = GetRequest();
+var stringA = JSON.stringify(id);
+var obj = JSON.parse(stringA);
+if(obj.pid == 0){
+}
+else{
+    OnloadProductInformation();
+}
 
+function OnloadProductInformation(){
+    $.ajax({
+        type: "post",
+        url: "",
+        data:{ pid: obj.pid},
+        dataType: "json",
+        success: function(msg) {
+            var data=eval(msg);
+            var str = JSON.stringify(data);
+            var obj = JSON.parse(str);
+            var picture = obj.picture;
+            var name = obj.name;
+            var price = obj.price;
+            var inventory = obj.inventory;
+            var category = obj.category;
+            var description = obj.description;
+            pid = obj.id;
+            document.getElementById('Update_name').value = name;
+            document.getElementById('Update_price').value = price;
+            document.getElementById('Update_inventory').value = inventory;
+            document.getElementById('Update_category').value = category;
+            document.getElementById('Update_description').value = description;
+            document.getElementById('Upload_ProductPhoto').style.backgroundImage = 'url('+ picture +')';
+        },
+        error: function (request, status, error) {
+        }
+    });
+}
+
+//ProductOnload();
 
 function UploadProduct(){
     var name = $('#Update_name').val();
@@ -26,8 +63,7 @@ function UploadProduct(){
         },
         dataType: "json",
         success: function(msg){
-            alert(msg);
-            //alert(request.responseText);
+            window.location.href =  "SalesPersonIndex.html?value=" + obj.value;
         },
         error: function (request, status, error) {
             //alert(request.responseText);
