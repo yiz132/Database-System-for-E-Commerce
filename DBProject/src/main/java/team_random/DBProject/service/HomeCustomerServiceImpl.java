@@ -20,4 +20,9 @@ public class HomeCustomerServiceImpl implements HomeCustomerService {
     public HomeCustomer findByName(String name) {
         return homeCustomerRepository.findByName(name);
     }
+
+    @Override
+    public HomeCustomer findById(int id) {
+        return homeCustomerRepository.findById(id);
+    }
 }
