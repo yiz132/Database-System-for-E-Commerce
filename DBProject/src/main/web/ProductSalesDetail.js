@@ -1,6 +1,19 @@
-var name = GetRequest();
-var stringA = JSON.stringify(name);
-alert(stringA);
+function SearchBusiness() {
+
+}
+
+function SearchPress() {
+
+    if(event.keyCode==13)
+    {
+        SearchBusiness();
+    }
+
+}
+
+// var name = GetRequest();
+// var stringA = JSON.stringify(name);
+// alert(stringA);
 
 function GetRequest() {
     var url = location.search; //获取url中"?"符后的字串
@@ -15,22 +28,14 @@ function GetRequest() {
     return theRequest;
 }
 
-function SearchBusiness() {
 
-}
-
-function SearchPress() {
-
-    if(event.keyCode==13)
-    {
-        SearchBusiness();
-    }
-
-}
 
 function SortChange(){
     //alert(document.getElementById('Sort').value);
     var sort = document.getElementById('Sort').value;
+    // if(sort == 'Stores'){
+    //     window.location.href =  "RegionManagerIndex.html?value=" + name;
+    // }
     var Url="";
     $.ajax({
         type: "post",
@@ -54,14 +59,4 @@ function SortChange(){
 
         }
     });
-}
-$(document).ready(function(){
-    $('#ListTable').on('click','tr', function() {
-        EnterProductSalesDetail();
-    });
-});
-
-function EnterProductSalesDetail(){
-    var P_id = 1;
-    window.location.href = "ProductSalesDetail.html?value=" + P_id;
 }

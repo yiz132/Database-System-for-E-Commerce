@@ -70,11 +70,11 @@ body, html {
 
 td {
     width: 90px;
-    height: 200px;
+    height: 10px;
 }
 
 tr{
-    height: 200px;
+    height: 10px;
     text-align: center;
     border: 1px  lightpink;
     border-style: none none solid none;
