@@ -5,6 +5,11 @@ import org.springframework.stereotype.Service;
 import team_random.DBProject.model.Product;
 import team_random.DBProject.repository.ProductRepository;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 @Service
 public class ProductServiceImpl implements ProductService {
     @Autowired
@@ -22,5 +27,36 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product findById(int id) {
         return productRepository.findById(id);
+    }
+
+    @Override
+    public void deleteByName(String name) {
+        productRepository.deleteByName(name);
+    }
+
+    @Override
+    public void deleteById(int id) {
+        productRepository.deleteById(id);
+    }
+
+    @Override
+    public Map<String, List<Product>> groupByCategory() {
+        List<String> categories = productRepository.findAllCategories();
+        Map<String,List<Product>> map = new HashMap<>();
+        for (String category : categories){
+            List<Product> products = productRepository.findByCategory(category);
+            map.put(category,products);
+        }
+        return map;
+    }
+
+    @Override
+    public List<Product> sortBySale() {
+        return null;
+    }
+
+    public static void main(String[] args){
+        ProductServiceImpl productService = new ProductServiceImpl();
+        Map<String,List<Product>> map = productService.groupByCategory();
     }
 }

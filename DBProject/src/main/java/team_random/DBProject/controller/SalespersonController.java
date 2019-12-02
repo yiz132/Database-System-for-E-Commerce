@@ -56,7 +56,7 @@ public class SalespersonController {
     Product addProduct(@RequestParam String name, @RequestParam int price,
                       @RequestParam String category, @RequestParam int inventory,
                       @RequestParam(required = false) String description,
-                      @RequestParam(required = false) String picture) throws IOException {
+                      @RequestParam(required = false) String picture){
         Product product = new Product();
         product.setName(name);
         product.setPrice(price);
@@ -65,6 +65,26 @@ public class SalespersonController {
         product.setDescription(description);
         product.setPicture(picture);
         productService.save(product);
+        return product;
+    }
+
+    @PostMapping(path ="/updateProduct")
+    public @ResponseBody
+    Product updateProduct(@RequestParam (required = false) String name, @RequestParam (required = false) Integer price,
+                          @RequestParam (required = false) String category, @RequestParam (required = false) Integer inventory,
+                          @RequestParam (required = false) String description){
+        Product product = productService.findByName(name);
+        if (name != null) product.setName(name);
+        if (price != null) product.setPrice(price);
+        if (category != null) product.setCategory(category);
+        if (inventory != null) {
+            if (inventory <= 0) {
+                productService.deleteByName(name);
+                return null;
+            }
+            product.setInventory(inventory);
+        }
+        if (description != null) product.setDescription(description);
         return product;
     }
 
