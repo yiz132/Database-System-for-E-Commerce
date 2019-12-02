@@ -13,5 +13,6 @@ public interface ProductService {
     void deleteById(int id);
     Map<String, List<Product>> groupByCategory();
     Map<String,Integer> groupByName();
+    List<Product> showAllProducts();
 
 }

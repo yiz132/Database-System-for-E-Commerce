@@ -15,4 +15,6 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
     @Query(value = "SELECT DISTINCT category FROM products ",nativeQuery = true)
     List<String> findAllCategories();
     void deleteByName(String name);
+    @Query(value = "SELECT * FROM products ", nativeQuery = true)
+    List<Product> findAllProducts();
 }

@@ -58,6 +58,11 @@ public class ProductServiceImpl implements ProductService {
         return transactionRepository.groupTransByName();
     }
 
+    @Override
+    public List<Product> showAllProducts() {
+        return productRepository.findAllProducts();
+    }
+
     public static void main(String[] args){
         ProductServiceImpl productService = new ProductServiceImpl();
         Map<String,List<Product>> map = productService.groupByCategory();

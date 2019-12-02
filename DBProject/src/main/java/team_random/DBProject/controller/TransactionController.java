@@ -54,6 +54,12 @@ public class TransactionController {
         return "Successfully purchased";
     }
 
+    @PostMapping(path = "/showAllProducts")
+    public @ResponseBody
+    List<Product> showAllProducts(){
+        return productService.showAllProducts();
+    }
+
     //Group products by transactions by different category
     @GetMapping(path = "/groupbycategory")
     public @ResponseBody
