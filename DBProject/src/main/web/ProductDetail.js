@@ -26,7 +26,7 @@ function CheckOut(){
 }
 var name = GetRequest();
 var stringA = JSON.stringify(name);
-alert(stringA);
+//alert(stringA);
 
 function GetRequest() {
     var url = location.search; //获取url中"?"符后的字串
@@ -40,3 +40,17 @@ function GetRequest() {
     }
     return theRequest;
 }
+
+$(document).ready(function(){
+    $('#Transact_Number').bind('input propertychange', function() {
+        var Transact_Number = $(this).val();
+        //alert($('#StockNumber').text());
+        if (Transact_Number > parseInt($('#StockNumber').text())) {
+            $("#Transact_Number").css("color","red");
+            $("#CheckOut").attr("disabled", true);
+        } else {
+            $("#Transact_Number").css("color","black");
+            $("#CheckOut").attr("disabled", false);
+        }
+    })
+})

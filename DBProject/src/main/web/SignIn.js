@@ -96,3 +96,25 @@ function SignIn(){
         }
     });
 }
+
+$(document).ready(function(){
+    $('#UserName-register').bind('input propertychange', function() {
+        var UserNameregister = $(this).val();
+        if (UserNameregister == '') {
+            $('#UserName-result').text("*");
+        } else {
+            $('#UserName-result').text("");
+        }
+    })
+})
+
+$(document).ready(function(){
+    $('#FirstPassword-register').bind('input propertychange', function() {
+        var FirstPassword = $(this).val();
+        if (FirstPassword == '') {
+            $('#FirstPassword-result').text("*");
+        } else {
+            $('#FirstPassword-result').text("");
+        }
+    })
+})

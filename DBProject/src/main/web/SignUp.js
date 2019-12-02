@@ -179,7 +179,6 @@ function NewSalesPerson(){
     var password = $('#SecondPassword-register').val();
     var role = "SalesPerson";
     var email = $('#SalesPerson_Email').val();
-    console.log(email);
     var job_title = $('#SalesPerson_JobTitle').val();
     var salary = $('#SalesPerson_Salary').val();
 
@@ -302,7 +301,10 @@ $(function(){
 $(document).ready(function(){
     $('#UserName-register').bind('input propertychange', function() {
         var UserNameText = $(this).val();
-        if (UserNameText.length >= 0 && UserNameText.length <= 5) {
+        if (UserNameText == ''){
+            $('#UserName-result').text("*");
+        }
+        else if (UserNameText.length > 0 && UserNameText.length <= 5) {
             $('#UserName-result').text("Username is too short");
         } else {
             var Url = "";
@@ -409,6 +411,149 @@ $(document).ready(function(){
             $('#HomeCustomer_Account-result').text("*");
         } else {
             $('#HomeCustomer_Account-result').text("");
+        }
+    })
+})
+
+$(document).ready(function(){
+    $('#BusinessCustomer_Address').bind('input propertychange', function() {
+        var BusinessCustomer_Address = $(this).val();
+        if (BusinessCustomer_Address == '') {
+            $('#BusinessCustomer_Address-result').text("*");
+        } else {
+            $('#BusinessCustomer_Address-result').text("");
+        }
+    })
+})
+
+$(document).ready(function(){
+    $('#BusinessCustomer_Gross').bind('input propertychange', function() {
+        var BusinessCustomer_Gross = $(this).val();
+        if (BusinessCustomer_Gross == '') {
+            $('#BusinessCustomer_Gross-result').text("*");
+        } else {
+            $('#BusinessCustomer_Gross-result').text("");
+        }
+    })
+})
+
+$(document).ready(function(){
+    $('#BusinessCustomer_Account').bind('input propertychange', function() {
+        var BusinessCustomer_Account = $(this).val();
+        if (BusinessCustomer_Account == '') {
+            $('#BusinessCustomer_Account-result').text("*");
+        } else {
+            $('#BusinessCustomer_Account-result').text("");
+        }
+    })
+})
+
+$(document).ready(function(){
+    $('#SalesPerson_Email').bind('input propertychange', function() {
+        var SalesPerson_Email = $(this).val();
+        if (SalesPerson_Email == '') {
+            $('#SalesPerson_Email-result').text("*");
+        } else {
+            $('#SalesPerson_Email-result').text("");
+        }
+    })
+})
+
+$(document).ready(function(){
+    $('#SalesPerson_JobTitle').bind('input propertychange', function() {
+        var SalesPerson_JobTitle = $(this).val();
+        if (SalesPerson_JobTitle == '') {
+            $('#SalesPerson_JobTitle-result').text("*");
+        } else {
+            $('#SalesPerson_JobTitle-result').text("");
+        }
+    })
+})
+
+$(document).ready(function(){
+    $('#SalesPerson_Salary').bind('input propertychange', function() {
+        var SalesPerson_Salary = $(this).val();
+        if (SalesPerson_Salary == '') {
+            $('#SalesPerson_Salary-result').text("*");
+        } else {
+            $('#SalesPerson_Salary-result').text("");
+        }
+    })
+})
+
+$(document).ready(function(){
+    $('#StoreManager_StoreName').bind('input propertychange', function() {
+        var StoreManager_StoreName = $(this).val();
+        if (StoreManager_StoreName == '') {
+            $('#StoreManager_StoreName-result').text("*");
+        } else {
+            $('#StoreManager_StoreName-result').text("");
+        }
+    })
+})
+
+$(document).ready(function(){
+    $('#StoreManager_StoreAddress').bind('input propertychange', function() {
+        var StoreManager_StoreAddress = $(this).val();
+        if (StoreManager_StoreAddress == '') {
+            $('#StoreManager_StoreAddress-result').text("*");
+        } else {
+            $('#StoreManager_StoreAddress-result').text("");
+        }
+    })
+})
+
+$(document).ready(function(){
+    $('#StoreManager_Email').bind('input propertychange', function() {
+        var StoreManager_Email = $(this).val();
+        if (StoreManager_Email == '') {
+            $('#StoreManager_Email-result').text("*");
+        } else {
+            $('#StoreManager_Email-result').text("");
+        }
+    })
+})
+
+$(document).ready(function(){
+    $('#StoreManager_Salary').bind('input propertychange', function() {
+        var StoreManager_Salary = $(this).val();
+        if (StoreManager_Salary == '') {
+            $('#StoreManager_Salary-result').text("*");
+        } else {
+            $('#StoreManager_Salary-result').text("");
+        }
+    })
+})
+
+$(document).ready(function(){
+    $('#RegionManager_RegionName').bind('input propertychange', function() {
+        var RegionManager_RegionName = $(this).val();
+        if (RegionManager_RegionName == '') {
+            $('#RegionManager_RegionName-result').text("*");
+        } else {
+            $('#RegionManager_RegionName-result').text("");
+        }
+    })
+})
+
+$(document).ready(function(){
+    $('#RegionManager_Email').bind('input propertychange', function() {
+        var RegionManager_Email = $(this).val();
+        if (RegionManager_Email == '') {
+            $('#RegionManager_Email-result').text("*");
+        } else {
+            $('#RegionManager_Email-result').text("");
+        }
+    })
+})
+
+$(document).ready(function(){
+    $('#RegionManager_Salary').bind('input propertychange', function() {
+        var RegionManager_Salary = $(this).val();
+        if (RegionManager_Salary == '') {
+            $('#RegionManager_Salary-result').text("*");
+        } else {
+            $('#RegionManager_Salary-result').text("");
         }
     })
 })
