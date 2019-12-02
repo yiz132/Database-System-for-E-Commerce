@@ -11,9 +11,11 @@ function SearchPress() {
 
 }
 
-// var name = GetRequest();
-// var stringA = JSON.stringify(name);
-// alert(stringA);
+var date = GetRequest();
+var stringDate = JSON.stringify(date);
+var obj = JSON.parse(stringDate);
+// alert(obj.value);
+// alert(obj.pid);
 
 function GetRequest() {
     var url = location.search; //获取url中"?"符后的字串
@@ -27,6 +29,7 @@ function GetRequest() {
     }
     return theRequest;
 }
+
 
 
 

@@ -1,6 +1,7 @@
-var name = GetRequest();
-var stringA = JSON.stringify(name);
-alert(stringA);
+var jumpId = GetRequest();
+var stringId = JSON.stringify(jumpId);
+var id = JSON.parse(stringId);
+//alert(id.value);
 
 function GetRequest() {
     var url = location.search; //获取url中"?"符后的字串
@@ -15,8 +16,67 @@ function GetRequest() {
     return theRequest;
 }
 
-function SearchProduct() {
+var pid = 0;
+function ScanAllProduct(){
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/dbproject/home/product/search",
+        dataType: "json",
+        success: function(msg) {
+            var data=eval(msg);
+            var str = JSON.stringify(data);
+            var obj = JSON.parse(str);
+            var picture = obj.picture;
+            var name = obj.name;
+            var price = obj.price;
+            pid = obj.id;
+            document.getElementById('AllProductDiv').innerHTML="<div id=\"ProductDiv\" class=\"ProductDiv\" onclick=\"EnterDetail()\">\n" +
+                "    <div class=\"ProductPhotoDiv\" style=\"background-image: url("+picture+")\"></div>\n" +
+                "    <div class=\"ProductNameDiv\">"+name+"</div>\n" +
+                "    <div class=\"ProductPriceDiv\">$"+price+"</div>\n" +
+                "</div>";
+        },
+        error: function (request, status, error) {
+            //alert(request.responseText);
+            alert(1);
+        }
+    });
+}
 
+
+function SearchProduct() {
+    var keyWord = document.getElementById('SearchInput').value;
+    if (keyWord  == ''){
+        ScanAllProduct();
+    }
+    else {
+        $.ajax({
+            type: "post",
+            url: "",
+            data: {
+                keyword: keyWord
+            },
+            dataType: "json",
+            success: function(msg){
+                var data=eval(msg);
+                var str = JSON.stringify(data);
+                var obj = JSON.parse(str);
+                var picture = obj.picture;
+                var name = obj.name;
+                var price = obj.price;
+                pid = obj.id;
+                document.getElementById('AllProductDiv').innerHTML="<div id=\"ProductDiv\" class=\"ProductDiv\" onclick=\"EnterDetail()\">\n" +
+                    "    <div class=\"ProductPhotoDiv\" style=\"background-image: url("+picture+")\"></div>\n" +
+                    "    <div class=\"ProductNameDiv\">"+name+"</div>\n" +
+                    "    <div class=\"ProductPriceDiv\">$"+price+"</div>\n" +
+                    "</div>";
+            },
+            error: function (request, status, error) {
+                //alert("Sign up failed");
+
+            }
+        });
+    }
 }
 
 function SearchPress() {
@@ -42,12 +102,18 @@ function SortChange(){
         },
         dataType: "json",
         success: function(msg) {
-            // var data=eval(msg);
-            // //alert(data);
-            // var str = JSON.stringify(data);
-            // //alert(str);
-            // var obj = JSON.parse(str);
-            // alert(obj.name);
+            var data=eval(msg);
+            var str = JSON.stringify(data);
+            var obj = JSON.parse(str);
+            var picture = obj.picture;
+            var name = obj.name;
+            var price = obj.price;
+            pid = obj.id;
+            document.getElementById('AllProductDiv').innerHTML="<div id=\"ProductDiv\" class=\"ProductDiv\" onclick=\"EnterDetail()\">\n" +
+                "    <div class=\"ProductPhotoDiv\" style=\"background-image: url("+picture+")\"></div>\n" +
+                "    <div class=\"ProductNameDiv\">"+name+"</div>\n" +
+                "    <div class=\"ProductPriceDiv\">$"+price+"</div>\n" +
+                "</div>";
 
         },
         error: function (request, status, error) {
@@ -58,7 +124,6 @@ function SortChange(){
 }
 
 function EnterDetail(){
-     var P_id = 1;
-     window.location.href = "ProductDetail.html?value=" + P_id;
+     window.location.href = "ProductDetail.html?value=" + id + "&pid" + pid;
 }
 

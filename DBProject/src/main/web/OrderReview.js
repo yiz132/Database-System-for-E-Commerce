@@ -1,7 +1,7 @@
 var name = GetRequest();
 var stringA = JSON.stringify(name);
-alert(stringA);
-
+var obj = JSON.parse(stringA);
+OrderOnload();
 function GetRequest() {
     var url = location.search; //获取url中"?"符后的字串
     var theRequest = new Object();
@@ -15,8 +15,75 @@ function GetRequest() {
     return theRequest;
 }
 
-function SearchOrder() {
+function OrderOnload() {
+    var Url="";
+    $.ajax({
+        type: "post",
+        url: Url,
+        data: {
+            name: obj.value,
+        },
+        dataType: "json",
+        success: function(msg) {
+            var data=eval(msg);
+            var str = JSON.stringify(data);
+            var order = JSON.parse(str);
+            var picture = order.picture;
+            var name = order.name;
+            var total = parseInt(order.price)  *parseInt(order.number) ;
+            var date = order.date;
+            document.getElementById('List').style.innerText =document.getElementById('List').style.innerText + "\n" +
+                "    <tr>\n" +
+                "        <td style=\"width: 90px;background-image: url("+picture+"); background-size: cover\"></td>\n" +
+                "        <td>"+name<+"/td>\n" +
+                "        <td>"+total+"</td>\n" +
+                "        <td>"+date+"</td>\n" +
+                "    </tr>";
 
+        },
+        error: function (request, status, error) {
+            //alert(request.responseText);
+
+        }
+    });
+}
+
+function SearchOrder() {
+    var keyWord = document.getElementById('SearchInput').value;
+    if (keyWord  == ''){
+        OrderOnload();
+    }
+    else {
+        $.ajax({
+            type: "post",
+            url: "",
+            data: {
+                keyword: keyWord,
+                name: obj.value,
+            },
+            dataType: "json",
+            success: function(msg){
+                var data=eval(msg);
+                var str = JSON.stringify(data);
+                var order = JSON.parse(str);
+                var picture = order.picture;
+                var name = order.name;
+                var total = parseInt(order.price)  *parseInt(order.number) ;
+                var date = order.date;
+                document.getElementById('List').style.innerText =document.getElementById('List').style.innerText + "\n" +
+                    "    <tr>\n" +
+                    "        <td style=\"width: 90px;background-image: url("+picture+"); background-size: cover\"></td>\n" +
+                    "        <td>"+name<+"/td>\n" +
+                    "        <td>"+total+"</td>\n" +
+                    "        <td>"+date+"</td>\n" +
+                    "    </tr>";
+            },
+            error: function (request, status, error) {
+                //alert("Sign up failed");
+
+            }
+        });
+    }
 }
 
 function SearchPress() {
@@ -36,17 +103,26 @@ function SortChange(){
         type: "post",
         url: Url,
         data: {
+            name: obj.value,
             sort: sort,
 
         },
         dataType: "json",
         success: function(msg) {
-            // var data=eval(msg);
-            // //alert(data);
-            // var str = JSON.stringify(data);
-            // //alert(str);
-            // var obj = JSON.parse(str);
-            // alert(obj.name);
+            var data=eval(msg);
+            var str = JSON.stringify(data);
+            var order = JSON.parse(str);
+            var picture = order.picture;
+            var name = order.name;
+            var total = parseInt(order.price)  *parseInt(order.number) ;
+            var date = order.date;
+            document.getElementById('List').style.innerText =document.getElementById('List').style.innerText + "\n" +
+                "    <tr>\n" +
+                "        <td style=\"width: 90px;background-image: url("+picture+"); background-size: cover\"></td>\n" +
+                "        <td>"+name<+"/td>\n" +
+                "        <td>"+total+"</td>\n" +
+                "        <td>"+date+"</td>\n" +
+                "    </tr>";
 
         },
         error: function (request, status, error) {
