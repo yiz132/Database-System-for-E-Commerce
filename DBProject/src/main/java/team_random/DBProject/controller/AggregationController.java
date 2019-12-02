@@ -12,8 +12,8 @@ import java.util.Map;
 
 @CrossOrigin
 @Controller
-@RequestMapping(path = "/dbproject/transaction")
-public class TransactionController {
+@RequestMapping(path = "/dbproject/aggregation")
+public class AggregationController {
     @Autowired
     private TransactionService transactionService;
     @Autowired
