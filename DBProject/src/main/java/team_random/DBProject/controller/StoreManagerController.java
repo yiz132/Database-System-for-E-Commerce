@@ -39,6 +39,7 @@ public class StoreManagerController {
         storeManager.setStoreRegion(store_region);
         storeManagerService.save(storeManager);
         Store store = new Store();
+        store.setName(store_name);
         store.setNum_salesperson(0);
         store.setAddress(store_address);
         store.setManager_id(storeManager.getId());
