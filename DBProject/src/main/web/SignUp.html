@@ -13,7 +13,7 @@
 <div id="RegisterDiv" class="RegisterDiv">
     <div class="Input_div">
         <input type="text" id="UserName-register" name="UserName" class="Information-input" placeholder="Username"  )>
-        <p id="UserName-result" class="result"></p>
+        <p id="UserName-result" class="result">*</p>
     </div>
     <!--        <div id="UserName-result" >An email address is required</div>-->
     <div class="Input_div">
@@ -76,54 +76,104 @@
 
 <div id="BusinessCustomerDiv" class="RegisterDiv" style="display: none; top: 175%">
 
-    <div class="Input_div" style="margin: 30px"><input type="text" id="BusinessCustomer_Category" name="BusinessCustomer_Category"  class="Information-input" placeholder="Business Category"  )></div>
-    <!--        <div id="Password-result" ></div>-->
-    <div class="Input_div" style="margin: 30px"><input type="text" id="BusinessCustomer_Address" name="BusinessCustomer_Address" class="Information-input"  placeholder="Address"  )></div>
+    <div class="Input_div" style="margin: 30px">
+<!--        <input type="text" id="BusinessCustomer_Category" name="BusinessCustomer_Category"  class="Information-input" placeholder="Business Category"  )>-->
+        <select id="BusinessCustomer_Category" name="BusinessCustomer_Category"  class="Information-input" style="background-color: white;width: 210px;height: 45px">
+            <option value ="Clothes" >Clothes</option>
+            <option value ="Books">Books</option>
+            <option value ="Bags">Bags</option>
+        </select>
+    </div>
+    <div class="Input_div" style="margin: 30px">
+        <input type="text" id="BusinessCustomer_Address" name="BusinessCustomer_Address" class="Information-input"  placeholder="Address"  )>
+        <p id="BusinessCustomer_Address-result" class="result" style="top: 105px;">*</p>
+    </div>
+   <div class="Input_div" style="margin: 30px">
+       <input type="number" id="BusinessCustomer_Gross" name="BusinessCustomer_Gross" class="Information-input"  placeholder="Company Gross"  )>
+       <p id="BusinessCustomer_Gross-result" class="result" style="top: 180px;">*</p>
+   </div>
     <!--        <div id="SecondPassword-result" ></div>-->
-   <div class="Input_div" style="margin: 30px"><input type="number" id="BusinessCustomer_Gross" name="BusinessCustomer_Gross" class="Information-input"  placeholder="Company Gross"  )></div>
-    <!--        <div id="SecondPassword-result" ></div>-->
-    <div class="Input_div" style="margin: 30px"><input type="number" id="BusinessCustomer_Account" name="BusinessCustomer_Account" class="Information-input"  placeholder="Account"  )></div>
-    <!--        <div id="SecondPassword-result" ></div>-->
+    <div class="Input_div" style="margin: 30px">
+        <input type="number" id="BusinessCustomer_Account" name="BusinessCustomer_Account" class="Information-input"  placeholder="Account"  )>
+        <p id="BusinessCustomer_Account-result" class="result" style="top: 255px;">*</p>
+    </div>
 
     <button id="BusinessCustomer-submit" class="Information-submit" style="display: none" onclick="NewBusinessCustomer()">Sign up</button>
 </div>
 
 <div id="SalesPersonDiv" class="RegisterDiv" style="display: none; top: 175%">
 
-    <div class="Input_div" style="margin: 40px"><input type="email" id="SalesPerson_Email" name="SalesPerson_Email"  class="Information-input" placeholder="salesperson@company.com"  )></div>
-    <!--        <div id="Password-result" ></div>-->
-    <div class="Input_div" style="margin: 40px"><input type="text" id="SalesPerson_JobTitle" name="SalesPerson_JobTitle" class="Information-input"  placeholder="Job Title"  )></div>
-    <!--        <div id="SecondPassword-result" ></div>-->
-    <div class="Input_div" style="margin: 40px"><input type="number" id="SalesPerson_Salary" name="SalesPerson_Salary" class="Information-input"  placeholder="Salary"  )></div>
-    <!--        <div id="SecondPassword-result" ></div>-->
+    <div class="Input_div" style="margin: 40px">
+        <input type="email" id="SalesPerson_Email" name="SalesPerson_Email"  class="Information-input" placeholder="salesperson@company.com"  )>
+        <p id="SalesPerson_Email-result" class="result" style="top: 40px;">*</p>
+    </div>
+
+    <div class="Input_div" style="margin: 40px">
+        <input type="text" id="SalesPerson_JobTitle" name="SalesPerson_JobTitle" class="Information-input"  placeholder="Job Title"  )>
+        <p id="SalesPerson_JobTitle-result" class="result" style="top: 125px;">*</p>
+    </div>
+
+    <div class="Input_div" style="margin: 40px">
+        <input type="number" id="SalesPerson_Salary" name="SalesPerson_Salary" class="Information-input"  placeholder="Salary"  )>
+        <p id="SalesPerson_Salary-result" class="result" style="top: 210px;">*</p>
+    </div>
+
 
     <button id="SalesPerson-submit" class="Information-submit" style="display: none" onclick="NewSalesPerson()">Sign up</button>
 </div>
 
 <div id="StoreManagerDiv" class="RegisterDiv" style="display: none; top: 175%">
 
-    <div class="Input_div" style="margin: 18px"><input type="text" id="StoreManager_StoreName" name="StoreManager_StoreName"  class="Information-input" placeholder="Store Name"  )></div>
-    <!--        <div id="Password-result" ></div>-->
-    <div class="Input_div" style="margin: 18px"><input type="text" id="StoreManager_StoreAddress" name="StoreManager_StoreAddress" class="Information-input"  placeholder="Store Address"  )></div>
-    <!--        <div id="SecondPassword-result" ></div>-->
-    <div class="Input_div" style="margin: 18px"><input type="text" id="StoreManager_StoreRegion" name="StoreManager_StoreRegion" class="Information-input"  placeholder="Store Region"  )></div>
-    <!--        <div id="SecondPassword-result" ></div>-->
-    <div class="Input_div" style="margin: 18px"><input type="text" id="StoreManager_Email" name="StoreManager_Email"  class="Information-input" placeholder="StoreManager@company.com"  )></div>
-    <!--        <div id="Password-result" ></div>-->
-    <div class="Input_div" style="margin: 18px"><input type="number" id="StoreManager_Salary" name="StoreManager_Salary" class="Information-input"  placeholder="Salary"  )></div>
-    <!--        <div id="SecondPassword-result" ></div>-->
+    <div class="Input_div" style="margin: 18px">
+        <input type="text" id="StoreManager_StoreName" name="StoreManager_StoreName"  class="Information-input" placeholder="Store Name"  )>
+        <p id="StoreManager_StoreName-result" class="result" style="top: 20px;">*</p>
+    </div>
+
+    <div class="Input_div" style="margin: 18px">
+        <input type="text" id="StoreManager_StoreAddress" name="StoreManager_StoreAddress" class="Information-input"  placeholder="Store Address"  )>
+        <p id="StoreManager_StoreAddress-result" class="result" style="top: 80px;">*</p>
+    </div>
+
+    <div class="Input_div" style="margin: 18px">
+<!--        <input type="text" id="StoreManager_StoreRegion" name="StoreManager_StoreRegion" class="Information-input"  placeholder="Store Region"  )>-->
+<!--        <p id="StoreManager_StoreRegion-result" class="result" style="top: 80px;">*</p>-->
+        <select id="StoreManager_StoreRegion" name="StoreManager_StoreRegion"  class="Information-input" style="background-color: white;width: 214px;height: 45px">
+            <option value ="CA" >CA</option>
+            <option value ="PA">PA</option>
+        </select>
+    </div>
+
+    <div class="Input_div" style="margin: 18px">
+        <input type="text" id="StoreManager_Email" name="StoreManager_Email"  class="Information-input" placeholder="StoreManager@company.com"  )>
+        <p id="StoreManager_Email-result" class="result" style="top:205px;">*</p>
+    </div>
+
+    <div class="Input_div" style="margin: 18px">
+        <input type="number" id="StoreManager_Salary" name="StoreManager_Salary" class="Information-input"  placeholder="Salary"  )>
+        <p id="StoreManager_Salary-result" class="result" style="top:265px;">*</p>
+    </div>
+
 
     <button id="StoreManager-submit" class="Information-submit" style="display: none" onclick="NewStoreManager()">Sign up</button>
 </div>
 
 <div id="RegionManagerDiv" class="RegisterDiv" style="display: none; top: 175%">
 
-    <div class="Input_div" style="margin: 40px"><input type="text" id="RegionManager_RegionName" name="StoreManager_StoreName"  class="Information-input" placeholder="Region Name"  )></div>
-    <!--        <div id="Password-result" ></div>-->
-    <div class="Input_div" style="margin: 40px"><input type="email" id="RegionManager_Email" name="RegionManager_Email"  class="Information-input" placeholder="RegionManager@region.com"  )></div>
-    <!--        <div id="Password-result" ></div>-->
-    <div class="Input_div" style="margin: 40px"><input type="number" id="RegionManager_Salary" name="RegionManager_Salary" class="Information-input"  placeholder="Salary"  )></div>
-    <!--        <div id="SecondPassword-result" ></div>-->
+    <div class="Input_div" style="margin: 40px">
+        <input type="text" id="RegionManager_RegionName" name="StoreManager_StoreName"  class="Information-input" placeholder="Region Name"  )>
+        <p id="RegionManager_RegionName-result" class="result" style="top:40px;">*</p>
+    </div>
+
+    <div class="Input_div" style="margin: 40px">
+        <input type="email" id="RegionManager_Email" name="RegionManager_Email"  class="Information-input" placeholder="RegionManager@region.com"  )>
+        <p id="RegionManager_Email-result" class="result" style="top:125px;">*</p>
+    </div>
+
+    <div class="Input_div" style="margin: 40px">
+        <input type="number" id="RegionManager_Salary" name="RegionManager_Salary" class="Information-input"  placeholder="Salary"  )>
+        <p id="RegionManager_Salary-result" class="result" style="top:210px;">*</p>
+    </div>
+
 
     <button id="RegionManager-submit" class="Information-submit" style="display: none" onclick="NewRegionManager()">Sign up</button>
 </div>

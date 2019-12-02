@@ -11,10 +11,14 @@
 <body>
 
 <div id="SignInDiv">
-    <div class="Input_div"><input type="text" id="UserName-register" name="UserName" class="Information-input" placeholder="someone@example.com"  )></div>
-    <!--        <div id="UserName-result" >An email address is required</div>-->
-    <div class="Input_div"><input type="password" id="FirstPassword-register" name="FirstPassword"  class="Information-input" id="FirstPassword-input" placeholder="Password" maxlength="24"  )></div>
-    <!--        <div id="Password-result" ></div>-->
+    <div class="Input_div">
+        <input type="text" id="UserName-register" name="UserName" class="Information-input" placeholder="Username"  )>
+        <p id="UserName-result" class="result" style="top: 50px;">*</p>
+    </div>
+    <div class="Input_div">
+        <input type="password" id="FirstPassword-register" name="FirstPassword"  class="Information-input" id="FirstPassword-input" placeholder="Password" maxlength="24"  )>
+        <p id="FirstPassword-result" class="result" style="top: 145px;">*</p>
+    </div>
     <div>
         <form action="" method="get">
             <label for="Character1" class="radioButton"><input name="Character" id="Character1" type="radio" value="HomeCustomer" checked="checked" hidden/>HomeCustomer </label>

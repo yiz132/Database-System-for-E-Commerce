@@ -126,3 +126,10 @@ body, html {
 .SignUp:active{
     filter: brightness(0.9);
 }
+
+.result{
+    position: absolute;
+    top: 25px;
+    left: 415px;
+    color: red;
+}
