@@ -8,11 +8,11 @@
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
     <script src="Scan.js"></script>
 </head>
-<body>
+<body >
 <div class="TopBar" >
     <div id="LogoDiv" class="LogoDiv"></div>
 <!--    <i class="SearchLogo" id="SearchLogo"></i>-->
-    <input type="text" class="SearchInput" onKeyDown="SearchPress()" placeholder="Search key words here"></input>
+    <input type="text" id="SearchInput" class="SearchInput" onKeyDown="SearchPress()" placeholder="Search key words here"></input>
     <button id="SearchProductButton" onclick="SearchProduct()" style="display: none"></button>
     <select id="Sort" name="Sort" onchange="SortChange()" class="SortDiv">
         <option value ="SortBy" >SORT BY</option>
@@ -21,11 +21,12 @@
 </select>
 
 </div>
-<div class="ProductDiv" onclick="EnterDetail()">
+<div id="AllProductDiv" class="AllProductDiv">
+<div  class="ProductDiv" onclick="EnterDetail()">
     <div class="ProductPhotoDiv" style="background-image: url(../web/image/sample.jpg)"></div>
     <div class="ProductNameDiv">Product Name</div>
     <div class="ProductPriceDiv">$ 100</div>
 </div>
-
+</div>
 </body>
 </html>

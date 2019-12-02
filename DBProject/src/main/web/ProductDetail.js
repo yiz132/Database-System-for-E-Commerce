@@ -7,15 +7,14 @@ function CheckOut(){
         type: "post",
         url: Url,
         data: {
-            c_id: c_id,
-            p_id: p_id,
+            c_id: obj.value,
+            p_id: obj.pid,
             number: number,
-            date: date.toLocaleDateString(),
+            //date: date.toLocaleDateString(),
         },
         dataType: "json",
         success: function(msg){
-            alert(msg);
-            //alert(request.responseText);
+            window.location.href = "OrderReview.html?value=" + obj.id;
         },
         error: function (request, status, error) {
             //alert(request.responseText);
@@ -24,10 +23,13 @@ function CheckOut(){
         }
     });
 }
-var name = GetRequest();
-var stringA = JSON.stringify(name);
-//alert(stringA);
 
+var date = GetRequest();
+var stringDate = JSON.stringify(date);
+var obj = JSON.parse(stringDate);
+// alert(obj.value);
+// alert(obj.pid);
+ProductDetail();
 function GetRequest() {
     var url = location.search; //获取url中"?"符后的字串
     var theRequest = new Object();
@@ -40,6 +42,40 @@ function GetRequest() {
     }
     return theRequest;
 }
+
+function ProductDetail(){
+    $.ajax({
+        type: "post",
+        url: jumpURL,
+        data: {
+            name: obj.value,
+            pid: obj.pid,
+
+        },
+        dataType: "json",
+        success: function(msg) {
+            var data=eval(msg);
+            var str = JSON.stringify(data);
+            var product = JSON.parse(str);
+            var picture = product.picture;
+            var name = product.name;
+            var price = product.price;
+            var description = product.description;
+            var stock = product.stock;
+            document.getElementById('ProductPhoto').style.backgroundImage = 'url("+ picture +")';
+            document.getElementById('ProductName').innerText = name;
+            document.getElementById('ProductPrice').innerText = price;
+            document.getElementById('ProductDescription').innerText = description;
+            document.getElementById('StockNumber').innerText = stock;
+
+        },
+        error: function (request, status, error) {
+            //alert(request.responseText);
+            alert(1);
+        }
+    });
+}
+
 
 $(document).ready(function(){
     $('#Transact_Number').bind('input propertychange', function() {

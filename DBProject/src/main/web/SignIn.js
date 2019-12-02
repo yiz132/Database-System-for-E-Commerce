@@ -61,29 +61,28 @@ function SignIn(){
         },
         dataType: "json",
         success: function(msg) {
-             // var data=eval(msg);
-             // var str = JSON.stringify(data);
-             // var obj = JSON.parse(str);
-             //alert(1);
+              var data=eval(msg);
+              var str = JSON.stringify(data);
+              var obj = JSON.parse(str);
 
             if(role == 'HomeCustomer'){
-                window.location.href =  "Scan.html?value=" + name;
+                window.location.href =  "Scan.html?value=" + obj.id;
 
             }
             else if(role == 'BusinessCustomer'){
-                window.location.href =  "Scan.html?value=" + name;
+                window.location.href =  "Scan.html?value=" + obj.id;
 
             }
             else if(role == 'SalesPerson'){
-                window.location.href =  "SalesPersonIndex.html?value=" + name;
+                window.location.href =  "SalesPersonIndex.html?value=" + obj.id;
 
             }
             else if(role == 'StoreManager'){
-                window.location.href =  "StoreManagerIndex.html?value=" + name;
+                window.location.href =  "StoreManagerIndex.html?value=" + obj.id;
 
             }
             else if(role == 'RegionManager'){
-                window.location.href =  "RegionManagerIndex.html?value=" + name;
+                window.location.href =  "RegionManagerIndex.html?value=" + obj.id;
 
             }
 
