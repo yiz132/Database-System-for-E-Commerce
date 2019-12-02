@@ -8,4 +8,5 @@ public interface StoreService {
     void save(Store store);
     Store findById(int id);
     List<String> findAllNames();
+    Store findByName(String name);
 }

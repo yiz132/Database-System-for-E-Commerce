@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface StoreRepository extends CrudRepository<Store, Integer> {
     Store findById(int id);
+    Store findByName(String name);
     @Query(value = "SELECT DISTINCT name FROM stores ", nativeQuery = true)
     List<String> findAllNames();
 }

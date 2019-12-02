@@ -33,19 +33,17 @@ public class SalespersonController {
     @PostMapping(path = "/register")
     public @ResponseBody
     Salesperson register(@RequestParam String name, @RequestParam String password, @RequestParam String email,
-                    @RequestParam String title, @RequestParam(required = false) Integer store_id,@RequestParam int salary){
+                    @RequestParam String title, @RequestParam(required = false) String store_name,@RequestParam int salary){
         if (salespersonService.findByName(name) != null) return null;
         Salesperson person = new Salesperson();
         person.setName(name);
         person.setPassword(password);
         person.setEmail(email);
         person.setTitle(title);
-        if (store_id != null) {
-            if (storeService.findById(store_id) == null) return null;
-            person.setStoreId(store_id);
-            Store curr = storeService.findById(store_id);
-            curr.setNum_salesperson(curr.getNum_salesperson()+1);
-        }
+        if (storeService.findByName(store_name) == null) return null;
+        Store curr = storeService.findByName(store_name);
+        person.setStoreId(curr.getId());
+        curr.setNum_salesperson(curr.getNum_salesperson()+1);
         person.setSalary(salary);
         salespersonService.save(person);
         return person;
