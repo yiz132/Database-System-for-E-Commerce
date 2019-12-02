@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Random-RegionManager</title>
-    <link rel="stylesheet" type="text/css" href="RegionManagerIndex.css" />
+    <link rel="stylesheet" type="text/css" href="SortByStore.css" />
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
-    <script src="RegionManagerIndex.js"></script>
+    <script src="SortByStore.js"></script>
 </head>
 <body>
 <div class="TopBar" >
@@ -16,8 +16,9 @@
     <button id="SearchBusinessButton" onclick="SearchBusiness()" style="display: none"></button>
     <select id="Sort" name="Sort" onchange="SortChange()" class="SortDiv">
         <option value ="SortBy" >SORT BY</option>
-        <option value ="Stores">STORES</option>
-        <option value ="Regions">REGIONS</option>
+        <option value ="Sales">SALES</option>
+        <option value ="Profit">PROFIT</option>
+        <option value ="Category">CATEGORY</option>
     </select>
 </div>
 <!--SORT BY COMPANY-->
@@ -36,13 +37,15 @@
 <!--SORT BY REGION-->
 <table class="List" >
     <tr style="height: 10px;">
-        <th style="height: 10px; border: 1px  lightpink; border-style: none none solid none;">Region</th>
+        <th style="height: 10px; border: 1px  lightpink; border-style: none none solid none;">Store</th>
         <th style="height: 10px;  border: 1px  lightpink; border-style: none none solid none;">Sales</th>
         <th style="height: 10px;  border: 1px  lightpink; border-style: none none solid none;">Profit</th>
+        <th style="height: 10px;  border: 1px  lightpink; border-style: none none solid none;">Category</th>
     </tr>
     <tr>
         <td>Pitt</td>
         <td>123</td>
+        <td>1230</td>
         <td>123</td>
     </tr>
 </table>
