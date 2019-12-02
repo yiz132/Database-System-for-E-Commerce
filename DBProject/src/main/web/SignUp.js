@@ -61,18 +61,20 @@ function Detail() {
 
         var Url="http://localhost:8080/dbproject/aggregation/showallstores";
         $.ajax({
-            type: "post",
+            type: "get",
             url: Url,
             dataType: "json",
             success: function(msg) {
                 var data=eval(msg);
                 var str = JSON.stringify(data);
-                var store = JSON.parse(str);
-                alert(store);
+                var stores = JSON.parse(str);
+                for( var i = 0; i<stores.length; i++){
+                    document.getElementById('Store').innerHTML=document.getElementById('Store').innerHTML+"<option value =\""+stores[i]+"\" >"+stores[i]+"</option>";
+                }
 
             },
             error: function (request, status, error) {
-                //alert(request.responseText);
+                alert(request.responseText);
 
             }
         });
@@ -199,6 +201,8 @@ function NewSalesPerson(){
     var email = $('#SalesPerson_Email').val();
     var job_title = $('#SalesPerson_JobTitle').val();
     var salary = $('#SalesPerson_Salary').val();
+    var store = $('#Store').val();
+    alert(store);
 
     var Url="http://localhost:8080/dbproject/salesperson/register";
     $.ajax({
@@ -210,7 +214,8 @@ function NewSalesPerson(){
             role: role,
             email: email,
             title: job_title,
-            salary: salary
+            salary: salary,
+            store_name:store
 
         },
         dataType: "json",
