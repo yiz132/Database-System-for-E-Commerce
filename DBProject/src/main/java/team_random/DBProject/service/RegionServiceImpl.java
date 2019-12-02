@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import team_random.DBProject.model.Region;
 import team_random.DBProject.repository.RegionRepository;
 
+import java.util.List;
+
 @Service
 public class RegionServiceImpl implements RegionService {
     @Autowired
@@ -17,6 +19,11 @@ public class RegionServiceImpl implements RegionService {
     @Override
     public Region findByName(String name) {
         return regionRepository.findByName(name);
+    }
+
+    @Override
+    public List<String> findAllNames() {
+        return regionRepository.findAllNames();
     }
 
     @Override

@@ -18,6 +18,8 @@ public class AggregationController {
     private TransactionService transactionService;
     @Autowired
     private ProductService productService;
+    @Autowired
+    private RegionService regionService;
 
     @Autowired
     private StoreService storeService;
@@ -26,6 +28,12 @@ public class AggregationController {
     public @ResponseBody
     List<String> showAllStore(){
         return storeService.findAllNames();
+    }
+
+    @GetMapping(path = "/showallregions")
+    public @ResponseBody
+    List<String> showAllRegion(){
+        return regionService.findAllNames();
     }
 
     @GetMapping(path = "/showallproducts")
