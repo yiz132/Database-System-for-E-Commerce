@@ -95,6 +95,26 @@ function Detail() {
         document.getElementById("LogoDivBottom").style.display="block";
         $("html,body").animate({scrollTop:"1000" + "px"}, 500);
 
+        var Url="http://localhost:8080/dbproject/aggregation/showallregions";
+        $.ajax({
+            type: "get",
+            url: Url,
+            dataType: "json",
+            success: function(msg) {
+                var data=eval(msg);
+                var str = JSON.stringify(data);
+                var regions = JSON.parse(str);
+                for( var i = 0; i<regions.length; i++){
+                    document.getElementById('StoreManager_StoreRegion').innerHTML=document.getElementById('StoreManager_StoreRegion').innerHTML+"<option value =\""+regions[i]+"\" >"+regions[i]+"</option>";
+                }
+
+            },
+            error: function (request, status, error) {
+                alert(request.responseText);
+
+            }
+        });
+
     }
     else if(role == 'RegionManager'){
 
@@ -202,7 +222,6 @@ function NewSalesPerson(){
     var job_title = $('#SalesPerson_JobTitle').val();
     var salary = $('#SalesPerson_Salary').val();
     var store = $('#Store').val();
-    alert(store);
 
     var Url="http://localhost:8080/dbproject/salesperson/register";
     $.ajax({
@@ -220,7 +239,10 @@ function NewSalesPerson(){
         },
         dataType: "json",
         success: function(msg){
-            window.location.href =  "SalesPersonIndex.html?value=" + name;
+            var data=eval(msg);
+            var str = JSON.stringify(data);
+            var salesperson = JSON.parse(str);
+            window.location.href =  "SalesPersonIndex.html?value=" + salesperson.id;
         },
         error: function (request, status, error) {
             alert("Sign up failed");
