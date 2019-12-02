@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import team_random.DBProject.model.Transaction;
 
 import java.util.List;
+import java.util.Map;
 
 public interface TransactionRepository extends JpaRepository<Transaction, Integer> {
     Transaction findById(int id);
@@ -13,4 +14,10 @@ public interface TransactionRepository extends JpaRepository<Transaction, Intege
     List<Transaction> findByStoreId(int storeId);
     @Query(value = "SELECT DISTINCT t.id,t.cid,t.date,t.num,t.pid FROM transactions t, products p, salespersons sp, regions r WHERE sp.id = r.manager_id AND sp.pid = t.pid AND r.id = ?1 ",nativeQuery = true)
     List<Transaction> findByRegionId(int regionId);
+    //select P.name,sum(num)
+    //from  `transactions`T, `products`P
+    //where T.pid=P.id
+    //GROUP BY P.name
+    @Query(value = "SELECT DISTINCT P.name, sum(t.num) FROM transactions t, products p WHERE t.pid = p.id group by P.name ",nativeQuery = true)
+    Map<String,Integer> groupTransByName();
 }

@@ -55,18 +55,18 @@ public class TransactionController {
     }
 
     //Group products by transactions by different category
-    @GetMapping(path = "/sortbycategory")
+    @GetMapping(path = "/groupbycategory")
     public @ResponseBody
-    Map<String,List<Product>> sortByCategory(){
+    Map<String,List<Product>> groupByCategory(){
         return productService.groupByCategory();
         //return productService.sortByCategory;
     }
 
     //Sort products by selling amount of each product
-    @PostMapping(path = "/sortbysale")
+    @PostMapping(path = "/groupbyname")
     public @ResponseBody
-    List<Product> sortBySale(){
-        return productService.sortBySale();
+    Map<String,Integer> groupBySale(){
+        return productService.groupByName();
     }
 
 }

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import team_random.DBProject.model.Product;
 import team_random.DBProject.repository.ProductRepository;
+import team_random.DBProject.repository.TransactionRepository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,6 +15,8 @@ import java.util.Map;
 public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepository productRepository;
+    @Autowired
+    private TransactionRepository transactionRepository;
     @Override
     public void save(Product product) {
         productRepository.save(product);
@@ -51,8 +54,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> sortBySale() {
-        return null;
+    public Map<String,Integer> groupByName() {
+        return transactionRepository.groupTransByName();
     }
 
     public static void main(String[] args){

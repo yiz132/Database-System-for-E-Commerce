@@ -12,6 +12,6 @@ public interface ProductService {
     void deleteByName(String name);
     void deleteById(int id);
     Map<String, List<Product>> groupByCategory();
-    List<Product> sortBySale();
+    Map<String,Integer> groupByName();
 
 }
