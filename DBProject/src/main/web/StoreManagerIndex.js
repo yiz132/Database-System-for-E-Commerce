@@ -65,3 +65,5 @@ function EnterProductSalesDetail(){
     var P_id = 1;
     window.location.href = "ProductSalesDetail.html?value=" + P_id;
 }
+
+

@@ -296,3 +296,119 @@ $(function(){
 //     })
 //
 // })
+
+
+
+$(document).ready(function(){
+    $('#UserName-register').bind('input propertychange', function() {
+        var UserNameText = $(this).val();
+        if (UserNameText.length >= 0 && UserNameText.length <= 5) {
+            $('#UserName-result').text("Username is too short");
+        } else {
+            var Url = "";
+            $.ajax({
+                type: "post",
+                url: Url,
+                data: {
+                    name: UserNameText,
+                },
+                dataType: "json",
+                success: function (msg) {
+                    $('#UserName-result').text("Username registered");
+                },
+                error: function (request, status, error) {
+                    $('#UserName-result').text("");
+                }
+            });
+        }
+    })
+})
+
+$(document).ready(function(){
+    $('#SecondPassword-register').bind('input propertychange', function() {
+        var SecondPassword = $(this).val();
+        var FirstPassword = $('#FirstPassword-register').val();
+        if (SecondPassword != FirstPassword) {
+            $('#SecondPassword-result').text("Passwords are not the same");
+        } else {
+            $('#SecondPassword-result').text("");
+        }
+    })
+})
+
+$(document).ready(function(){
+    $('#FirstPassword-register').bind('input propertychange', function() {
+        var FirstPassword = $(this).val();
+        if (FirstPassword == '') {
+            $('#FirstPassword-result').text("*");
+        } else {
+            $('#FirstPassword-result').text("");
+        }
+    })
+})
+
+$(document).ready(function(){
+    $('#HomeCustomer_Age').bind('input propertychange', function() {
+        var HomeCustomer_Age = $(this).val();
+        if (HomeCustomer_Age == '') {
+            $('#HomeCustomer_Age-result').text("*");
+        } else {
+            $('#HomeCustomer_Age-result').text("");
+        }
+    })
+})
+
+$(document).ready(function(){
+    $('#HomeCustomer_Gender').bind('input propertychange', function() {
+        var HomeCustomer_Gender = $(this).val();
+        if (HomeCustomer_Gender == '') {
+            $('#HomeCustomer_Gender-result').text("*");
+        } else {
+            $('#HomeCustomer_Gender-result').text("");
+        }
+    })
+})
+
+$(document).ready(function(){
+    $('#HomeCustomer_Address').bind('input propertychange', function() {
+        var HomeCustomer_Address = $(this).val();
+        if (HomeCustomer_Address == '') {
+            $('#HomeCustomer_Address-result').text("*");
+        } else {
+            $('#HomeCustomer_Address-result').text("");
+        }
+    })
+})
+
+$(document).ready(function(){
+    $('#HomeCustomer_Marriage').bind('input propertychange', function() {
+        var HomeCustomer_Marriage = $(this).val();
+        if (HomeCustomer_Marriage == '') {
+            $('#HomeCustomer_Marriage-result').text("*");
+        } else {
+            $('#HomeCustomer_Marriage-result').text("");
+        }
+    })
+})
+
+$(document).ready(function(){
+    $('#HomeCustomer_Income').bind('input propertychange', function() {
+        var HomeCustomer_Income = $(this).val();
+        if (HomeCustomer_Income == '') {
+            $('#HomeCustomer_Income-result').text("*");
+        } else {
+            $('#HomeCustomer_Income-result').text("");
+        }
+    })
+})
+
+$(document).ready(function(){
+    $('#HomeCustomer_Account').bind('input propertychange', function() {
+        var HomeCustomer_Account = $(this).val();
+        if (HomeCustomer_Account == '') {
+            $('#HomeCustomer_Account-result').text("*");
+        } else {
+            $('#HomeCustomer_Account-result').text("");
+        }
+    })
+})

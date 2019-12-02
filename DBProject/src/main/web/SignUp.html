@@ -11,11 +11,20 @@
 <body onload="Locate()">
 
 <div id="RegisterDiv" class="RegisterDiv">
-    <div class="Input_div"><input type="text" id="UserName-register" name="UserName" class="Information-input" placeholder="Username"  )></div>
+    <div class="Input_div">
+        <input type="text" id="UserName-register" name="UserName" class="Information-input" placeholder="Username"  )>
+        <p id="UserName-result" class="result"></p>
+    </div>
     <!--        <div id="UserName-result" >An email address is required</div>-->
-    <div class="Input_div"><input type="password" id="FirstPassword-register" name="FirstPassword"  class="Information-input" id="FirstPassword-input" placeholder="Password" maxlength="24"  )></div>
-    <!--        <div id="Password-result" ></div>-->
-    <div class="Input_div"><input type="password" id="SecondPassword-register" name="SecondPassword" class="Information-input" id="SecondPassword-input" placeholder="Confirm Password" maxlength="24" )></div>
+    <div class="Input_div">
+        <input type="password" id="FirstPassword-register" name="FirstPassword"  class="Information-input" id="FirstPassword-input" placeholder="Password" maxlength="24"  )>
+        <p id="FirstPassword-result" class="result" style="top: 105px;">*</p>
+    </div>
+
+    <div class="Input_div">
+        <input type="password" id="SecondPassword-register" name="SecondPassword" class="Information-input" id="SecondPassword-input" placeholder="Confirm Password" maxlength="24" )>
+        <p id="SecondPassword-result" class="result" style="top: 175px;">*</p>
+    </div>
     <!--        <div id="SecondPassword-result" ></div>-->
     <div>
         <form action="" method="get">
@@ -36,18 +45,31 @@
 <div class="LogoDiv"></div>
 
     <div id="HomeCustomerDiv" class="RegisterDiv" style="display: none; top: 175%">
-        <div class="Input_div" style="margin: 11px"><input type="text" id="HomeCustomer_Age" name="HomeCustomerDiv_Age" class="Information-input" placeholder="Age"  )></div>
-        <!--        <div id="UserName-result" >An email address is required</div>-->
-        <div class="Input_div" style="margin: 11px"><input type="text" id="HomeCustomer_Gender" name="HomeCustomer_Gender"  class="Information-input" placeholder="Gender" maxlength="24"  )></div>
-        <!--        <div id="Password-result" ></div>-->
-        <div class="Input_div" style="margin: 11px"><input type="text" id="HomeCustomer_Address" name="HomeCustomer_Address" class="Information-input"  placeholder="Address"  )></div>
-        <!--        <div id="SecondPassword-result" ></div>-->
-        <div class="Input_div" style="margin: 11px"><input type="text" id="HomeCustomer_Marriage" name="HomeCustomer_Marriage" class="Information-input"  placeholder="Marriage Status"  )></div>
-        <!--        <div id="SecondPassword-result" ></div>-->
-        <div class="Input_div" style="margin: 11px"><input type="number" id="HomeCustomer_Income" name="HomeCustomer_Income" class="Information-input"  placeholder="Income"  )></div>
-        <!--        <div id="SecondPassword-result" ></div>-->
-        <div class="Input_div" style="margin: 11px"><input type="number" id="HomeCustomer_Account" name="HomeCustomer_Account" class="Information-input"  placeholder="Account"  )></div>
-        <!--        <div id="SecondPassword-result" ></div>-->
+        <div class="Input_div" style="margin: 11px">
+            <input type="text" id="HomeCustomer_Age" name="HomeCustomerDiv_Age" class="Information-input" placeholder="Age"  )>
+            <p id="HomeCustomer_Age-result" class="result" style="top: 10px;">*</p>
+        </div>
+        <div class="Input_div" style="margin: 11px">
+            <input type="text" id="HomeCustomer_Gender" name="HomeCustomer_Gender"  class="Information-input" placeholder="Gender" maxlength="24"  )>
+            <p id="HomeCustomer_Gender-result" class="result" style="top: 65px;">*</p>
+        </div>
+        <div class="Input_div" style="margin: 11px">
+            <input type="text" id="HomeCustomer_Address" name="HomeCustomer_Address" class="Information-input"  placeholder="Address"  )>
+            <p id="HomeCustomer_Address-result" class="result" style="top: 120px;">*</p>
+        </div>
+        <div class="Input_div" style="margin: 11px">
+            <input type="text" id="HomeCustomer_Marriage" name="HomeCustomer_Marriage" class="Information-input"  placeholder="Marriage Status"  )>
+            <p id="HomeCustomer_Marriage-result" class="result" style="top: 175px;">*</p>
+        </div>
+        <div class="Input_div" style="margin: 11px">
+            <input type="number" id="HomeCustomer_Income" name="HomeCustomer_Income" class="Information-input"  placeholder="Income"  )>
+            <p id="HomeCustomer_Income-result" class="result" style="top: 230px;">*</p>
+        </div>
+        <div class="Input_div" style="margin: 11px">
+            <input type="number" id="HomeCustomer_Account" name="HomeCustomer_Account" class="Information-input"  placeholder="Account"  )>
+            <p id="HomeCustomer_Account-result" class="result" style="top: 285px;">*</p>
+        </div>
+
 
     <button id="HomeCustomer-submit" class="Information-submit" style="display: none" onclick="NewHomeCustomer()">Sign up</button>
     </div>
