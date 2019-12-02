@@ -30,13 +30,14 @@ public class SalespersonController {
     @PostMapping(path = "/register")
     public @ResponseBody
     Salesperson register(@RequestParam String name, @RequestParam String password, @RequestParam String email,
-                    @RequestParam String title, @RequestParam int salary){
+                    @RequestParam String title, @RequestParam int store_id,@RequestParam int salary){
         if (salespersonService.findByName(name) != null) return null;
         Salesperson person = new Salesperson();
         person.setName(name);
         person.setPassword(password);
         person.setEmail(email);
         person.setTitle(title);
+        person.setStoreId(store_id);
         person.setSalary(salary);
         salespersonService.save(person);
         return person;
