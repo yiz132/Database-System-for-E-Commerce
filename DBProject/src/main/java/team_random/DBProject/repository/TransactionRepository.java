@@ -22,7 +22,7 @@ public interface TransactionRepository extends JpaRepository<Transaction, Intege
     Map<String,Integer> groupTransByName();
 
     @Query(value = "SELECT DISTINCT p.name,sum(t.num*p.price) FROM transactions t, products p " +
-            "WHERE t.pid = p.id group by p.name ORDER BY sum(t.num*p.price)")
+            "WHERE t.pid = p.id group by p.name ORDER BY sum(t.num*p.price)",nativeQuery = true)
     Map<String,Integer> sortTransByProfits();
 
     @Query(value = "SELECT p.name,sum(t.num) FROM transactions t, products p, salespersons sp, stores s " +

@@ -15,8 +15,7 @@ import java.util.Map;
 public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepository productRepository;
-    @Autowired
-    private TransactionRepository transactionRepository;
+
     @Override
     public void save(Product product) {
         productRepository.save(product);
