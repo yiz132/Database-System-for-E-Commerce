@@ -6,9 +6,11 @@ import org.springframework.web.bind.annotation.*;
 import org.w3c.dom.Text;
 import team_random.DBProject.model.Product;
 import team_random.DBProject.model.Salesperson;
+import team_random.DBProject.model.Store;
 import team_random.DBProject.model.Transaction;
 import team_random.DBProject.service.ProductService;
 import team_random.DBProject.service.SalespersonService;
+import team_random.DBProject.service.StoreService;
 import team_random.DBProject.service.TransactionService;
 
 import java.io.File;
@@ -22,16 +24,18 @@ import java.util.List;
 public class SalespersonController {
     @Autowired
     private ProductService productService;
-    @Autowired
-    private TransactionService transactionService;
+
     @Autowired
     private SalespersonService salespersonService;
+    @Autowired
+    private StoreService storeService;
 
     @PostMapping(path = "/register")
     public @ResponseBody
     Salesperson register(@RequestParam String name, @RequestParam String password, @RequestParam String email,
                     @RequestParam String title, @RequestParam int store_id,@RequestParam int salary){
         if (salespersonService.findByName(name) != null) return null;
+        if (storeService.findById(store_id) == null) return null;
         Salesperson person = new Salesperson();
         person.setName(name);
         person.setPassword(password);
@@ -39,6 +43,8 @@ public class SalespersonController {
         person.setTitle(title);
         person.setStoreId(store_id);
         person.setSalary(salary);
+        Store curr = storeService.findById(store_id);
+        curr.setNum_salesperson(curr.getNum_salesperson()+1);
         salespersonService.save(person);
         return person;
     }
