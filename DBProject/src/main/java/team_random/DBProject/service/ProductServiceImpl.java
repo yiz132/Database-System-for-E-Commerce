@@ -65,7 +65,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> roughSearch(String input) {
-        return productRepository.findProductByNameStartingWith(input);
+        return productRepository.findProductByNameContains(input);
     }
 
     public static void main(String[] args){
