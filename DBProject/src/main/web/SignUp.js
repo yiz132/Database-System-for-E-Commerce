@@ -128,7 +128,6 @@ function NewHomeCustomer(){
             marriage_status: marriage_status,
             income: income,
             account: account
-
         },
         dataType: "json",
         success: function(msg){
@@ -180,6 +179,7 @@ function NewSalesPerson(){
     var password = $('#SecondPassword-register').val();
     var role = "SalesPerson";
     var email = $('#Salesperson_Email').val();
+    console.log(email);
     var job_title = $('#SalesPerson_JobTitle').val();
     var salary = $('#SalesPerson_Salary').val();
 

@@ -35,8 +35,9 @@ public class HomeCustomerController {
     @PostMapping(path = "/register")
     public @ResponseBody
     HomeCustomer addNewUser(@RequestParam String name, @RequestParam String password,
-                      @RequestParam(required = false) String address,@RequestParam(required = false) String marriage_status,
-    @RequestParam(required = false) int age,@RequestParam(required = false) String gender, @RequestParam(required = false) int income){
+                            @RequestParam(required = false) String address,@RequestParam(required = false) String marriage_status,
+                            @RequestParam(required = false) int age,@RequestParam(required = false) String gender,
+                            @RequestParam(required = false) int income, @RequestParam(required = false) int account){
         if (homeCustomerService.findByName(name) != null) return null;
         HomeCustomer customer = new HomeCustomer();
         customer.setName(name);
@@ -46,6 +47,7 @@ public class HomeCustomerController {
         customer.setAge(age);
         customer.setGender(gender);
         customer.setIncome(income);
+        customer.setAccount(account);
         homeCustomerService.save(customer);
         return customer;
     }

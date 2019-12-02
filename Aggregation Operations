@@ -5,7 +5,7 @@
 
 
 select P.name,sum(number),sum(number)*price AS profit
-from  `transact`T, `product`P
+from  `transacttions`T, `products`P
 where T.product_id=P.id 
 GROUP BY P.name
 
