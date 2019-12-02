@@ -59,6 +59,24 @@ function Detail() {
         document.getElementById("LogoDivBottom").style.display="block";;
         $("html,body").animate({scrollTop:"1000" + "px"}, 500);
 
+        var Url="http://localhost:8080/dbproject/aggregation/showallstores";
+        $.ajax({
+            type: "get",
+            url: Url,
+            dataType: "json",
+            success: function(msg) {
+                var data=eval(msg);
+                var str = JSON.stringify(data);
+                var store = JSON.parse(str);
+                alert(store);
+
+            },
+            error: function (request, status, error) {
+                //alert(request.responseText);
+
+            }
+        });
+
     }
     else if(role == 'StoreManager'){
         document.getElementById("HomeCustomerDiv").style.display="none";

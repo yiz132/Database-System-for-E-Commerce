@@ -144,3 +144,13 @@ body, html {
     left: 415px;
     color: red;
 }
+
+.SortDiv{
+    width: 216px;
+    height: 42px;
+    font-size: 15px;
+    padding-left: 10px;
+    color: dimgrey;
+    outline: none;
+    border: 1px solid lightpink;
+}

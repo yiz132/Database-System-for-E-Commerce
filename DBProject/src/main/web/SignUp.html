@@ -103,23 +103,27 @@
 
 <div id="SalesPersonDiv" class="RegisterDiv" style="display: none; top: 175%">
 
-    <div class="Input_div" style="margin: 40px">
+    <div class="Input_div" style="margin: 30px">
         <input type="email" id="SalesPerson_Email" name="SalesPerson_Email"  class="Information-input" placeholder="salesperson@company.com"  )>
-        <p id="SalesPerson_Email-result" class="result" style="top: 40px;">*</p>
+        <p id="SalesPerson_Email-result" class="result" style="top: 30px;">*</p>
     </div>
 
-    <div class="Input_div" style="margin: 40px">
+    <div class="Input_div" style="margin: 30px">
         <input type="text" id="SalesPerson_JobTitle" name="SalesPerson_JobTitle" class="Information-input"  placeholder="Job Title"  )>
-        <p id="SalesPerson_JobTitle-result" class="result" style="top: 125px;">*</p>
+        <p id="SalesPerson_JobTitle-result" class="result" style="top: 105px;">*</p>
     </div>
 
-    <div class="Input_div" style="margin: 40px">
+    <div class="Input_div" style="margin: 30px">
         <input type="number" id="SalesPerson_Salary" name="SalesPerson_Salary" class="Information-input"  placeholder="Salary"  )>
-        <p id="SalesPerson_Salary-result" class="result" style="top: 210px;">*</p>
+        <p id="SalesPerson_Salary-result" class="result" style="top: 180px;">*</p>
+    </div>
+    <div class="Input_div" style="margin: 30px">
+    <select id="Store" name="Sort" onchange="SortChange()" class="SortDiv">
+        <option value ="SortBy" >SORT BY</option>
+    </select>
     </div>
 
-
-    <button id="SalesPerson-submit" class="Information-submit" style="display: none" onclick="NewSalesPerson()">Sign up</button>
+    <button id="SalesPerson-submit" class="Information-submit" style="display: none;" onclick="NewSalesPerson()">Sign up</button>
 </div>
 
 <div id="StoreManagerDiv" class="RegisterDiv" style="display: none; top: 175%">
