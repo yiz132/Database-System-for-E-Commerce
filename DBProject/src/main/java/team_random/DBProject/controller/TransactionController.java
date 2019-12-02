@@ -60,10 +60,10 @@ public class TransactionController {
         return productService.showAllProducts();
     }
 
-    @PostMapping(path ="/prefixsearch")
+    @PostMapping(path ="/roughsearch")
     public @ResponseBody
-    List<Product> prefixSearch(@RequestParam String prefix){
-        return productService.prefixSearch(prefix);
+    List<Product> prefixSearch(@RequestParam String input){
+        return productService.roughSearch(input);
     }
 
     //Group products by transactions by different category

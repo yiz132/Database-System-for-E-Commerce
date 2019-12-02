@@ -14,5 +14,5 @@ public interface ProductService {
     Map<String, List<Product>> groupByCategory();
     Map<String,Integer> groupByName();
     List<Product> showAllProducts();
-    List<Product> prefixSearch(String prefix);
+    List<Product> roughSearch(String input);
 }

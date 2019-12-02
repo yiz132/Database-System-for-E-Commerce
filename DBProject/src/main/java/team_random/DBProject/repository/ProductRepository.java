@@ -21,5 +21,5 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
     @Query(value = "SELECT * FROM products ", nativeQuery = true)
     List<Product> findAllProducts();
 
-    List<Product> findProductByNameStartingWith(String prefix);
+    List<Product> findProductByNameContains(String input);
 }

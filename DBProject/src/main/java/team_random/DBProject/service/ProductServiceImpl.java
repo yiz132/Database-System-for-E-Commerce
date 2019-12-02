@@ -64,8 +64,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> prefixSearch(String prefix) {
-        return productRepository.findProductByNameStartingWith(prefix);
+    public List<Product> roughSearch(String input) {
+        return productRepository.findProductByNameStartingWith(input);
     }
 
     public static void main(String[] args){
