@@ -12,9 +12,14 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
     Product findByName(String name);
     Product findById(int id);
     List<Product> findByCategory(String category);
+
     @Query(value = "SELECT DISTINCT category FROM products ",nativeQuery = true)
     List<String> findAllCategories();
+
     void deleteByName(String name);
+
     @Query(value = "SELECT * FROM products ", nativeQuery = true)
     List<Product> findAllProducts();
+
+    List<Product> findProductByNameStartingWith(String prefix);
 }

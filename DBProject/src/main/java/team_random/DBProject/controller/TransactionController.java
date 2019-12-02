@@ -54,10 +54,16 @@ public class TransactionController {
         return "Successfully purchased";
     }
 
-    @PostMapping(path = "/showAllProducts")
+    @PostMapping(path = "/showallproducts")
     public @ResponseBody
     List<Product> showAllProducts(){
         return productService.showAllProducts();
+    }
+
+    @PostMapping(path ="/prefixsearch")
+    public @ResponseBody
+    List<Product> prefixSearch(@RequestParam String prefix){
+        return productService.prefixSearch(prefix);
     }
 
     //Group products by transactions by different category

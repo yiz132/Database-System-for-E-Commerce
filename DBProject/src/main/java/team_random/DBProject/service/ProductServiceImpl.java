@@ -63,6 +63,11 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAllProducts();
     }
 
+    @Override
+    public List<Product> prefixSearch(String prefix) {
+        return productRepository.findProductByNameStartingWith(prefix);
+    }
+
     public static void main(String[] args){
         ProductServiceImpl productService = new ProductServiceImpl();
         Map<String,List<Product>> map = productService.groupByCategory();
