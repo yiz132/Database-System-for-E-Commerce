@@ -3,10 +3,15 @@ package team_random.DBProject.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import team_random.DBProject.model.BusinessCustomer;
 import team_random.DBProject.model.HomeCustomer;
 import team_random.DBProject.model.Product;
+import team_random.DBProject.model.Transaction;
 import team_random.DBProject.service.HomeCustomerService;
 import team_random.DBProject.service.ProductService;
+import team_random.DBProject.service.TransactionService;
+
+import java.util.Date;
 
 @CrossOrigin
 @Controller
@@ -18,6 +23,9 @@ public class HomeCustomerController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private TransactionService transactionService;
 
     @PostMapping(path = "/register")
     public @ResponseBody
@@ -53,5 +61,25 @@ public class HomeCustomerController {
     public @ResponseBody
     Product searchProduct(@RequestParam String name){
         return productService.findByName(name);
+    }
+
+    @PostMapping(path = "/checkout")
+    public @ResponseBody String checkout(@RequestParam int product_id, @RequestParam int customer_id,@RequestParam int counts){
+        Product product = productService.findById(product_id);
+        int inventory = product.getInventory();
+        if (inventory < counts) return "Inventory is not enough, only "+inventory+" remains";
+        if (inventory == counts) productService.deleteById(product_id);
+        int total_price = product.getPrice()*counts;
+        HomeCustomer customer = homeCustomerService.findById(customer_id);
+        int rem = customer.getAccount();
+        if (rem < total_price) return "Account balance not enough";
+        customer.setAccount(rem-total_price);
+        Transaction transaction = new Transaction();
+        transaction.setCustomerId(customer_id);
+        Date date = new Date();
+        transaction.setDate(date);
+        transaction.setCustomerId(counts);
+        transactionService.save(transaction);
+        return "Successfully purchased";
     }
 }

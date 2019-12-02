@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import team_random.DBProject.model.Store;
 import team_random.DBProject.repository.StoreRepository;
 
+import java.util.List;
+
 @Service
 public class StoreServiceImpl implements StoreService {
     @Autowired
@@ -17,5 +19,10 @@ public class StoreServiceImpl implements StoreService {
     @Override
     public Store findById(int id) {
         return storeRepository.findById(id);
+    }
+
+    @Override
+    public List<String> findAllNames() {
+        return storeRepository.findAllNames();
     }
 }
