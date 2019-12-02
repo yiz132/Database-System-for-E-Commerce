@@ -78,4 +78,5 @@ public class StoreManager {
     public String getStoreRegion(){
         return storeRegion;
     }
+
 }

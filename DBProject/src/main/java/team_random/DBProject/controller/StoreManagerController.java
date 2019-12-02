@@ -1,13 +1,11 @@
 package team_random.DBProject.controller;
-//https://docs.google.com/document/d/1q0CpZjR2gYz71Hww8ACHI5_CZ5j5N8DrCnI5Ye4E2yg/edit?ts=5dd85412
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import team_random.DBProject.model.Store;
 import team_random.DBProject.model.StoreManager;
 import team_random.DBProject.model.Transaction;
-import team_random.DBProject.service.ProductService;
-import team_random.DBProject.service.StoreManagerService;
-import team_random.DBProject.service.TransactionService;
+import team_random.DBProject.service.*;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -19,9 +17,9 @@ public class StoreManagerController {
     @Autowired
     private StoreManagerService storeManagerService;
     @Autowired
-    private ProductService productService;
+    private StoreService storeService;
     @Autowired
-    private TransactionService transactionService;
+    private RegionService regionService;
 
     @PostMapping(path = "/register")
     public @ResponseBody
@@ -29,6 +27,8 @@ public class StoreManagerController {
                     @RequestParam int salary, @RequestParam String store_name,
                     @RequestParam String store_address, @RequestParam String store_region){
         if (storeManagerService.findByName(name) != null) return null;
+        //if store_region is invalid
+        if (regionService.findByName(store_region) == null) return null;
         StoreManager storeManager = new StoreManager();
         storeManager.setName(name);
         storeManager.setPassword(password);
@@ -38,6 +38,12 @@ public class StoreManagerController {
         storeManager.setStoreAddress(store_address);
         storeManager.setStoreRegion(store_region);
         storeManagerService.save(storeManager);
+        Store store = new Store();
+        store.setNum_salesperson(0);
+        store.setAddress(store_address);
+        store.setManager_id(storeManager.getId());
+        store.setRegionId(regionService.findByName(store_region).getId());
+        storeService.save(store);
         return storeManager;
     }
 

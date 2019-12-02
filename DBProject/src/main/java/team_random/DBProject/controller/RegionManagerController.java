@@ -8,6 +8,7 @@ import team_random.DBProject.model.RegionManager;
 import team_random.DBProject.model.Transaction;
 import team_random.DBProject.service.ProductService;
 import team_random.DBProject.service.RegionManagerService;
+import team_random.DBProject.service.RegionService;
 import team_random.DBProject.service.TransactionService;
 
 import java.util.List;
@@ -19,9 +20,7 @@ public class RegionManagerController {
     @Autowired
     private RegionManagerService regionManagerService;
     @Autowired
-    private ProductService productService;
-    @Autowired
-    private TransactionService transactionService;
+    private RegionService regionService;
 
     @PostMapping(path = "/register")
     public @ResponseBody
@@ -35,6 +34,11 @@ public class RegionManagerController {
         mana.setSalary(salary);
         mana.setRegion_name(region_name);
         regionManagerService.save(mana);
+        //one region manager to one region
+        Region region= new Region();
+        region.setManager_id(mana.getId());
+        region.setName(region_name);
+        regionService.save(region);
         return mana;
     }
 

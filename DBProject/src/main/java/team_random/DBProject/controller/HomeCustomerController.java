@@ -1,22 +1,12 @@
 package team_random.DBProject.controller;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import org.hibernate.mapping.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import team_random.DBProject.model.HomeCustomer;
 import team_random.DBProject.model.Product;
-import team_random.DBProject.model.Transaction;
 import team_random.DBProject.service.HomeCustomerService;
 import team_random.DBProject.service.ProductService;
-import team_random.DBProject.service.TransactionService;
-
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-
-import static org.springframework.data.repository.init.ResourceReader.Type.JSON;
 
 @CrossOrigin
 @Controller
@@ -28,9 +18,6 @@ public class HomeCustomerController {
 
     @Autowired
     private ProductService productService;
-
-    @Autowired
-    private TransactionService transactionService;
 
     @PostMapping(path = "/register")
     public @ResponseBody

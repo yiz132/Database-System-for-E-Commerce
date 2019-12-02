@@ -20,4 +20,9 @@ public class BusinessCustomerServiceImpl implements BusinessCustomerService{
     public BusinessCustomer findByName(String name) {
         return businessCustomerRepository.findByName(name);
     }
+
+    @Override
+    public BusinessCustomer findById(int id) {
+        return businessCustomerRepository.findById(id);
+    }
 }
