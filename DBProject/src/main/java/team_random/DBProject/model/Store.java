@@ -11,14 +11,22 @@ public class Store {
     @Id
     @GeneratedValue
     private int id;
+    private String name;
     private int rid; //region id;
     private String address;
     private int num_salesperson;
     private int manager_id;
 
-
     public int getId(){
         return this.id;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public String getName(){
+        return name;
     }
 
     public void setRegionId(int rid){

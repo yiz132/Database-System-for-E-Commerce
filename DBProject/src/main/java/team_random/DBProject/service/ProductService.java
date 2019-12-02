@@ -12,7 +12,6 @@ public interface ProductService {
     void deleteByName(String name);
     void deleteById(int id);
     Map<String, List<Product>> groupByCategory();
-    Map<String,Integer> groupByName();
     List<Product> showAllProducts();
     List<Product> roughSearch(String input);
 }

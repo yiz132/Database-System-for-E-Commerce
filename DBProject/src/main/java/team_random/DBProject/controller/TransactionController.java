@@ -25,7 +25,13 @@ public class TransactionController {
     @Autowired
     private StoreService storeService;
 
-    @PostMapping(path = "/showallproducts")
+    @GetMapping(path = "/showallstores")
+    public @ResponseBody
+    List<String> showAllStore(){
+        return storeService.findAllNames();
+    }
+
+    @GetMapping(path = "/showallproducts")
     public @ResponseBody
     List<Product> showAllProducts(){
         return productService.showAllProducts();
@@ -38,7 +44,7 @@ public class TransactionController {
     }
 
     //Group products by transactions by different category
-    @GetMapping(path = "/groupbycategory")
+    @GetMapping(path = "/groupbycategory/all")
     public @ResponseBody
     Map<String,List<Product>> groupByCategory(){
         return productService.groupByCategory();
@@ -46,15 +52,45 @@ public class TransactionController {
     }
 
     //Sort products by selling amount of each product
-    @PostMapping(path = "/groupbyname")
+    @GetMapping(path = "/sortbysales/all")
     public @ResponseBody
-    Map<String,Integer> groupBySale(){
-        return productService.groupByName();
+    Map<String,Integer> sortBySalesAll(){
+        return transactionService.sortBySalesAll();
     }
 
-    @PostMapping(path = "/showAllStores")
+    //Sort products by total profits of each product
+    @GetMapping(path = "/sortbyprofits/all")
     public @ResponseBody
-    List<String> showAllStore(){
-        return storeService.findAllNames();
+    Map<String,Integer> sortByProfitsAll(){
+        return transactionService.sortByProfitsAll();
     }
+
+    //sort transactions by sales in a region
+    //return product_name to sales
+    @GetMapping(path ="/sortbysales/region")
+    public @ResponseBody
+    Map<String,Integer> sortBySalesInRegion(@RequestParam int region_id){
+        return transactionService.sortBySalesInRegion(region_id);
+    }
+
+    //sort transactions by profits in a region
+    @GetMapping(path = "/sortbyprofits/region")
+    public @ResponseBody
+    Map<String,Integer> sortByProfitsInRegion(@RequestParam int region_id){
+        return transactionService.sortByProfitsInRegion(region_id);
+    }
+
+    //sort transactions by sales in a store
+    @GetMapping(path ="/sortbysales/store")
+    public @ResponseBody
+    Map<String,Integer> sortBySalesInStore(@RequestParam int store_id){
+        return transactionService.sortBySalesInStore(store_id);
+    }
+
+    //sort transactions by profits in a store
+    @GetMapping(path = "/sortbyprofits/store")
+    Map<String,Integer> sortByProfitsInStore(@RequestParam int store_id){
+        return transactionService.sortByProfitsInStore(store_id);
+    }
+
 }

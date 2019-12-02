@@ -54,11 +54,6 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Map<String,Integer> groupByName() {
-        return transactionRepository.groupTransByName();
-    }
-
-    @Override
     public List<Product> showAllProducts() {
         return productRepository.findAllProducts();
     }

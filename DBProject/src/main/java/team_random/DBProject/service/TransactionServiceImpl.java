@@ -6,6 +6,8 @@ import team_random.DBProject.model.Transaction;
 import team_random.DBProject.repository.TransactionRepository;
 
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 @Service
 public class TransactionServiceImpl implements TransactionService {
@@ -19,5 +21,35 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public Transaction findById(int id) {
         return transactionRepository.findById(id);
+    }
+
+    @Override
+    public Map<String, Integer> sortBySalesAll() {
+        return transactionRepository.groupTransByName();
+    }
+
+    @Override
+    public Map<String, Integer> sortByProfitsAll() {
+        return transactionRepository.sortTransByProfits();
+    }
+
+    @Override
+    public Map<String,Integer> sortBySalesInRegion(int region_id) {
+        return transactionRepository.groupTransByNameInRegion(region_id);
+    }
+
+    @Override
+    public Map<String, Integer> sortByProfitsInRegion(int region_id) {
+        return transactionRepository.sortTransByProfitsInRegion(region_id);
+    }
+
+    @Override
+    public Map<String, Integer> sortBySalesInStore(int store_id) {
+        return transactionRepository.groupTransByNameInStore(store_id);
+    }
+
+    @Override
+    public Map<String, Integer> sortByProfitsInStore(int store_id) {
+        return transactionRepository.sortTransByProfitsInStore(store_id);
     }
 }
