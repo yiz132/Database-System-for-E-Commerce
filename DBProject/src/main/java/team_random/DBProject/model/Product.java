@@ -20,6 +20,7 @@ public class Product {
     private int inventory;
     private String description;
     private String picture; //picture
+    private int salesperson_id;
 
     public int getId(){
         return id;
@@ -71,6 +72,14 @@ public class Product {
 
     public String getPicture(){
         return picture;
+    }
+
+    public void setSalesperson_id(int spid){
+        salesperson_id = spid;
+    }
+
+    public int getSalesperson_id(){
+        return salesperson_id;
     }
 
     public String toString(){

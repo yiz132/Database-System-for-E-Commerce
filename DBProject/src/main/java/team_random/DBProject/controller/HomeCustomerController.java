@@ -31,17 +31,7 @@ public class HomeCustomerController {
 
     @Autowired
     private TransactionService transactionService;
-/*
-    @PostMapping(path = "/register")
-    public @ResponseBody
-    String addNewUser(@RequestParam String name, @RequestParam String password){
-        HomeCustomer customer = new HomeCustomer();
-        customer.setName(name);
-        customer.setPassword(password);
-        homeCustomerService.save(customer);
-        return "Saved";
-    }
- */
+
     @PostMapping(path = "/register")
     public @ResponseBody
     HomeCustomer addNewUser(@RequestParam String name, @RequestParam String password,
@@ -59,17 +49,7 @@ public class HomeCustomerController {
         homeCustomerService.save(customer);
         return customer;
     }
-/*
-    @PostMapping(path = "/signin")
-    public @ResponseBody String signin(@RequestParam String name,@RequestParam String password){
-        HomeCustomer homeCustomer = homeCustomerService.findByName(name);
-        if (homeCustomer == null) return "Invalid name or password";
-        String password_record = homeCustomer.getPassword();
-        if (!password.equals(password_record)) return "Invalid name or password";
-        return "signed in";
-    }
 
- */
     @PostMapping(path = "/signin")
     public @ResponseBody
     HomeCustomer signin(@RequestParam String name, @RequestParam String password){
@@ -85,21 +65,4 @@ public class HomeCustomerController {
     Product searchProduct(@RequestParam String name){
         return productService.findByName(name);
     }
-
-    @PostMapping(path = "/product/checkout")
-    public @ResponseBody String checkout(@RequestParam int id, @RequestParam int customer_id,@RequestParam int counts){
-        Product product = productService.findById(id);
-        int inventory = product.getInventory();
-        if (inventory < counts) return "Inventory is not enough, only "+inventory+" remains";
-        Transaction transaction = new Transaction();
-        transaction.setCustomerId(customer_id);
-        Date date = new Date();
-        transaction.setDate(date);
-        transaction.setCustomerId(counts);
-        transactionService.save(transaction);
-        return "Successfully purchased";
-    }
-
-
-
 }
