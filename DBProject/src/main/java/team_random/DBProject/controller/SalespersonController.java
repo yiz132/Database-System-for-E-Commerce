@@ -33,18 +33,20 @@ public class SalespersonController {
     @PostMapping(path = "/register")
     public @ResponseBody
     Salesperson register(@RequestParam String name, @RequestParam String password, @RequestParam String email,
-                    @RequestParam String title, @RequestParam int store_id,@RequestParam int salary){
+                    @RequestParam String title, @RequestParam(required = false) Integer store_id,@RequestParam int salary){
         if (salespersonService.findByName(name) != null) return null;
-        if (storeService.findById(store_id) == null) return null;
         Salesperson person = new Salesperson();
         person.setName(name);
         person.setPassword(password);
         person.setEmail(email);
         person.setTitle(title);
-        person.setStoreId(store_id);
+        if (store_id != null) {
+            if (storeService.findById(store_id) == null) return null;
+            person.setStoreId(store_id);
+            Store curr = storeService.findById(store_id);
+            curr.setNum_salesperson(curr.getNum_salesperson()+1);
+        }
         person.setSalary(salary);
-        Store curr = storeService.findById(store_id);
-        curr.setNum_salesperson(curr.getNum_salesperson()+1);
         salespersonService.save(person);
         return person;
     }
@@ -60,14 +62,16 @@ public class SalespersonController {
 
     @PostMapping(path ="/addproduct")
     public @ResponseBody
-    Product addProduct(@RequestParam String name, @RequestParam int price,
-                      @RequestParam String category, @RequestParam int inventory,
+    Product addProduct(@RequestParam String name, @RequestParam Integer price,
+                      @RequestParam String category, @RequestParam Integer inventory,
+                      @RequestParam(required = false) Integer salesperson_id,
                       @RequestParam(required = false) String description,
                       @RequestParam(required = false) String picture){
         Product product = new Product();
         product.setName(name);
         product.setPrice(price);
         product.setCategory(category);
+        if (salesperson_id != null)product.setSalesperson_id(salesperson_id);
         product.setInventory(inventory);
         product.setDescription(description);
         product.setPicture(picture);

@@ -1,13 +1,16 @@
 
 
 
-//What are the aggregate sales  and profit of the products.
+//What are the aggregate sales of the products.
 
 
-select P.name,sum(number),sum(number)*price AS profit
-from  `transacttions`T, `products`P
-where T.product_id=P.id 
+select P.name,sum(num)
+from  `transactions`T, `products`P
+where T.pid=P.id 
 GROUP BY P.name
+
+
+//What are the aggregate profits of the products.
 
 
 

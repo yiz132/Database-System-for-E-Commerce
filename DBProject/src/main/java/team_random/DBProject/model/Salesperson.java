@@ -15,7 +15,6 @@ public class Salesperson {
     private String password;
     private String email;
     private String title;
-    private int pid; //product id
     private int sid; //store id
     private int salary;
 
@@ -55,13 +54,6 @@ public class Salesperson {
         return title;
     }
 
-    public void setProductId(int pid){
-        this.pid = pid;
-    }
-
-    public int getProductId(){
-        return pid;
-    }
 
     public void setStoreId(int sid){
         this.sid = sid;
