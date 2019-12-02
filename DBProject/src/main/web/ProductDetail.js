@@ -24,8 +24,8 @@ function CheckOut(){
         }
     });
 }
-var a = GetRequest();
-var stringA = JSON.stringify(a);
+var name = GetRequest();
+var stringA = JSON.stringify(name);
 alert(stringA);
 
 function GetRequest() {

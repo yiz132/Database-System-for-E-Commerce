@@ -11,9 +11,9 @@ function SearchPress() {
 
 }
 
-var name = GetRequest();
-var stringA = JSON.stringify(name);
-alert(stringA);
+// var name = GetRequest();
+// var stringA = JSON.stringify(name);
+// alert(stringA);
 
 function GetRequest() {
     var url = location.search; //获取url中"?"符后的字串
@@ -34,9 +34,9 @@ function GetRequest() {
 function SortChange(){
     //alert(document.getElementById('Sort').value);
     var sort = document.getElementById('Sort').value;
-    if(sort == 'Stores'){
-        window.location.href =  "SortByStore.html?value=" + name;
-    }
+    // if(sort == 'Stores'){
+    //     window.location.href =  "RegionManagerIndex.html?value=" + name;
+    // }
     var Url="";
     $.ajax({
         type: "post",
