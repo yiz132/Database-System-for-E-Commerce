@@ -352,7 +352,7 @@ $(document).ready(function(){
         else if (UserNameText.length > 0 && UserNameText.length <= 5) {
             $('#UserName-result').text("Username is too short");
         } else {
-            var Url = "";
+            var Url = "http://localhost:8080/dbproject/aggregation/checkregister";
             $.ajax({
                 type: "post",
                 url: Url,
