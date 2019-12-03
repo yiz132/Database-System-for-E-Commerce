@@ -8,6 +8,8 @@ import team_random.DBProject.model.Transaction;
 import team_random.DBProject.repository.StoreManagerRepository;
 import team_random.DBProject.repository.TransactionRepository;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -46,15 +48,23 @@ public class StoreManagerServiceImpl implements StoreManagerService {
      * @return
      */
     @Override
-    public List<Map<String, Object>> reviewAllByStoreManager(int store_mana_id) {
-        List<Map<String,Object>> res = storeManagerRepository.reviewAllByStoreManagerId(store_mana_id);
-        for (Map<String,Object> map : res){
-            String product_name = String.valueOf(map.get("name"));
+    public List<Map<String, String>> reviewAllByStoreManager(int store_mana_id) {
+        List<Map<String,String>> ori = storeManagerRepository.reviewAllByStoreManagerId(store_mana_id);
+        List<Map<String,String>> res = new ArrayList<>();
+        for (Map<String,String> map : ori){
+            Map<String,String> newMap = new HashMap<>();
+            String product_name = map.get("name");
+            String total_sales = String.valueOf(map.get("total_sales"));
+            String total_profits = String.valueOf(map.get("total_profits"));
             Product product = productService.findByName(product_name);
             String picture = product.getPicture();
             String inventory = String.valueOf(product.getInventory());
-            //map.put("picture",picture);
-            map.put("inventory",inventory);
+            newMap.put("name",product_name);
+            newMap.put("total_sales",total_sales);
+            newMap.put("total_profits",total_profits);
+            newMap.put("picture",picture);
+            newMap.put("inventory",inventory);
+            res.add(newMap);
         }
         return res;
     }

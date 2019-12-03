@@ -113,7 +113,7 @@ public class AggregationController {
      */
     @PostMapping(path = "/reviewall/storemanager")
     public @ResponseBody
-    List<Map<String,Object>> reviewAllByStoreManager(@RequestParam int store_manager_id){
+    List<Map<String,String>> reviewAllByStoreManager(@RequestParam int store_manager_id){
         return storeManagerService.reviewAllByStoreManager(store_manager_id);
     }
 
