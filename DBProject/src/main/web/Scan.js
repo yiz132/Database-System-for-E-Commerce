@@ -99,42 +99,37 @@ function SearchPress() {
 function SortChange(){
     //alert(document.getElementById('Sort').value);
     var sort = document.getElementById('Sort').value;
-    var Url="";
+    document.getElementById('AllProductDiv').innerHTML="";
+    var Url="http://localhost:8080/dbproject/aggregation/sortallproducts";
     $.ajax({
         type: "post",
         url: Url,
         data: {
             sort: sort,
-
         },
         dataType: "json",
         success: function(msg) {
             var data=eval(msg);
             var str = JSON.stringify(data);
-            var obj = JSON.parse(str);
-            var picture = obj.picture;
-            var name = obj.name;
-            var price = obj.price;
-            var pid = obj.id;
-            document.getElementById('AllProductDiv').innerHTML="<div id="+pid+" name=\"ProductDiv\" class=\"ProductDiv\" >\n" +
-                "    <div class=\"ProductPhotoDiv\" style=\"background-image: url("+picture+")\"></div>\n" +
-                "    <div class=\"ProductNameDiv\">"+name+"</div>\n" +
-                "    <div class=\"ProductPriceDiv\">$"+price+"</div>\n" +
-                "</div>";
+            var product = JSON.parse(str);
+            for( var i = 0; i<product.length; i++) {
+                var picture = product[i].picture;
+                var name = product[i].name;
+                var price = product[i].price;
+                var pid = product[i].id;
+                document.getElementById('AllProductDiv').innerHTML =document.getElementById('AllProductDiv').innerHTML+ "<div  name=\"ProductDiv\" class=\"ProductDiv\" onclick=\"EnterDetail("+pid+")\" >\n" +
+                    "    <div class=\"ProductPhotoDiv\" style=\"background-image: url(" + picture + ")\"></div>\n" +
+                    "    <div class=\"ProductNameDiv\">" + name + "</div>\n" +
+                    "    <div class=\"ProductPriceDiv\">$" + price + "</div>\n" +
+                    "</div>";
+            }
 
         },
         error: function (request, status, error) {
-            //alert(request.responseText);
-
         }
     });
 }
 
-
-// $(".ProductDiv").click(function (){
-//     alert(this.id);
-//     EnterUpdate(this.id);
-// });
 
 function EnterDetail(pid){
      window.location.href = "ProductDetail.html?value=" + obj.value + "&pid=" + pid;
