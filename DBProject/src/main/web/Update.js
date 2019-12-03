@@ -53,9 +53,16 @@ function OnloadProductInformation(){
     });
 }
 
-//ProductOnload();
+function UpdateProduct(){
+    if(obj.pid == 0){
+        AddProduct();
+    }
+    else{
+        CurrentProduct();
+    }
+}
 
-function UploadProduct(){
+function AddProduct(){
     var name = $('#Update_name').val();
     var price = $('#Update_price').val();
     var category = $('#Update_category').val();
@@ -67,8 +74,6 @@ function UploadProduct(){
     $.ajax({
         type: "post",
         url: Url,
-        // processData: false,
-        // contentType: false,
         data: {
             salesperson_id: obj.value,
             name: name,
@@ -85,6 +90,39 @@ function UploadProduct(){
         error: function (request, status, error) {
             //alert(request.responseText);
             //alert(1);
+
+        }
+    });
+}
+
+
+function CurrentProduct(){
+    var name = $('#Update_name').val();
+    var price = $('#Update_price').val();
+    var category = $('#Update_category').val();
+    var inventory = $('#Update_inventory').val();
+    var description = $('#Update_description').val();
+    var photoUrl = document.getElementById('PhotoUrl').value;
+    //update product
+    var Url="http://localhost:8080/dbproject/salesperson/updateproduct";
+    $.ajax({
+        type: "post",
+        url: Url,
+        data: {
+            pid: obj.pid,
+            salesperson_id: obj.value,
+            name: name,
+            price: price,
+            category: category,
+            inventory: inventory,
+            description: description,
+            picture: photoUrl
+        },
+        dataType: "json",
+        success: function(msg){
+            window.location.href =  "SalesPersonIndex.html?value=" + obj.value;
+        },
+        error: function (request, status, error) {
 
         }
     });
