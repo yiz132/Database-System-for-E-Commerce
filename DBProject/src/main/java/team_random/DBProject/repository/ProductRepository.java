@@ -23,6 +23,6 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
 
     List<Product> findProductByNameContains(String input);
 
-    @Query(value = "SELECT * FROM products WHERE products.salesperson_id = 1?",nativeQuery = true)
+    @Query(value = "SELECT * FROM products WHERE products.salesperson_id = ?1 ",nativeQuery = true)
     List<Product> findAllBySalesperson_id(int salesperson_id);
 }
