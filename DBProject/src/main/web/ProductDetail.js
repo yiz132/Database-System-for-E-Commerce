@@ -5,6 +5,7 @@ var obj = JSON.parse(stringDate);
 // alert(obj.value);
 // alert(obj.pid);
 ProductDetail();
+balanceOnload();
 function GetRequest() {
     var url = location.search; //获取url中"?"符后的字串
     var theRequest = new Object();
@@ -16,6 +17,31 @@ function GetRequest() {
         }
     }
     return theRequest;
+}
+
+function balanceOnload() {
+    $.ajax({
+        type: "post",
+        url: "",
+        data: {
+            customer_id: obj.value,
+        },
+        dataType: "text",
+        success: function(msg){
+                document.getElementById('Balance').innerText=document.getElementById('Balance').innerText+msg;
+        },
+        error: function (request, status, error) {
+        }
+    });
+}
+
+function CancelCheckOut() {
+    window.location.href =  "Scan.html?value=" + obj.value;
+}
+
+function LogOut() {
+
+    window.location.href = "SignIn.html";
 }
 
 function CheckOut(){
