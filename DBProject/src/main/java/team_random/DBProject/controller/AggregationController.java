@@ -106,10 +106,14 @@ public class AggregationController {
     }
 
 
-
+    /**
+     *
+     * @param store_manager_id
+     * @return list of map(name,sales, total profits ,inventory, picture
+     */
     @PostMapping(path = "/reviewall/storemanager")
     public @ResponseBody
-    List<Map<String,String>> reviewAllByStoreManager(@RequestParam int store_manager_id){
+    List<Map<String,Object>> reviewAllByStoreManager(@RequestParam int store_manager_id){
         return storeManagerService.reviewAllByStoreManager(store_manager_id);
     }
 
@@ -142,7 +146,6 @@ public class AggregationController {
         transactionService.save(transaction);
         product.setInventory((inventory-counts));
         productService.save(product);
-        if (inventory == counts) productService.deleteById(product_id);
         return String.valueOf(customer_id);
     }
 

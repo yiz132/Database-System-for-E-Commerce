@@ -2,6 +2,7 @@ package team_random.DBProject.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import team_random.DBProject.model.Product;
 import team_random.DBProject.model.StoreManager;
 import team_random.DBProject.model.Transaction;
 import team_random.DBProject.repository.StoreManagerRepository;
@@ -16,6 +17,8 @@ public class StoreManagerServiceImpl implements StoreManagerService {
     StoreManagerRepository storeManagerRepository;
     @Autowired
     TransactionRepository transactionRepository;
+    @Autowired
+    ProductService productService;
 
     @Override
     public void save(StoreManager manager) {
@@ -37,9 +40,23 @@ public class StoreManagerServiceImpl implements StoreManagerService {
         return transactionRepository.findByStoreId(storeId);
     }
 
+    /**
+     *
+     * @param store_mana_id
+     * @return
+     */
     @Override
-    public List<Map<String, String>> reviewAllByStoreManager(int store_mana_id) {
-        return storeManagerRepository.reviewAllByStoreManagerId(store_mana_id);
+    public List<Map<String, Object>> reviewAllByStoreManager(int store_mana_id) {
+        List<Map<String,Object>> res = storeManagerRepository.reviewAllByStoreManagerId(store_mana_id);
+        for (Map<String,Object> map : res){
+            String product_name = String.valueOf(map.get("name"));
+            Product product = productService.findByName(product_name);
+            String picture = product.getPicture();
+            String inventory = String.valueOf(product.getInventory());
+            //map.put("picture",picture);
+            map.put("inventory",inventory);
+        }
+        return res;
     }
 
     public static void main(String[] args){

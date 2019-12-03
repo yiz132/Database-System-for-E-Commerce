@@ -10,7 +10,13 @@ import java.util.Map;
 public interface StoreManagerRepository  extends CrudRepository<StoreManager, Integer> {
     StoreManager findByName(String name);
     StoreManager findById(int id);
-    @Query(value = "SELECT p.name,p.price,sum(t.num),sum(t.num*p.price),inventory FROM store_managers sm,stores s,salespersons sp,products p, transactions t " +
-            "where sm.id=?1 AND sm.store_name=s.name AND sp.sid=s.id AND p.salesperson_id=sp.id AND t.pid = p.id GROUP BY p.name ",nativeQuery = true)
-    List<Map<String,String>> reviewAllByStoreManagerId(int store_mana_id);
+
+    /**
+     *
+     * @param store_mana_id
+     * @return product name, sum of sales of each product, sum of profits of each product
+     */
+    @Query(value = "SELECT p.name,sum(t.num),sum(t.num*p.price) FROM store_managers sm,stores s,salespersons sp,products p, transactions t where sm.id = ?1 AND sm.store_name=s.name AND sp.sid=s.id AND p.salesperson_id=sp.id AND t.pid = p.id GROUP BY p.name ",nativeQuery = true)
+    List<Map<String,Object>> reviewAllByStoreManagerId(int store_mana_id);
+
 }
