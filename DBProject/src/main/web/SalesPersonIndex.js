@@ -29,17 +29,19 @@ function  ProductOnload() {
             var data=eval(msg);
             var str = JSON.stringify(data);
             var product = JSON.parse(str);
-            alert(product[0]);
-            // var picture = product.picture;
-            // var name = product.name;
-            // var price = product.price;
-            // var stock = product.stock;
-            // document.getElementById('ListTable').innerText =document.getElementById('ListTable').innerText + " <tr>\n" +
-            //     "        <td style=\"width: 90px;background-image: url("+picture+"); background-size: cover\"></td>\n" +
-            //     "        <td>"+name+"</td>\n" +
-            //     "        <td>"+price+"</td>\n" +
-            //     "        <td>"+stock+"</td>\n" +
-            //     "    </tr>";
+            //alert(product[0].id);
+            for( var i = 0; i<product.length; i++){
+                var picture = product[i].picture;
+                var name = product[i].name;
+                var price = product[i].price;
+                var inventory = product[i].inventory;
+                document.getElementById('ListTable').innerHTML =document.getElementById('ListTable').innerHTML + " <tr>\n" +
+                    "        <td style=\"width: 90px;background-image: url("+picture+"); background-size: cover\"></td>\n" +
+                    "        <td>"+name+"</td>\n" +
+                    "        <td>"+price+"</td>\n" +
+                    "        <td>"+inventory+"</td>\n" +
+                    "    </tr>";}
+
 
         },
         error: function (request, status, error) {
