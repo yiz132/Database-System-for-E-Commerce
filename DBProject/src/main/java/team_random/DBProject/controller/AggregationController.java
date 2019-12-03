@@ -38,7 +38,7 @@ public class AggregationController {
     String checkRegister(@RequestParam(required = false) String input){
         if (businessCustomerService.findByName(input) != null || homeCustomerService.findByName(input) != null
             || salespersonService.findByName(input) != null|| storeManagerService.findByName(input) != null ||
-                regionService.findByName(input) != null) return input;
+                regionManagerService.findByName(input) != null) return input;
         return null;
     }
 
