@@ -86,7 +86,7 @@ public class SalespersonController {
         Product product = productService.findById(pid);
         productService.deleteById(pid);
         if (inventory <= 0) {
-            return null;
+            return product;
         }
         product.setName(name);
         product.setPrice(price);
