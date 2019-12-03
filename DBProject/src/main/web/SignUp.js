@@ -354,7 +354,7 @@ $(document).ready(function(){
         } else {
             var Url = "http://localhost:8080/dbproject/aggregation/checkregister";
             $.ajax({
-                type: "get",
+                type: "post",
                 url: Url,
                 data: {
                     name: UserNameText,
@@ -369,7 +369,7 @@ $(document).ready(function(){
                     }
                 },
                 error: function (request, status, error) {
-
+                    //$('#UserName-result').text("");
                 }
             });
         }
