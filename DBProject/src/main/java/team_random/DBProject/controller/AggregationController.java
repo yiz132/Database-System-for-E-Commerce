@@ -81,6 +81,7 @@ public class AggregationController {
         return productService.findById(pid);
     }
 
+    /*
     @PostMapping(path = "/findtransbycid")
     public @ResponseBody
     List<Map<String,String>> findTransByCid(int customer_id){
@@ -104,6 +105,15 @@ public class AggregationController {
         }
         return res;
     }
+    */
+
+    @PostMapping(path = "/findtransbycid")
+    public @ResponseBody
+    List<Map<String,String>> findTransByCid(int customer_id){
+        return transactionService.findOrdersByCid(customer_id);
+    }
+
+
 
     @PostMapping(path = "/reviewall/storemanager")
     public @ResponseBody

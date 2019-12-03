@@ -17,4 +17,5 @@ public interface TransactionService {
     List<Map<String,Integer>> sortBySalesInStore(int store_id);
     List<Map<String,Integer>> sortByProfitsInStore(int store_id);
     List<Transaction> findAllByCid(int cid);
+    List<Map<String,String>> findOrdersByCid(int customer_id);
 }
