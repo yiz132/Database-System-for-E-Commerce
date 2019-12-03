@@ -22,10 +22,13 @@ function GetRequest() {
 }
 
 function OnloadProductInformation(){
+    alert(obj.pid);
     $.ajax({
         type: "post",
-        url: "",
-        data:{ pid: obj.pid},
+        url: "http://localhost:8080/dbproject/salesperson/findbypid",
+        data:{
+            pid: obj.pid
+        },
         dataType: "json",
         success: function(msg) {
             var data=eval(msg);

@@ -35,7 +35,8 @@ function  ProductOnload() {
                 var name = product[i].name;
                 var price = product[i].price;
                 var inventory = product[i].inventory;
-                document.getElementById('ListTable').innerHTML =document.getElementById('ListTable').innerHTML + " <tr>\n" +
+                var pid = product[i].id;
+                document.getElementById('ListTable').innerHTML =document.getElementById('ListTable').innerHTML + " <tr id="+pid+">\n" +
                     "        <td style=\"width: 90px;background-image: url("+picture+"); background-size: cover\"></td>\n" +
                     "        <td>"+name+"</td>\n" +
                     "        <td>"+price+"</td>\n" +
@@ -136,14 +137,15 @@ function SortChange(){
 }
 $(document).ready(function(){
 $('#ListTable').on('click','tr', function() {
-    EnterUpdate();
+    //alert(this.id);
+    EnterUpdate(this.id);
     });
 });
 
-function EnterUpdate(){
-    window.location.href = "Update.html?value=" + obj.value + "&pid" + pid;
+function EnterUpdate(pid){
+    window.location.href = "Update.html?value=" + obj.value + "&pid=" + pid;
 }
 
 function AddNewProduct(){
-    window.location.href = "Update.html?value=" + obj.value + "&pid" + 0;
+    window.location.href = "Update.html?value=" + obj.value + "&pid=" + 0;
 }
