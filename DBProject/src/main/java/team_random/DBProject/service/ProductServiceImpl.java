@@ -42,14 +42,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Map<String, List<Product>> groupByCategory() {
-        List<String> categories = productRepository.findAllCategories();
-        Map<String,List<Product>> map = new HashMap<>();
-        for (String category : categories){
-            List<Product> products = productRepository.findByCategory(category);
-            map.put(category,products);
-        }
-        return map;
+    public List<Product> groupByCategory(String category) {
+        return productRepository.findALLByCategory(category);
     }
 
     @Override
@@ -67,8 +61,4 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAllBySalesperson_id(spId);
     }
 
-    public static void main(String[] args){
-        ProductServiceImpl productService = new ProductServiceImpl();
-        Map<String,List<Product>> map = productService.groupByCategory();
-    }
 }

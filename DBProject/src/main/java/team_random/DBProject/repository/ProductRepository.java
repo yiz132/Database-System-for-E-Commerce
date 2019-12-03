@@ -11,7 +11,8 @@ import java.util.Map;
 public interface ProductRepository extends CrudRepository<Product, Integer> {
     Product findByName(String name);
     Product findById(int id);
-    List<Product> findByCategory(String category);
+    @Query(value = "SELECT * FROM products p WHERE p.category= ?1 ", nativeQuery = true)
+    List<Product> findALLByCategory(String category);
 
     @Query(value = "SELECT DISTINCT category FROM products ",nativeQuery = true)
     List<String> findAllCategories();

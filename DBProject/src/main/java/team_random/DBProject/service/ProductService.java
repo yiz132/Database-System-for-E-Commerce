@@ -11,7 +11,7 @@ public interface ProductService {
     Product findById(int id);
     void deleteByName(String name);
     void deleteById(int id);
-    Map<String, List<Product>> groupByCategory();
+    List<Product> groupByCategory(String category);
     List<Product> showAllProducts();
     List<Product> roughSearch(String input);
     List<Product> findBySalespersonId(int spId);

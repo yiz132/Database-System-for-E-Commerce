@@ -158,8 +158,8 @@ public class AggregationController {
     //Group products by transactions by different category
     @GetMapping(path = "/groupbycategory/all")
     public @ResponseBody
-    Map<String,List<Product>> groupByCategory(){
-        return productService.groupByCategory();
+    List<Product> groupByCategory(@RequestParam String category){
+        return productService.groupByCategory(category);
         //return productService.sortByCategory;
     }
 
