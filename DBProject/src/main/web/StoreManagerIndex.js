@@ -34,15 +34,14 @@ function  ProductOnload() {
             for( var i = 0; i<product.length; i++) {
                 var picture = product[i].picture;
                 var name = product[i].name;
-                var price = product[i].price;
-                var sales = product[i].sales;
-                var profit = parseInt(price) * parseInt(sales);
+
+                var sales = product[i].total_sales;
+                var profit = product[i].total_profits;
                 var inventory = product[i].inventory;
                 document.getElementById('ListTable').innerHTML = document.getElementById('ListTable').innerHTML + "\n" +
                     "    <tr>\n" +
                     "        <td style=\"width: 90px;background-image: url(" + picture + "); background-size: cover\"></td>\n" +
                     "        <td>" + name + "</td>\n" +
-                    "        <td>" + price + "</td>\n" +
                     "        <td>" + sales + "</td>\n" +
                     "        <td>" + profit + "</td>\n" +
                     "        <td>" + inventory + "</td>\n" +
