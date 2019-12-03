@@ -17,7 +17,7 @@ function GetRequest() {
 }
 
 function  ProductOnload() {
-    var Url="";
+    var Url="http://localhost:8080/dbproject/aggregation/showallproducts/salesperson";
     $.ajax({
         type: "post",
         url: Url,
@@ -29,16 +29,17 @@ function  ProductOnload() {
             var data=eval(msg);
             var str = JSON.stringify(data);
             var product = JSON.parse(str);
-            var picture = product.picture;
-            var name = product.name;
-            var price = product.price;
-            var stock = product.stock;
-            document.getElementById('ListTable').innerText =document.getElementById('ListTable').innerText + " <tr>\n" +
-                "        <td style=\"width: 90px;background-image: url("+picture+"); background-size: cover\"></td>\n" +
-                "        <td>"+name+"</td>\n" +
-                "        <td>"+price+"</td>\n" +
-                "        <td>"+stock+"</td>\n" +
-                "    </tr>";
+            alert(product[0]);
+            // var picture = product.picture;
+            // var name = product.name;
+            // var price = product.price;
+            // var stock = product.stock;
+            // document.getElementById('ListTable').innerText =document.getElementById('ListTable').innerText + " <tr>\n" +
+            //     "        <td style=\"width: 90px;background-image: url("+picture+"); background-size: cover\"></td>\n" +
+            //     "        <td>"+name+"</td>\n" +
+            //     "        <td>"+price+"</td>\n" +
+            //     "        <td>"+stock+"</td>\n" +
+            //     "    </tr>";
 
         },
         error: function (request, status, error) {
