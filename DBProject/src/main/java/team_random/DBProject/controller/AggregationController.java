@@ -94,10 +94,20 @@ public class AggregationController {
         int inventory = product.getInventory();
         if (inventory < counts) return "Inventory is not enough, only "+inventory+" remains";
         int total_price = product.getPrice()*counts;
-        HomeCustomer customer = homeCustomerService.findById(customer_id);
-        int rem = customer.getAccount();
-        if (rem < total_price) return "Account balance not enough";
-        customer.setAccount(rem-total_price);
+        if (homeCustomerService.findById(customer_id) != null){
+            HomeCustomer customer = homeCustomerService.findById(customer_id);
+            int rem = customer.getAccount();
+            if (rem < total_price) return "Account balance not enough";
+            customer.setAccount(rem-total_price);
+            homeCustomerService.save(customer);
+        }
+        else if (businessCustomerService.findById(customer_id) != null){
+            BusinessCustomer customer = businessCustomerService.findById(customer_id);
+            int rem = customer.getAccount();
+            if (rem < total_price) return "Account balance not enough";
+            customer.setAccount(rem-total_price);
+            businessCustomerService.save(customer);
+        }
         Transaction transaction = new Transaction();
         transaction.setCustomerId(customer_id);
         transaction.setProductId(product_id);
@@ -107,7 +117,6 @@ public class AggregationController {
         transactionService.save(transaction);
         product.setInventory((inventory-counts));
         productService.save(product);
-        homeCustomerService.save(customer);
         if (inventory == counts) productService.deleteById(product_id);
         return String.valueOf(customer_id);
     }
