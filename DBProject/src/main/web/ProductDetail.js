@@ -1,8 +1,7 @@
 function CheckOut(){
     var number = $('#Transact_Number').val();
     var date = new Date();
-    //Transact
-    var Url="";
+    var Url="http://localhost:8080/dbproject/aggregation/checkout";
     $.ajax({
         type: "post",
         url: Url,
