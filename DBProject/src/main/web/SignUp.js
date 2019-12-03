@@ -354,17 +354,22 @@ $(document).ready(function(){
         } else {
             var Url = "http://localhost:8080/dbproject/aggregation/checkregister";
             $.ajax({
-                type: "post",
+                type: "get",
                 url: Url,
                 data: {
                     name: UserNameText,
                 },
                 dataType: "text",
                 success: function (msg) {
-                    $('#UserName-result').text("Username registered");
+                    if(msg != ''){
+                        $('#UserName-result').text("Username registered");
+                    }
+                    else{
+                        $('#UserName-result').text("");
+                    }
                 },
                 error: function (request, status, error) {
-                    $('#UserName-result').text("");
+
                 }
             });
         }
