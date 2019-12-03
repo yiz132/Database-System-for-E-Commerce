@@ -31,8 +31,8 @@ function ScanAllProduct(){
                 var picture = product[i].picture;
                 var name = product[i].name;
                 var price = product[i].price;
-                var id = product[i].id;
-                document.getElementById('AllProductDiv').innerHTML =document.getElementById('AllProductDiv').innerHTML+ "<div id=\"ProductDiv\" class=\"ProductDiv\" onclick=\"EnterDetail()\">\n" +
+                var pid = product[i].id;
+                document.getElementById('AllProductDiv').innerHTML =document.getElementById('AllProductDiv').innerHTML+ "<div  name=\"ProductDiv\" class=\"ProductDiv\" onclick=\"EnterDetail("+pid+")\" >\n" +
                     "    <div class=\"ProductPhotoDiv\" style=\"background-image: url(" + picture + ")\"></div>\n" +
                     "    <div class=\"ProductNameDiv\">" + name + "</div>\n" +
                     "    <div class=\"ProductPriceDiv\">$" + price + "</div>\n" +
@@ -112,7 +112,7 @@ function SortChange(){
             var name = obj.name;
             var price = obj.price;
             var pid = obj.id;
-            document.getElementById('AllProductDiv').innerHTML="<div id="+pid+" class=\"ProductDiv\" onclick=\"EnterDetail()\">\n" +
+            document.getElementById('AllProductDiv').innerHTML="<div id="+pid+" name=\"ProductDiv\" class=\"ProductDiv\" >\n" +
                 "    <div class=\"ProductPhotoDiv\" style=\"background-image: url("+picture+")\"></div>\n" +
                 "    <div class=\"ProductNameDiv\">"+name+"</div>\n" +
                 "    <div class=\"ProductPriceDiv\">$"+price+"</div>\n" +
@@ -126,7 +126,13 @@ function SortChange(){
     });
 }
 
-function EnterDetail(){
-     window.location.href = "ProductDetail.html?value=" + id + "&pid" + pid;
+
+// $(".ProductDiv").click(function (){
+//     alert(this.id);
+//     EnterUpdate(this.id);
+// });
+
+function EnterDetail(pid){
+     window.location.href = "ProductDetail.html?value=" + id + "&pid=" + pid;
 }
 
