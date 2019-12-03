@@ -63,27 +63,28 @@ function GetRequest() {
 }
 
 function onloadManager() {
-    var Url="";
+    var Url="http://localhost:8080/dbproject/regionmanager/showtrans/allregions";
     $.ajax({
-        type: "post",
+        type: "get",
         url: Url,
         data: {
-            id: obj.value,
         },
         dataType: "json",
         success: function(msg) {
             var data=eval(msg);
             var str = JSON.stringify(data);
             var manager = JSON.parse(str);
-            var regions = manager.regions;
-            var sales = manager.sales;
-            var profit = manager.profit;
-            document.getElementById('ListTable').innerText =document.getElementById('ListTable').innerText + "\n" +
-                "    <tr>\n" +
-                "        <td>"+regions+"</td>\n" +
-                "        <td>"+sales+"</td>\n" +
-                "        <td>"+profit+"</td>\n" +
-                "    </tr>";
+            for( var i = 0; i<manager.length; i++) {
+                var regions = manager[i].name;
+                var sales = manager[i].total_sales;
+                var profit = manager[i].total_profits;
+                document.getElementById('ListTable').innerHTML = document.getElementById('ListTable').innerHTML + "\n" +
+                    "    <tr>\n" +
+                    "        <td>" + regions + "</td>\n" +
+                    "        <td>" + sales + "</td>\n" +
+                    "        <td>" + profit + "</td>\n" +
+                    "    </tr>";
+            }
 
         },
         error: function (request, status, error) {
