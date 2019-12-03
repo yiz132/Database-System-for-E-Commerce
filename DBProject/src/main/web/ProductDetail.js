@@ -22,7 +22,7 @@ function GetRequest() {
 function balanceOnload() {
     $.ajax({
         type: "post",
-        url: "",
+        url: "http://localhost:8080/dbproject/aggregation/showbalance",
         data: {
             customer_id: obj.value,
         },
@@ -34,7 +34,23 @@ function balanceOnload() {
         }
     });
 }
-
+function AddBalance() {
+    var add_balance = document.getElementById('balanceInput').value;
+    $.ajax({
+        type: "post",
+        url: "",
+        data: {
+            add_balance: add_balance,
+            customer_id: obj.value
+        },
+        dataType: "text",
+        success: function(msg){
+            document.getElementById('Balance').innerText=document.getElementById('Balance').innerText+msg;
+        },
+        error: function (request, status, error) {
+        }
+    });
+}
 function CancelCheckOut() {
     window.location.href =  "Scan.html?value=" + obj.value;
 }
