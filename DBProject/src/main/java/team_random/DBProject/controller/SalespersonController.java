@@ -77,7 +77,7 @@ public class SalespersonController {
         return product;
     }
 
-    @PostMapping(path ="/updateProduct")
+    @PostMapping(path ="/updateproduct")
     public @ResponseBody
     Product updateProduct(@RequestParam (required = false) String name, @RequestParam (required = false) Integer price,
                           @RequestParam (required = false) String category, @RequestParam (required = false) Integer inventory,
