@@ -58,19 +58,19 @@ public class AggregationController {
         return productService.showAllProducts();
     }
 
-    @PostMapping(path ="/showallproducts/hightolow")
+    @PostMapping(path ="/sortallproducts")
     public @ResponseBody
-    List<Product> showHighToLow(){
+    List<Product> showHighToLow(@RequestParam String sort){
         List<Product> ori = showAllProducts();
-        ori.sort((o1, o2) -> o2.getPrice() - o1.getPrice());
-        return ori;
-    }
-
-    @PostMapping(path ="/showallproducts/lowtohigh")
-    public @ResponseBody
-    List<Product> showLowToHigh(){
-        List<Product> ori = showAllProducts();
-        ori.sort(Comparator.comparingInt(Product::getPrice));
+        if (sort.equals("SortBy")) return ori;
+        else if (sort.equals("PriceHighToLow")) {
+            ori.sort((o1, o2) -> o2.getPrice() - o1.getPrice());
+            return ori;
+        }
+        else if (sort.equals("PriceLowToHigh")) {
+            ori.sort((o1, o2) -> o2.getPrice() - o1.getPrice());
+            return ori;
+        }
         return ori;
     }
 
