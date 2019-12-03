@@ -14,4 +14,5 @@ public interface ProductService {
     Map<String, List<Product>> groupByCategory();
     List<Product> showAllProducts();
     List<Product> roughSearch(String input);
+    List<Product> findBySalespersonId(int spId);
 }

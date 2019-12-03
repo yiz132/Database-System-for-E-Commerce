@@ -62,6 +62,11 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findProductByNameContains(input);
     }
 
+    @Override
+    public List<Product> findBySalespersonId(int spId) {
+        return productRepository.findAllBySalesperson_id(spId);
+    }
+
     public static void main(String[] args){
         ProductServiceImpl productService = new ProductServiceImpl();
         Map<String,List<Product>> map = productService.groupByCategory();

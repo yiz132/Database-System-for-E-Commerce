@@ -60,6 +60,12 @@ public class AggregationController {
         return productService.showAllProducts();
     }
 
+    @GetMapping(path = "/showallproducts/salesperson")
+    public @ResponseBody
+    List<Product> showProductsOfSalesperson(@RequestParam int id){
+        return productService.findBySalespersonId(id);
+    }
+
     @PostMapping(path ="/roughsearch")
     public @ResponseBody
     List<Product> prefixSearch(@RequestParam String input){
