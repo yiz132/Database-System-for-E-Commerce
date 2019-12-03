@@ -8,13 +8,13 @@ import java.util.Map;
 public interface TransactionService {
     void save(Transaction transaction);
     Transaction findById(int id);
-    Map<String,Integer> sortBySalesAll();
-    Map<String,Integer> sortByProfitsAll();
+    List<Map<String,Integer>> sortBySalesAll();
+    List<Map<String,Integer>> sortByProfitsAll();
     //return map of product name to its total sales group by product names sorted by sales volume(in a given region)
-    Map<String,Integer> sortBySalesInRegion(int region_id);
-    Map<String,Integer> sortByProfitsInRegion(int region_id);
+    List<Map<String,Integer>> sortBySalesInRegion(int region_id);
+    List<Map<String,Integer>> sortByProfitsInRegion(int region_id);
     //return
-    Map<String,Integer> sortBySalesInStore(int store_id);
-    Map<String,Integer> sortByProfitsInStore(int store_id);
+    List<Map<String,Integer>> sortBySalesInStore(int store_id);
+    List<Map<String,Integer>> sortByProfitsInStore(int store_id);
     List<Transaction> findAllByCid(int cid);
 }
