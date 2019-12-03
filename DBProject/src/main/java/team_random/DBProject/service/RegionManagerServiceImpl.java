@@ -8,6 +8,7 @@ import team_random.DBProject.repository.RegionManagerRepository;
 import team_random.DBProject.repository.TransactionRepository;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class RegionManagerServiceImpl implements RegionManagerService {
@@ -29,5 +30,10 @@ public class RegionManagerServiceImpl implements RegionManagerService {
     @Override
     public List<Transaction> findByRegionId(int regionId) {
         return transactionRepository.findByRegionId(regionId);
+    }
+
+    @Override
+    public List<Map<String, String>> showAllRegionsTrans() {
+        return regionManagerRepository.showAllRegionsTrans();
     }
 }

@@ -12,6 +12,7 @@ import team_random.DBProject.service.RegionService;
 import team_random.DBProject.service.TransactionService;
 
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin
 @Controller
@@ -51,9 +52,15 @@ public class RegionManagerController {
         return manager;
     }
     //list transactions based on store id
-    @PostMapping(path = "/showTransactions")
+    @PostMapping(path = "/showtransactions")
     public @ResponseBody
     List<Transaction> showStoreTrans(@RequestParam int regionId){
         return regionManagerService.findByRegionId(regionId);
+    }
+
+    @GetMapping(path = "/showtrans/allregions")
+    public @ResponseBody
+    List<Map<String,String>> showAllRegions(){
+        return regionManagerService.showAllRegionsTrans();
     }
 }
