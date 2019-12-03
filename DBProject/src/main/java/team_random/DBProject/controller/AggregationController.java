@@ -33,7 +33,7 @@ public class AggregationController {
     @Autowired
     private RegionManagerService regionManagerService;
 
-    @PostMapping(path = "/checkregister")
+    @GetMapping(path = "/checkregister")
     public @ResponseBody
     String checkRegister(@RequestParam(required = false) String input){
         if (businessCustomerService.findByName(input) != null || homeCustomerService.findByName(input) != null
