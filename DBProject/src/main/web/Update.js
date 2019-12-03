@@ -24,7 +24,7 @@ function OnloadProductInformation(){
     //alert(obj.pid);
     $.ajax({
         type: "post",
-        url: "http://localhost:8080/dbproject/salesperson/findbypid",
+        url: "http://localhost:8080/dbproject/aggregation/findbypid",
         data:{
             pid: obj.pid
         },

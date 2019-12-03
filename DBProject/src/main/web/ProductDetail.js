@@ -7,18 +7,22 @@ function CheckOut(){
         type: "post",
         url: Url,
         data: {
-            c_id: obj.value,
-            p_id: obj.pid,
-            number: number,
-            //date: date.toLocaleDateString(),
+            customer_id: obj.value,
+            product_id: obj.pid,
+            counts: number,
         },
-        dataType: "json",
+        dataType: "text",
         success: function(msg){
-            window.location.href = "OrderReview.html?value=" + obj.id;
+            if(msg == 'Account balance not enough'){
+                alert(msg);
+
+            }
+            else{
+                window.location.href = "OrderReview.html?value=" + obj.value;
+            }
+
         },
         error: function (request, status, error) {
-            //alert(request.responseText);
-            //alert(1);
 
         }
     });
@@ -46,11 +50,9 @@ function GetRequest() {
 function ProductDetail(){
     $.ajax({
         type: "post",
-        url: "",
+        url: "http://localhost:8080/dbproject/aggregation/findbypid",
         data: {
-            id: obj.value,
             pid: obj.pid,
-
         },
         dataType: "json",
         success: function(msg) {
@@ -64,14 +66,14 @@ function ProductDetail(){
             var inventory = product.inventory;
             document.getElementById('ProductPhoto').style.backgroundImage = 'url('+ picture +')';
             document.getElementById('ProductName').innerText = name;
-            document.getElementById('ProductPrice').innerText = price;
+            document.getElementById('ProductPrice').innerText = "$"+price;
             document.getElementById('ProductDescription').innerText = description;
             document.getElementById('StockNumber').innerText = inventory;
 
         },
         error: function (request, status, error) {
             //alert(request.responseText);
-            alert(1);
+            //alert(1);
         }
     });
 }
