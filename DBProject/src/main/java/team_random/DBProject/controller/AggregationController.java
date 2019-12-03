@@ -61,6 +61,7 @@ public class AggregationController {
     @PostMapping(path ="/sortallproducts")
     public @ResponseBody
     List<Product> showHighToLow(@RequestParam String sort, @RequestParam String category){
+        //List<Product> ori = showAllProducts();
         List<Product> ori = category.equals("AllCategories")? showAllProducts() : groupByCategory(category);
         if (sort.equals("SortBy")) return ori;
         else if (sort.equals("PriceHighToLow")) {
@@ -103,6 +104,8 @@ public class AggregationController {
         }
         return res;
     }
+
+
 
     @PostMapping(path = "/reviewall/storemanager")
     public @ResponseBody
@@ -171,7 +174,7 @@ public class AggregationController {
     }
 
     //Sort products by total profits of each product
-    @GetMapping(path = "/sortbyprofits/all")
+    @PostMapping(path = "/sortbyprofits/all")
     public @ResponseBody
     List<Map<String,Integer>> sortByProfitsAll(){
         return transactionService.sortByProfitsAll();
@@ -179,21 +182,21 @@ public class AggregationController {
 
     //sort transactions by sales in a region
     //return product_name to sales
-    @GetMapping(path ="/sortbysales/region")
+    @PostMapping(path ="/sortbysales/region")
     public @ResponseBody
     List<Map<String,Integer>> sortBySalesInRegion(@RequestParam int region_id){
         return transactionService.sortBySalesInRegion(region_id);
     }
 
     //sort transactions by profits in a region
-    @GetMapping(path = "/sortbyprofits/region")
+    @PostMapping(path = "/sortbyprofits/region")
     public @ResponseBody
     List<Map<String,Integer>> sortByProfitsInRegion(@RequestParam int region_id){
         return transactionService.sortByProfitsInRegion(region_id);
     }
 
     //sort transactions by sales in a store
-    @GetMapping(path ="/sortbysales/store")
+    @PostMapping(path ="/sortbysales/store")
     public @ResponseBody
     List<Map<String,Integer>> sortBySalesInStore(@RequestParam int store_id){
         return transactionService.sortBySalesInStore(store_id);

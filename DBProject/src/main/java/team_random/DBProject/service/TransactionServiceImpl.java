@@ -57,4 +57,5 @@ public class TransactionServiceImpl implements TransactionService {
     public List<Transaction> findAllByCid(int cid) {
         return transactionRepository.findAllByCid(cid);
     }
+
 }
