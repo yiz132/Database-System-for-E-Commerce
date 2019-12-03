@@ -46,7 +46,7 @@ function GetRequest() {
 function ProductDetail(){
     $.ajax({
         type: "post",
-        url: jumpURL,
+        url: "",
         data: {
             id: obj.value,
             pid: obj.pid,

@@ -39,7 +39,7 @@ function  ProductOnload() {
                 document.getElementById('ListTable').innerHTML =document.getElementById('ListTable').innerHTML + " <tr id="+pid+">\n" +
                     "        <td style=\"width: 90px;background-image: url("+picture+"); background-size: cover\"></td>\n" +
                     "        <td>"+name+"</td>\n" +
-                    "        <td>"+price+"</td>\n" +
+                    "        <td>$"+price+"</td>\n" +
                     "        <td>"+inventory+"</td>\n" +
                     "    </tr>";}
 
