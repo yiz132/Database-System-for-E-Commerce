@@ -79,18 +79,18 @@ public class SalespersonController {
 
     @PostMapping(path ="/updateproduct")
     public @ResponseBody
-    Product updateProduct(@RequestParam int pid,@RequestParam int salesperson_id,
+    Product updateProduct(@RequestParam int pid,
             @RequestParam String name, @RequestParam Integer price,
                           @RequestParam String category, @RequestParam Integer inventory,
                           @RequestParam (required = false) String description, @RequestParam (required = false) String picture){
-        Product product = productService.findByName(name);
-        product.setName(name);
-        product.setPrice(price);
-        product.setCategory(category);
-        productService.deleteByName(name);
+        Product product = productService.findById(pid);
+        productService.deleteById(pid);
         if (inventory <= 0) {
             return null;
         }
+        product.setName(name);
+        product.setPrice(price);
+        product.setCategory(category);
         product.setInventory(inventory);
         if (description != null) product.setDescription(description);
         if (picture != null) product.setDescription(description);
