@@ -42,6 +42,13 @@ public class RegionManagerController {
         return mana;
     }
 
+    @PostMapping(path = "/checkregister")
+    public @ResponseBody
+    String checkRegister(@RequestParam(required = false) String input){
+        if (regionManagerService.findByName(input) != null) return input;
+        return null;
+    }
+
     @PostMapping(path = "/signin")
     public @ResponseBody
     RegionManager signin(@RequestParam String name,@RequestParam String password){
