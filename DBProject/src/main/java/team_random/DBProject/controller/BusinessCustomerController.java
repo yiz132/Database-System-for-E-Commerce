@@ -42,13 +42,6 @@ public class BusinessCustomerController {
         return customer;
     }
 
-    @PostMapping(path = "/checkregister")
-    public @ResponseBody
-    String checkRegister(@RequestParam(required = false) String input){
-        if (businessCustomerService.findByName(input) != null) return input;
-        return null;
-    }
-
     @PostMapping(path = "/signin")
     public @ResponseBody BusinessCustomer signin(@RequestParam String name,@RequestParam String password){
         BusinessCustomer customer = businessCustomerService.findByName(name);

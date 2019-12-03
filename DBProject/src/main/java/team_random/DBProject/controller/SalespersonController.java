@@ -49,13 +49,6 @@ public class SalespersonController {
         return person;
     }
 
-    @PostMapping(path = "/checkregister")
-    public @ResponseBody
-    String checkRegister(@RequestParam(required = false) String input){
-        if (salespersonService.findByName(input) != null) return input;
-        return null;
-    }
-
     @PostMapping(path = "/signin")
     public @ResponseBody
     Salesperson signin(@RequestParam String name,@RequestParam String password){

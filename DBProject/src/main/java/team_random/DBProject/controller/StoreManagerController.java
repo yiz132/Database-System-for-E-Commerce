@@ -48,13 +48,6 @@ public class StoreManagerController {
         return storeManager;
     }
 
-    @PostMapping(path = "/checkregister")
-    public @ResponseBody
-    String checkRegister(@RequestParam(required = false) String input){
-        if (storeManagerService.findByName(input) != null) return input;
-        return null;
-    }
-
     @PostMapping(path = "/signin")
     public @ResponseBody
     StoreManager signin(@RequestParam String name,@RequestParam String password){

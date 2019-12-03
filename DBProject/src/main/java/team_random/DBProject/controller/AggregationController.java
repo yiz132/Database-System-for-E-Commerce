@@ -20,9 +20,27 @@ public class AggregationController {
     private ProductService productService;
     @Autowired
     private RegionService regionService;
-
     @Autowired
     private StoreService storeService;
+    @Autowired
+    private HomeCustomerService homeCustomerService;
+    @Autowired
+    private BusinessCustomerService businessCustomerService;
+    @Autowired
+    private SalespersonService salespersonService;
+    @Autowired
+    private StoreManagerService storeManagerService;
+    @Autowired
+    private RegionManagerService regionManagerService;
+
+    @PostMapping(path = "/checkregister")
+    public @ResponseBody
+    String checkRegister(@RequestParam(required = false) String input){
+        if (businessCustomerService.findByName(input) != null || homeCustomerService.findByName(input) != null
+            || salespersonService.findByName(input) != null|| storeManagerService.findByName(input) != null ||
+                regionService.findByName(input) != null) return input;
+        return null;
+    }
 
     @GetMapping(path = "/showallstores")
     public @ResponseBody

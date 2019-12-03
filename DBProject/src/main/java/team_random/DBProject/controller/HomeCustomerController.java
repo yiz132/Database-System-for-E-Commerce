@@ -47,14 +47,6 @@ public class HomeCustomerController {
         return customer;
     }
 
-
-    @PostMapping(path = "/checkregister")
-    public @ResponseBody
-    String checkRegister(@RequestParam(required = false) String input){
-        if (homeCustomerService.findByName(input) != null) return input;
-        return null;
-    }
-
     @PostMapping(path = "/signin")
     public @ResponseBody
     HomeCustomer signin(@RequestParam String name, @RequestParam String password){
