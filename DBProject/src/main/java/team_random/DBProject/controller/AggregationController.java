@@ -33,12 +33,12 @@ public class AggregationController {
     @Autowired
     private RegionManagerService regionManagerService;
 
-    @GetMapping(path = "/checkregister")
+    @PostMapping(path = "/checkregister")
     public @ResponseBody
-    String checkRegister(@RequestParam(required = false) String input){
-        if (businessCustomerService.findByName(input) != null || homeCustomerService.findByName(input) != null
-            || salespersonService.findByName(input) != null|| storeManagerService.findByName(input) != null ||
-                regionManagerService.findByName(input) != null) return input;
+    String checkRegister(@RequestParam(required = false) String name){
+        if (businessCustomerService.findByName(name) != null || homeCustomerService.findByName(name) != null
+            || salespersonService.findByName(name) != null|| storeManagerService.findByName(name) != null ||
+                regionManagerService.findByName(name) != null) return name;
         return null;
     }
 
