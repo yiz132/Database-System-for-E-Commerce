@@ -1,6 +1,6 @@
-var name = GetRequest();
-var stringA = JSON.stringify(name);
-var obj = JSON.parse(stringA);
+var jumpId = GetRequest();
+var stringId = JSON.stringify(jumpId);
+var obj = JSON.parse(stringId);
 OrderOnload();
 function GetRequest() {
     var url = location.search; //获取url中"?"符后的字串
@@ -16,30 +16,31 @@ function GetRequest() {
 }
 
 function OrderOnload() {
-    var Url="";
+    var Url="http://localhost:8080/dbproject/aggregation/findtransbycid";
     $.ajax({
         type: "post",
         url: Url,
         data: {
-            id: obj.value,
+            customer_id: obj.value,
         },
         dataType: "json",
         success: function(msg) {
             var data=eval(msg);
             var str = JSON.stringify(data);
             var order = JSON.parse(str);
-            var picture = order.picture;
-            var name = order.name;
-            var total = parseInt(order.price)  *parseInt(order.number) ;
-            var date = order.date;
-            document.getElementById('List').innerText =document.getElementById('List').innerText + "\n" +
-                "    <tr>\n" +
-                "        <td style=\"width: 90px;background-image: url("+picture+"); background-size: cover\"></td>\n" +
-                "        <td>"+name<+"/td>\n" +
-                "        <td>"+total+"</td>\n" +
-                "        <td>"+date+"</td>\n" +
-                "    </tr>";
-
+            for( var i = 0; i<order.length; i++) {
+                var picture = order[i].picture;
+                var name = order[i].name;
+                var number = order[i].num ;
+                var date = order[i].date;
+                document.getElementById('List').innerHTML =document.getElementById('List').innerHTML + "\n" +
+                    "    <tr>\n" +
+                    "        <td style=\"width: 90px;background-image: url("+picture+"); background-size: cover\"></td>\n" +
+                    "        <td>"+name<+"/td>\n" +
+                    "        <td>"+number+"</td>\n" +
+                    "        <td>"+date+"</td>\n" +
+                    "    </tr>";
+            }
         },
         error: function (request, status, error) {
             //alert(request.responseText);

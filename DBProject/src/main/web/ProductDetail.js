@@ -1,31 +1,3 @@
-function CheckOut(){
-    var number = parseInt($('#Transact_Number').val());
-    var date = new Date();
-    var Url="http://localhost:8080/dbproject/aggregation/checkout";
-    $.ajax({
-        type: "post",
-        url: Url,
-        data: {
-            customer_id: obj.value,
-            product_id: obj.pid,
-            counts: number,
-        },
-        dataType: "text",
-        success: function(msg){
-            if(msg == 'Account balance not enough'){
-                alert(msg);
-
-            }
-            else{
-                window.location.href = "OrderReview.html?value=" + obj.value;
-            }
-
-        },
-        error: function (request, status, error) {
-
-        }
-    });
-}
 
 var date = GetRequest();
 var stringDate = JSON.stringify(date);
@@ -45,6 +17,36 @@ function GetRequest() {
     }
     return theRequest;
 }
+
+function CheckOut(){
+    var number = parseInt($('#Transact_Number').val());
+    var date = new Date();
+    var Url="http://localhost:8080/dbproject/aggregation/checkout";
+    $.ajax({
+        type: "post",
+        url: Url,
+        data: {
+            customer_id: obj.value,
+            product_id: obj.pid,
+            counts: number,
+        },
+        dataType: "text",
+        success: function(msg){
+            if(msg == 'Account balance not enough'){
+                alert(msg);
+            }
+
+            else{
+                window.location.href = "OrderReview.html?value=" + obj.value;
+            }
+
+        },
+        error: function (request, status, error) {
+
+        }
+    });
+}
+
 
 function ProductDetail(){
     $.ajax({
