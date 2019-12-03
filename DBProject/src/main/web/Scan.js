@@ -2,6 +2,7 @@ var jumpId = GetRequest();
 var stringId = JSON.stringify(jumpId);
 var obj = JSON.parse(stringId);
 ScanAllProduct();
+OnloadSortCategory();
 //alert(id.value);
 
 function GetRequest() {
@@ -94,11 +95,33 @@ function SearchPress() {
     }
 
 }
+function OnloadSortCategory() {
 
+    var Url="";
+    $.ajax({
+        type: "post",
+        url: Url,
+        data: {
+        },
+        dataType: "json",
+        success: function(msg) {
+            var data=eval(msg);
+            var str = JSON.stringify(data);
+            var categories = JSON.parse(str);
+            for( var i = 0; i<categories.length; i++) {
+                document.getElementById('SortCategory').innerHTML = document.getElementById('SortCategory').innerHTML + "<option value =\""+categories[i]+"\" >"+categories[i]+"</option>";
+            }
+
+        },
+        error: function (request, status, error) {
+        }
+    });
+}
 
 function SortChange(){
     //alert(document.getElementById('Sort').value);
     var sort = document.getElementById('Sort').value;
+    var category = document.getElementById('SortCategory').value;
     document.getElementById('AllProductDiv').innerHTML="";
     var Url="http://localhost:8080/dbproject/aggregation/sortallproducts";
     $.ajax({
@@ -106,6 +129,7 @@ function SortChange(){
         url: Url,
         data: {
             sort: sort,
+            category: category
         },
         dataType: "json",
         success: function(msg) {
@@ -129,7 +153,6 @@ function SortChange(){
         }
     });
 }
-
 
 function EnterDetail(pid){
      window.location.href = "ProductDetail.html?value=" + obj.value + "&pid=" + pid;
