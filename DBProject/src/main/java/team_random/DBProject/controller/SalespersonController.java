@@ -84,8 +84,8 @@ public class SalespersonController {
                           @RequestParam String category, @RequestParam Integer inventory,
                           @RequestParam (required = false) String description, @RequestParam (required = false) String picture){
         Product product = productService.findById(pid);
-        productService.deleteById(pid);
         if (inventory <= 0) {
+            productService.deleteById(pid);
             return product;
         }
         product.setName(name);
@@ -94,7 +94,6 @@ public class SalespersonController {
         product.setInventory(inventory);
         if (description != null) product.setDescription(description);
         if (picture != null) product.setDescription(description);
-        productService.save(product);
         return product;
     }
 
