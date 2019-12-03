@@ -135,21 +135,4 @@ function SortChange(){
     });
 }
 
-var PieChart = [
-    {
-        value: 40,
-        color:"#fcc79e"
-    },
-    {
-        value : 30,
-        color : "#beefd2"
-    },
-    {
-        value : 90,
-        color : "#ffddfb"
-    }
-
-];
-
-var myPieChart = new Chart(document.getElementById("popChart").getContext("2d")).Pie(PieChart);
 

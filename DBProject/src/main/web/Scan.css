@@ -11,8 +11,8 @@ body, html {
     width: 140px;
     height: 80px;
     position: absolute;
-    background-size: cover;
-    background-image: url("../web/image/Logo.png");
+    border: 1px solid white;
+    font-family: "Microsoft Sans Serif";
 }
 
 .TopBar{
