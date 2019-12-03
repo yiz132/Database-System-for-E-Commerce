@@ -19,7 +19,7 @@ function GetRequest() {
 
 
 function  ProductOnload() {
-    var Url="";
+    var Url="http://localhost:8080/dbproject/aggregation/reviewall/storemanager";
     $.ajax({
         type: "post",
         url: Url,
@@ -51,7 +51,7 @@ function  ProductOnload() {
 
         },
         error: function (request, status, error) {
-            //alert(request.responseText);
+            alert(request.responseText);
 
         }
     });
