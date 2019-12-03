@@ -100,7 +100,7 @@ function SortChange(){
     var sort = document.getElementById('Sort').value;
     var category = document.getElementById('SortCategory').value;
     document.getElementById('AllProductDiv').innerHTML="";
-    var Url="http://localhost:8080/dbproject/aggregation//groupbycategory/all";
+    var Url="http://localhost:8080/dbproject/aggregation/sortallproducts";
     $.ajax({
         type: "post",
         url: Url,
