@@ -102,3 +102,16 @@ body, html {
 .Upload_button:active{
     filter: brightness(0.8);
 }
+
+.SortDiv{
+    position: absolute;
+    left: 100px;
+    top: 240px;
+    width: 442px;
+    height: 42px;
+    font-size: 15px;
+    padding-left: 10px;
+    color: dimgrey;
+    outline: none;
+    border: 1px solid lightpink;
+}

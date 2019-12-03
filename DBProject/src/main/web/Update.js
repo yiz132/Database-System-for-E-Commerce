@@ -5,6 +5,20 @@ if(obj.pid == 0){
 }
 else{
     OnloadProductInformation();
+
+}
+
+function GetRequest() {
+    var url = location.search; //获取url中"?"符后的字串
+    var theRequest = new Object();
+    if (url.indexOf("?") != -1) {
+        var str = url.substr(1);
+        var strs = str.split("&");
+        for (var i = 0; i < strs.length; i++) {
+            theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
+        }
+    }
+    return theRequest;
 }
 
 function OnloadProductInformation(){
@@ -45,7 +59,6 @@ function UploadProduct(){
     var inventory = $('#Update_inventory').val();
     var description = $('#Update_description').val();
     var photoUrl = document.getElementById('PhotoUrl').value;
-    alert(photoUrl);
     //update product
     var Url="http://localhost:8080/dbproject/salesperson/addproduct";
     $.ajax({
@@ -54,6 +67,7 @@ function UploadProduct(){
         // processData: false,
         // contentType: false,
         data: {
+            salesperson_id: obj.value,
             name: name,
             price: price,
             category: category,

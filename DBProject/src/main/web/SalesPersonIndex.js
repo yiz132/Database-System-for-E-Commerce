@@ -141,9 +141,9 @@ $('#ListTable').on('click','tr', function() {
 });
 
 function EnterUpdate(){
-    window.location.href = "Update.html?value=" + id + "&pid" + pid;
+    window.location.href = "Update.html?value=" + obj.value + "&pid" + pid;
 }
 
 function AddNewProduct(){
-    window.location.href = "Update.html" + id + "&pid" + 0;
+    window.location.href = "Update.html?value=" + obj.value + "&pid" + 0;
 }
