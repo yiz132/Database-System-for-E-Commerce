@@ -62,29 +62,4 @@ public class HomeCustomerController {
     Product searchProduct(@RequestParam String name){
         return productService.findByName(name);
     }
-
-    @PostMapping(path = "/checkout")
-    public @ResponseBody String checkout(@RequestParam int product_id, @RequestParam int customer_id,@RequestParam int counts){
-        Product product = productService.findById(product_id);
-        int inventory = product.getInventory();
-        if (inventory < counts) return "Inventory is not enough, only "+inventory+" remains";
-        int total_price = product.getPrice()*counts;
-        HomeCustomer customer = homeCustomerService.findById(customer_id);
-        int rem = customer.getAccount();
-        if (rem < total_price) return "Account balance not enough";
-        customer.setAccount(rem-total_price);
-        Transaction transaction = new Transaction();
-        transaction.setCustomerId(customer_id);
-        transaction.setProductId(product_id);
-        transaction.setNum(counts);
-        Date date = new Date();
-        transaction.setDate(date);
-        transaction.setCustomerId(counts);
-        transactionService.save(transaction);
-        product.setInventory((inventory-counts));
-        productService.save(product);
-        homeCustomerService.save(customer);
-        if (inventory == counts) productService.deleteById(product_id);
-        return "Successfully purchased";
-    }
 }
