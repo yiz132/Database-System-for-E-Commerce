@@ -21,7 +21,7 @@ function OrderOnload() {
         type: "post",
         url: Url,
         data: {
-            customer_id: obj.value,
+            customer_id: obj.value
         },
         dataType: "json",
         success: function(msg) {
