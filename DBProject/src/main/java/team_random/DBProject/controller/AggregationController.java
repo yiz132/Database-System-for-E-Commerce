@@ -81,7 +81,6 @@ public class AggregationController {
         return productService.findById(pid);
     }
 
-    /*
     @PostMapping(path = "/findtransbycid")
     public @ResponseBody
     List<Map<String,String>> findTransByCid(int customer_id){
@@ -104,13 +103,6 @@ public class AggregationController {
             res.add(map);
         }
         return res;
-    }
-    */
-
-    @PostMapping(path = "/findtransbycid")
-    public @ResponseBody
-    List<Map<String,String>> findTransByCid(int customer_id){
-        return transactionService.findOrdersByCid(customer_id);
     }
 
 
@@ -182,7 +174,7 @@ public class AggregationController {
     }
 
     //Sort products by total profits of each product
-    @GetMapping(path = "/sortbyprofits/all")
+    @PostMapping(path = "/sortbyprofits/all")
     public @ResponseBody
     List<Map<String,Integer>> sortByProfitsAll(){
         return transactionService.sortByProfitsAll();
@@ -190,21 +182,21 @@ public class AggregationController {
 
     //sort transactions by sales in a region
     //return product_name to sales
-    @GetMapping(path ="/sortbysales/region")
+    @PostMapping(path ="/sortbysales/region")
     public @ResponseBody
     List<Map<String,Integer>> sortBySalesInRegion(@RequestParam int region_id){
         return transactionService.sortBySalesInRegion(region_id);
     }
 
     //sort transactions by profits in a region
-    @GetMapping(path = "/sortbyprofits/region")
+    @PostMapping(path = "/sortbyprofits/region")
     public @ResponseBody
     List<Map<String,Integer>> sortByProfitsInRegion(@RequestParam int region_id){
         return transactionService.sortByProfitsInRegion(region_id);
     }
 
     //sort transactions by sales in a store
-    @GetMapping(path ="/sortbysales/store")
+    @PostMapping(path ="/sortbysales/store")
     public @ResponseBody
     List<Map<String,Integer>> sortBySalesInStore(@RequestParam int store_id){
         return transactionService.sortBySalesInStore(store_id);

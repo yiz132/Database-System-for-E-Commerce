@@ -58,8 +58,4 @@ public class TransactionServiceImpl implements TransactionService {
         return transactionRepository.findAllByCid(cid);
     }
 
-    @Override
-    public List<Map<String, String>> findOrdersByCid(int customer_id) {
-        return transactionRepository.findOrdersByCid(customer_id);
-    }
 }
