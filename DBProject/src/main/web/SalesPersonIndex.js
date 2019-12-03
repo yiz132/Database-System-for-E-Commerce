@@ -41,7 +41,8 @@ function  ProductOnload() {
                     "        <td>"+name+"</td>\n" +
                     "        <td>$"+price+"</td>\n" +
                     "        <td>"+inventory+"</td>\n" +
-                    "    </tr>";}
+                    "    </tr>";
+            }
 
 
         },
