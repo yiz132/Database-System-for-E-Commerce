@@ -60,7 +60,7 @@ public class AggregationController {
         return productService.showAllProducts();
     }
 
-    @GetMapping(path = "/showallproducts/salesperson")
+    @PostMapping(path = "/showallproducts/salesperson")
     public @ResponseBody
     List<Product> showProductsOfSalesperson(@RequestParam int id){
         return productService.findBySalespersonId(id);
