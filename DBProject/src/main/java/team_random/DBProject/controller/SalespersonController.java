@@ -62,14 +62,14 @@ public class SalespersonController {
     public @ResponseBody
     Product addProduct(@RequestParam String name, @RequestParam Integer price,
                       @RequestParam String category, @RequestParam Integer inventory,
-                      @RequestParam(required = false) Integer salesperson_id,
+                      @RequestParam Integer salesperson_id,
                       @RequestParam(required = false) String description,
                       @RequestParam(required = false) String picture){
         Product product = new Product();
         product.setName(name);
         product.setPrice(price);
         product.setCategory(category);
-        if (salesperson_id != null)product.setSalesperson_id(salesperson_id);
+        product.setSalesperson_id(salesperson_id);
         product.setInventory(inventory);
         product.setDescription(description);
         product.setPicture(picture);
