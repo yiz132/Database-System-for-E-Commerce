@@ -68,7 +68,7 @@ public class AggregationController {
             return ori;
         }
         else if (sort.equals("PriceLowToHigh")) {
-            ori.sort((o1, o2) -> o2.getPrice() - o1.getPrice());
+            ori.sort(Comparator.comparingInt(Product::getPrice));
             return ori;
         }
         return ori;
