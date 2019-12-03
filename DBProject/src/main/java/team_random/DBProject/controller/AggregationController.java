@@ -58,6 +58,22 @@ public class AggregationController {
         return productService.showAllProducts();
     }
 
+    @PostMapping(path ="/showallproducts/hightolow")
+    public @ResponseBody
+    List<Product> showHighToLow(){
+        List<Product> ori = showAllProducts();
+        ori.sort((o1, o2) -> o2.getPrice() - o1.getPrice());
+        return ori;
+    }
+
+    @PostMapping(path ="/showallproducts/lowtohigh")
+    public @ResponseBody
+    List<Product> showLowToHigh(){
+        List<Product> ori = showAllProducts();
+        ori.sort(Comparator.comparingInt(Product::getPrice));
+        return ori;
+    }
+
     @PostMapping(path = "/findbypid")
     public @ResponseBody
     Product findByPid(@RequestParam int pid){
@@ -129,7 +145,7 @@ public class AggregationController {
 
     @PostMapping(path ="/roughsearch")
     public @ResponseBody
-    List<Product> prefixSearch(@RequestParam String input){
+    List<Product> roughSearch(@RequestParam String input){
         return productService.roughSearch(input);
     }
 
