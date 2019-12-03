@@ -88,7 +88,6 @@ public class AggregationController {
         transaction.setNum(counts);
         Date date = new Date();
         transaction.setDate(date);
-        transaction.setCustomerId(counts);
         transactionService.save(transaction);
         product.setInventory((inventory-counts));
         productService.save(product);
