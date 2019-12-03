@@ -40,6 +40,17 @@ public class AggregationController {
         return null;
     }
 
+    @PostMapping(path = "/showbalance")
+    public @ResponseBody
+    String showBalance(@RequestParam int customer_id){
+        if (businessCustomerService.findById(customer_id) != null){
+            BusinessCustomer businessCustomer = businessCustomerService.findById(customer_id);
+            return String.valueOf(businessCustomer.getAccount());
+        }
+        HomeCustomer customer = homeCustomerService.findById(customer_id);
+        return String.valueOf(customer.getAccount());
+    }
+
     @GetMapping(path = "/showallstores")
     public @ResponseBody
     List<String> showAllStore(){
