@@ -66,6 +66,12 @@ public class AggregationController {
         return productService.findById(pid);
     }
 
+    @PostMapping(path = "/findtransbycid")
+    public @ResponseBody
+    List<Transaction> findTransByCid(int customer_id){
+        return transactionService.findAllByCid(customer_id);
+    }
+
     @PostMapping(path = "/checkout")
     public @ResponseBody String checkout(@RequestParam int product_id, @RequestParam int customer_id,@RequestParam int counts){
         Product product = productService.findById(product_id);

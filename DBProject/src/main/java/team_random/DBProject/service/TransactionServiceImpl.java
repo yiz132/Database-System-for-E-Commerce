@@ -52,4 +52,9 @@ public class TransactionServiceImpl implements TransactionService {
     public Map<String, Integer> sortByProfitsInStore(int store_id) {
         return transactionRepository.sortTransByProfitsInStore(store_id);
     }
+
+    @Override
+    public List<Transaction> findAllByCid(int cid) {
+        return transactionRepository.findAllByCid(cid);
+    }
 }

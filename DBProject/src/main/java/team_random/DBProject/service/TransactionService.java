@@ -16,4 +16,5 @@ public interface TransactionService {
     //return
     Map<String,Integer> sortBySalesInStore(int store_id);
     Map<String,Integer> sortByProfitsInStore(int store_id);
+    List<Transaction> findAllByCid(int cid);
 }
