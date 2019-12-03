@@ -17,10 +17,7 @@ public interface TransactionRepository extends JpaRepository<Transaction, Intege
 
     @Query(value = "SELECT * FROM transactions t WHERE t.cid = ?1 ",nativeQuery = true)
     List<Transaction> findAllByCid(int cid);
-    //select P.name,sum(num)
-    //from  `transactions`T, `products`P
-    //where T.pid=P.id
-    //GROUP BY P.name
+
     @Query(value = "SELECT DISTINCT p.name, sum(t.num) FROM transactions t, products p WHERE t.pid = p.id group by p.name ORDER BY sum(t.num)",nativeQuery = true)
     Map<String,Integer> groupTransByName();
 

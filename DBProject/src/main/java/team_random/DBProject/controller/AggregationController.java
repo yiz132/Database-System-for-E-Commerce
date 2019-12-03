@@ -93,7 +93,7 @@ public class AggregationController {
         productService.save(product);
         homeCustomerService.save(customer);
         if (inventory == counts) productService.deleteById(product_id);
-        return "Successfully purchased";
+        return String.valueOf(customer_id);
     }
 
     @PostMapping(path = "/showallproducts/salesperson")
