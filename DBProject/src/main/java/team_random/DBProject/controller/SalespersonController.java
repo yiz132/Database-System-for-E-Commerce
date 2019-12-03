@@ -94,6 +94,7 @@ public class SalespersonController {
         product.setInventory(inventory);
         if (description != null) product.setDescription(description);
         if (picture != null) product.setDescription(description);
+        productService.save(product);
         return product;
     }
 
