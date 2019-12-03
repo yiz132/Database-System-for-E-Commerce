@@ -51,6 +51,21 @@ public class AggregationController {
         return String.valueOf(customer.getAccount());
     }
 
+    @PostMapping(path = "/addbalance")
+    public @ResponseBody
+    String addBalance(@RequestParam int customer_id,@RequestParam int add_balance){
+        if (businessCustomerService.findById(customer_id) != null){
+            BusinessCustomer customer = businessCustomerService.findById(customer_id);
+            customer.setAccount(customer.getAccount()+add_balance);
+            businessCustomerService.save(customer);
+            return String.valueOf(customer.getAccount());
+        }
+        HomeCustomer customer = homeCustomerService.findById(customer_id);
+        customer.setAccount(customer.getAccount()+add_balance);
+        homeCustomerService.save(customer);
+        return String.valueOf(customer.getAccount());
+    }
+
     @GetMapping(path = "/showallstores")
     public @ResponseBody
     List<String> showAllStore(){

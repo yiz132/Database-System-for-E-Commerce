@@ -36,4 +36,9 @@ public class RegionManagerServiceImpl implements RegionManagerService {
     public List<Map<String, String>> showAllRegionsTrans() {
         return regionManagerRepository.showAllRegionsTrans();
     }
+
+    @Override
+    public List<Map<String, String>> showTransInRegion(int region_id) {
+        return regionManagerRepository.showTransInRegion(region_id);
+    }
 }

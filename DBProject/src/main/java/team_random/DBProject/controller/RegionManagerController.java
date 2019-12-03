@@ -63,4 +63,10 @@ public class RegionManagerController {
     List<Map<String,String>> showAllRegions(){
         return regionManagerService.showAllRegionsTrans();
     }
+
+    @PostMapping(path = "/showtrans/region")
+    public @ResponseBody
+    List<Map<String,String>> showTransInRegion(@RequestParam int region_id){
+        return regionManagerService.showTransInRegion(region_id);
+    }
 }
