@@ -1,6 +1,6 @@
 var jumpId = GetRequest();
 var stringId = JSON.stringify(jumpId);
-var id = JSON.parse(stringId);
+var obj = JSON.parse(stringId);
 ScanAllProduct();
 //alert(id.value);
 
@@ -133,6 +133,6 @@ function SortChange(){
 // });
 
 function EnterDetail(pid){
-     window.location.href = "ProductDetail.html?value=" + id + "&pid=" + pid;
+     window.location.href = "ProductDetail.html?value=" + obj.value + "&pid=" + pid;
 }
 
