@@ -98,13 +98,6 @@ public class SalespersonController {
         return product;
     }
 
-    @PostMapping(path = "/findbypid")
-    public @ResponseBody
-    Product findByPid(@RequestParam int pid){
-        return productService.findById(pid);
-    }
-
-
     //list transactions based on region id
     @PostMapping(path = "/regionmanager/showTransactions")
     public @ResponseBody
