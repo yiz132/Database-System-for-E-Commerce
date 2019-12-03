@@ -83,7 +83,7 @@ public class AggregationController {
 
     @PostMapping(path = "/findtransbycid")
     public @ResponseBody
-    List<Map<String,String>> findTransByCid(int customer_id){
+    List<Map<String,String>> findTransByCid(@RequestParam int customer_id){
         List<Transaction> trans= transactionService.findAllByCid(customer_id);
         List<Map<String,String>> res = new ArrayList<>();
         for (Transaction tran: trans){
