@@ -359,7 +359,7 @@ $(document).ready(function(){
                 data: {
                     name: UserNameText,
                 },
-                dataType: "json",
+                dataType: "text",
                 success: function (msg) {
                     $('#UserName-result').text("Username registered");
                 },
