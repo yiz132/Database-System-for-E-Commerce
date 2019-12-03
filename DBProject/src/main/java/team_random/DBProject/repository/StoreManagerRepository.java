@@ -4,6 +4,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import team_random.DBProject.model.StoreManager;
 
+import java.util.List;
+import java.util.Map;
+
 public interface StoreManagerRepository  extends CrudRepository<StoreManager, Integer> {
     StoreManager findByName(String name);
+    StoreManager findById(int id);
+    @Query(value = "SELECT p.name,p.price,sum(t.counts),sum(t.counts*p.price),inventory FROM store_managers sm,stores s,salesperons sp,products p, transactions t" +
+            "where sm.store_name=s.name AND sp.sid=s.id AND p.salesperson_id=sp.id AND t.pid = p.id GROUP BY t.name ",nativeQuery = true)
+    List<Map<String,String>> reviewAllByStoreManagerId(int store_mana_id);
 }

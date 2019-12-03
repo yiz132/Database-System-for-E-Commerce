@@ -104,6 +104,12 @@ public class AggregationController {
         return res;
     }
 
+    @PostMapping(path = "/reviewall/storemanager")
+    public @ResponseBody
+    List<Map<String,String>> reviewAllByStoreManager(@RequestParam int store_manager_id){
+        return storeManagerService.reviewAllByStoreManager(store_manager_id);
+    }
+
     @PostMapping(path = "/checkout")
     public @ResponseBody String checkout(@RequestParam int product_id, @RequestParam int customer_id,@RequestParam int counts){
         Product product = productService.findById(product_id);

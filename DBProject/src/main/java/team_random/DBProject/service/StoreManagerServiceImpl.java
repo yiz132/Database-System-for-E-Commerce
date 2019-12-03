@@ -8,6 +8,7 @@ import team_random.DBProject.repository.StoreManagerRepository;
 import team_random.DBProject.repository.TransactionRepository;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class StoreManagerServiceImpl implements StoreManagerService {
@@ -22,6 +23,11 @@ public class StoreManagerServiceImpl implements StoreManagerService {
     }
 
     @Override
+    public StoreManager findById(int store_manager_id) {
+        return storeManagerRepository.findById(store_manager_id);
+    }
+
+    @Override
     public StoreManager findByName(String name) {
         return storeManagerRepository.findByName(name);
     }
@@ -29,6 +35,11 @@ public class StoreManagerServiceImpl implements StoreManagerService {
     @Override
     public List<Transaction> findByStoreId(int storeId) {
         return transactionRepository.findByStoreId(storeId);
+    }
+
+    @Override
+    public List<Map<String, String>> reviewAllByStoreManager(int store_mana_id) {
+        return storeManagerRepository.reviewAllByStoreManagerId(store_mana_id);
     }
 
     public static void main(String[] args){
