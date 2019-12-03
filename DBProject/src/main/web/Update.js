@@ -5,7 +5,6 @@ if(obj.pid == 0){
 }
 else{
     OnloadProductInformation();
-
 }
 
 function GetRequest() {

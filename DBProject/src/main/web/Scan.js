@@ -1,6 +1,7 @@
 var jumpId = GetRequest();
 var stringId = JSON.stringify(jumpId);
 var id = JSON.parse(stringId);
+ScanAllProduct();
 //alert(id.value);
 
 function GetRequest() {
@@ -19,22 +20,24 @@ function GetRequest() {
 var pid = 0;
 function ScanAllProduct(){
     $.ajax({
-        type: "GET",
-        url: "http://localhost:8080/dbproject/home/product/search",
+        type: "post",
+        url: "http://localhost:8080/dbproject/aggregation/showallproducts",
         dataType: "json",
         success: function(msg) {
             var data=eval(msg);
             var str = JSON.stringify(data);
-            var obj = JSON.parse(str);
-            var picture = obj.picture;
-            var name = obj.name;
-            var price = obj.price;
-            pid = obj.id;
-            document.getElementById('AllProductDiv').innerHTML="<div id=\"ProductDiv\" class=\"ProductDiv\" onclick=\"EnterDetail()\">\n" +
-                "    <div class=\"ProductPhotoDiv\" style=\"background-image: url("+picture+")\"></div>\n" +
-                "    <div class=\"ProductNameDiv\">"+name+"</div>\n" +
-                "    <div class=\"ProductPriceDiv\">$"+price+"</div>\n" +
-                "</div>";
+            var product = JSON.parse(str);
+            for( var i = 0; i<product.length; i++) {
+                var picture = product[i].picture;
+                var name = product[i].name;
+                var price = product[i].price;
+                var id = product[i].id;
+                document.getElementById('AllProductDiv').innerHTML =document.getElementById('AllProductDiv').innerHTML+ "<div id=\"ProductDiv\" class=\"ProductDiv\" onclick=\"EnterDetail()\">\n" +
+                    "    <div class=\"ProductPhotoDiv\" style=\"background-image: url(" + picture + ")\"></div>\n" +
+                    "    <div class=\"ProductNameDiv\">" + name + "</div>\n" +
+                    "    <div class=\"ProductPriceDiv\">$" + price + "</div>\n" +
+                    "</div>";
+            }
         },
         error: function (request, status, error) {
             //alert(request.responseText);
@@ -64,8 +67,8 @@ function SearchProduct() {
                 var picture = obj.picture;
                 var name = obj.name;
                 var price = obj.price;
-                pid = obj.id;
-                document.getElementById('AllProductDiv').innerHTML="<div id=\"ProductDiv\" class=\"ProductDiv\" onclick=\"EnterDetail()\">\n" +
+                var pid = obj.id;
+                document.getElementById('AllProductDiv').innerHTML=document.getElementById('AllProductDiv').innerHTML+"<div id="+pid+" class=\"ProductDiv\" onclick=\"EnterDetail()\">\n" +
                     "    <div class=\"ProductPhotoDiv\" style=\"background-image: url("+picture+")\"></div>\n" +
                     "    <div class=\"ProductNameDiv\">"+name+"</div>\n" +
                     "    <div class=\"ProductPriceDiv\">$"+price+"</div>\n" +
@@ -108,8 +111,8 @@ function SortChange(){
             var picture = obj.picture;
             var name = obj.name;
             var price = obj.price;
-            pid = obj.id;
-            document.getElementById('AllProductDiv').innerHTML="<div id=\"ProductDiv\" class=\"ProductDiv\" onclick=\"EnterDetail()\">\n" +
+            var pid = obj.id;
+            document.getElementById('AllProductDiv').innerHTML="<div id="+pid+" class=\"ProductDiv\" onclick=\"EnterDetail()\">\n" +
                 "    <div class=\"ProductPhotoDiv\" style=\"background-image: url("+picture+")\"></div>\n" +
                 "    <div class=\"ProductNameDiv\">"+name+"</div>\n" +
                 "    <div class=\"ProductPriceDiv\">$"+price+"</div>\n" +

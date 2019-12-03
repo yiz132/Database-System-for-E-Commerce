@@ -110,7 +110,6 @@ function SortChange(){
         data: {
             id : obj.value,
             sort: sort,
-
         },
         dataType: "json",
         success: function(msg) {
