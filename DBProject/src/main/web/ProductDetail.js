@@ -1,5 +1,5 @@
 function CheckOut(){
-    var number = $('#Transact_Number').val();
+    var number = parseInt($('#Transact_Number').val());
     var date = new Date();
     var Url="http://localhost:8080/dbproject/aggregation/checkout";
     $.ajax({
