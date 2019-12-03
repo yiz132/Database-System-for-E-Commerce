@@ -1,6 +1,6 @@
-var jumpId = GetRequest();
-var stringId = JSON.stringify(jumpId);
-var obj = JSON.parse(stringId);
+var id = GetRequest();
+var stringA = JSON.stringify(id);
+var obj = JSON.parse(stringA);
 OrderOnload();
 function GetRequest() {
     var url = location.search; //获取url中"?"符后的字串
@@ -28,16 +28,16 @@ function OrderOnload() {
             var data=eval(msg);
             var str = JSON.stringify(data);
             var order = JSON.parse(str);
-            for( var i = 0; i<order.length; i++) {
+
+            for( var i = 0; i<order.length; i++){
                 var picture = order[i].picture;
                 var name = order[i].name;
-                var number = order[i].num ;
+                var total = order[i].total;
                 var date = order[i].date;
-                document.getElementById('List').innerHTML =document.getElementById('List').innerHTML + "\n" +
-                    "    <tr>\n" +
+                document.getElementById('ListTable').innerHTML =document.getElementById('ListTable').innerHTML + " <tr>\n" +
                     "        <td style=\"width: 90px;background-image: url("+picture+"); background-size: cover\"></td>\n" +
-                    "        <td>"+name<+"/td>\n" +
-                    "        <td>"+number+"</td>\n" +
+                    "        <td>"+name+"</td>\n" +
+                    "        <td>$"+total+"</td>\n" +
                     "        <td>"+date+"</td>\n" +
                     "    </tr>";
             }
@@ -71,7 +71,7 @@ function SearchOrder() {
                 var name = order.name;
                 var total = parseInt(order.price)  *parseInt(order.number) ;
                 var date = order.date;
-                document.getElementById('List').innerText =document.getElementById('List').innerText + "\n" +
+                document.getElementById('ListTable').innerText =document.getElementById('ListTable').innerText + "\n" +
                     "    <tr>\n" +
                     "        <td style=\"width: 90px;background-image: url("+picture+"); background-size: cover\"></td>\n" +
                     "        <td>"+name<+"/td>\n" +
@@ -117,7 +117,7 @@ function SortChange(){
             var name = order.name;
             var total = parseInt(order.price)  *parseInt(order.number) ;
             var date = order.date;
-            document.getElementById('List').innerText =document.getElementById('List').innerText + "\n" +
+            document.getElementById('ListTable').innerText =document.getElementById('ListTable').innerText + "\n" +
                 "    <tr>\n" +
                 "        <td style=\"width: 90px;background-image: url("+picture+"); background-size: cover\"></td>\n" +
                 "        <td>"+name<+"/td>\n" +
