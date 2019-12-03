@@ -11,5 +11,5 @@ public interface RegionManagerService {
     RegionManager findByName(String name);
     List<Transaction> findByRegionId(int regionId);
     List<Map<String,String>> showAllRegionsTrans();
-    List<Map<String, String>> showTransInRegion(int region_id);
+    //List<Map<String, String>> showTransInRegion(int region_id);
 }

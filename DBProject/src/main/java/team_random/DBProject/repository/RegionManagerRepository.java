@@ -14,6 +14,6 @@ public interface RegionManagerRepository extends CrudRepository<RegionManager, I
             "AND p.salesperson_id = sp.id AND t.pid=p.id GROUP BY r.name ", nativeQuery = true)
     List<Map<String, String>> showAllRegionsTrans();
 
-    //@Query(value = "SELECT")
-    List<Map<String, String>> showTransInRegion(int region_id);
+//    //@Query(value = "SELECT")
+//    List<Map<String, String>> showTransInRegion(int region_id);
 }
