@@ -54,7 +54,7 @@ public class AggregationController {
         return regionService.findAllNames();
     }
 
-    @GetMapping(path = "/showallproducts")
+    @PostMapping(path = "/showallproducts")
     public @ResponseBody
     List<Product> showAllProducts(){
         return productService.showAllProducts();
