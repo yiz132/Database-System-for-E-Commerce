@@ -60,8 +60,8 @@ public class AggregationController {
 
     @PostMapping(path ="/sortallproducts")
     public @ResponseBody
-    List<Product> showHighToLow(@RequestParam String sort){
-        List<Product> ori = showAllProducts();
+    List<Product> showHighToLow(@RequestParam String sort, @RequestParam String category){
+        List<Product> ori = category.equals("AllCategories")? showAllProducts() : groupByCategory(category);
         if (sort.equals("SortBy")) return ori;
         else if (sort.equals("PriceHighToLow")) {
             ori.sort((o1, o2) -> o2.getPrice() - o1.getPrice());
