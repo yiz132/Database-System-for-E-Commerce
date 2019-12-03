@@ -22,7 +22,7 @@ function GetRequest() {
 }
 
 function OnloadProductInformation(){
-    alert(obj.pid);
+    //alert(obj.pid);
     $.ajax({
         type: "post",
         url: "http://localhost:8080/dbproject/salesperson/findbypid",
@@ -110,7 +110,6 @@ function CurrentProduct(){
         url: Url,
         data: {
             pid: obj.pid,
-            salesperson_id: obj.value,
             name: name,
             price: price,
             category: category,
