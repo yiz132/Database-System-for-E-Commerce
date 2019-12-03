@@ -24,32 +24,32 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public Map<String, Integer> sortBySalesAll() {
+    public List<Map<String, Integer>> sortBySalesAll() {
         return transactionRepository.groupTransByName();
     }
 
     @Override
-    public Map<String, Integer> sortByProfitsAll() {
+    public List<Map<String,Integer>> sortByProfitsAll() {
         return transactionRepository.sortTransByProfits();
     }
 
     @Override
-    public Map<String,Integer> sortBySalesInRegion(int region_id) {
+    public List<Map<String,Integer>> sortBySalesInRegion(int region_id) {
         return transactionRepository.groupTransByNameInRegion(region_id);
     }
 
     @Override
-    public Map<String, Integer> sortByProfitsInRegion(int region_id) {
+    public List<Map<String,Integer>> sortByProfitsInRegion(int region_id) {
         return transactionRepository.sortTransByProfitsInRegion(region_id);
     }
 
     @Override
-    public Map<String, Integer> sortBySalesInStore(int store_id) {
+    public List<Map<String,Integer>> sortBySalesInStore(int store_id) {
         return transactionRepository.groupTransByNameInStore(store_id);
     }
 
     @Override
-    public Map<String, Integer> sortByProfitsInStore(int store_id) {
+    public List<Map<String,Integer>> sortByProfitsInStore(int store_id) {
         return transactionRepository.sortTransByProfitsInStore(store_id);
     }
 
