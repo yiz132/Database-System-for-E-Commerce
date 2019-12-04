@@ -74,7 +74,7 @@ function SearchBusiness() {
     // if (keyWord  == ''){
     //     ProductOnload();
     // }
-    var Url="";
+    var Url="http://localhost:8080/dbproject/storemanager/searchandsort";
     $.ajax({
         type: "post",
         url: Url,

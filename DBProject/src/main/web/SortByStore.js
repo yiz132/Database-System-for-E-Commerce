@@ -62,6 +62,10 @@ function GetRequest() {
     return theRequest;
 }
 
+function LogOut() {
+
+    window.location.href = "SignIn.html";
+}
 function onloadStore() {
     var Url="http://localhost:8080/dbproject/regionmanager/showtrans/region";
     $.ajax({

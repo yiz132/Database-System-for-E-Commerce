@@ -1,3 +1,6 @@
+function SignIn_jump() {
+    window.location.href = "SignIn.html"
+}
 function Locate() {
     $("html,body").animate({scrollTop:"0" + "px"}, 500);
 }

@@ -22,9 +22,25 @@ body, html {
     background-color: lightpink;
 }
 
+.BarButton{
+    height: 40px;
+    position: absolute;
+    top:10px;
+    left: 200px;
+    color: white;
+    border: 3px solid white;
+    background-color: lightpink;
+    border-radius: 15px;
+    font-family: "Microsoft Sans Serif";
+    padding-top: 20px;
+    font-size: 20px;
+}
+.BarButton:hover{
+    filter: brightness(0.8);
+}
 
 .SearchInput{
-    width: 1000px;
+    width: 900px;
     height: 30px;
     position: absolute;
     top: 25px;
@@ -48,7 +64,7 @@ body, html {
     height: 30px;
     position: absolute;
     top: 28px;
-    left: 1200px;
+    left: 1100px;
     border: 1px solid white;
     font-size: 15px;
     padding-left: 10px;

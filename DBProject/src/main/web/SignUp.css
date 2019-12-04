@@ -154,3 +154,20 @@ body, html {
     outline: none;
     border: 1px solid lightpink;
 }
+.SignIn{
+    margin: auto;
+    height: 48px;
+    width: 60px;
+    border-radius: 5px;
+    border:1px solid lightpink;
+    background-color: lightpink;
+    font-size: 15px;
+    color: white;
+    outline: none;
+}
+.SignIn:hover{
+    filter: brightness(1.3);
+}
+.SignIn:active{
+    filter: brightness(0.9);
+}

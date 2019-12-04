@@ -119,6 +119,7 @@ body, html {
     background-color: lightpink;
     font-size: 15px;
     color: white;
+    outline: none;
 }
 .SignUp:hover{
     filter: brightness(1.3);
