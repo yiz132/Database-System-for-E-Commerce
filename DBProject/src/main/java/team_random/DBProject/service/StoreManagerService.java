@@ -14,4 +14,6 @@ public interface StoreManagerService {
     StoreManager findByName(String name);
     List<Transaction> findByStoreId(int storeId);
     List<Map<String,String>> reviewAllByStoreManager(int store_mana_id);
+
+    List<Map<String, String>> searchProductsByKeywords(int id, String search_keyword);
 }
