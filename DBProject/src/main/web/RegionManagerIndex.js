@@ -1,42 +1,47 @@
 function SearchBusiness() {
     var keyWord = document.getElementById('SearchInput').value;
     var sort = document.getElementById('Sort').value;
-    document.getElementById('ListTable').innerHTML ="<tr style=\"height: 10px;\">\n" +
-        "        <th style=\"height: 10px; border: 1px  lightpink; border-style: none none solid none;\">Region</th>\n" +
-        "        <th style=\"height: 10px;  border: 1px  lightpink; border-style: none none solid none;\">Sales</th>\n" +
-        "        <th style=\"height: 10px;  border: 1px  lightpink; border-style: none none solid none;\">Profit</th>\n" +
-        "    </tr>";
-    var Url="http://localhost:8080/dbproject/regionmanager/searchAndSort/regions";
-    $.ajax({
-        type: "post",
-        url: Url,
-        data: {
-            search_keyword: keyWord,
-            sort_keyword: sort,
-        },
-        dataType: "json",
-        success: function(msg) {
-            var data=eval(msg);
-            var str = JSON.stringify(data);
-            var manager = JSON.parse(str);
-            for( var i = 0; i<manager.length; i++) {
-                var regions = manager[i].name;
-                var sales = manager[i].total_sales;
-                var profit = manager[i].total_profits;
-                document.getElementById('ListTable').innerHTML = document.getElementById('ListTable').innerHTML + "\n" +
-                    "    <tr>\n" +
-                    "        <td>" + regions + "</td>\n" +
-                    "        <td>" + sales + "</td>\n" +
-                    "        <td>" + profit + "</td>\n" +
-                    "    </tr>";
+    if(sort == 'Stores'){
+        window.location.href = "SortByStore.html?value=" + obj.value;
+    }
+    else {
+        document.getElementById('ListTable').innerHTML = "<tr style=\"height: 10px;\">\n" +
+            "        <th style=\"height: 10px; border: 1px  lightpink; border-style: none none solid none;\">Region</th>\n" +
+            "        <th style=\"height: 10px;  border: 1px  lightpink; border-style: none none solid none;\">Sales</th>\n" +
+            "        <th style=\"height: 10px;  border: 1px  lightpink; border-style: none none solid none;\">Profit</th>\n" +
+            "    </tr>";
+        var Url = "http://localhost:8080/dbproject/regionmanager/searchAndSort/regions";
+        $.ajax({
+            type: "post",
+            url: Url,
+            data: {
+                search_keyword: keyWord,
+                sort_keyword: sort,
+            },
+            dataType: "json",
+            success: function (msg) {
+                var data = eval(msg);
+                var str = JSON.stringify(data);
+                var manager = JSON.parse(str);
+                for (var i = 0; i < manager.length; i++) {
+                    var regions = manager[i].name;
+                    var sales = manager[i].total_sales;
+                    var profit = manager[i].total_profits;
+                    document.getElementById('ListTable').innerHTML = document.getElementById('ListTable').innerHTML + "\n" +
+                        "    <tr>\n" +
+                        "        <td>" + regions + "</td>\n" +
+                        "        <td>" + sales + "</td>\n" +
+                        "        <td>" + profit + "</td>\n" +
+                        "    </tr>";
+                }
+
+            },
+            error: function (request, status, error) {
+                //alert(request.responseText);
+
             }
-
-        },
-        error: function (request, status, error) {
-            //alert(request.responseText);
-
-        }
-    });
+        });
+    }
 }
 
 function SearchPress() {
