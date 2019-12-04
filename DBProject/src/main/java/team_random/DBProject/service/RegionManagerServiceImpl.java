@@ -7,6 +7,8 @@ import team_random.DBProject.model.Transaction;
 import team_random.DBProject.repository.RegionManagerRepository;
 import team_random.DBProject.repository.TransactionRepository;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -44,6 +46,18 @@ public class RegionManagerServiceImpl implements RegionManagerService {
 
     @Override
     public List<Map<String, String>> reviewAllByStoreManager(int region_manager_id, String search_keyword) {
-        return regionManagerRepository.reviewAllByStoreManager(region_manager_id, search_keyword);
+        List<Map<String,String>> ori = regionManagerRepository.reviewAllByStoreManager(region_manager_id, search_keyword);
+        List<Map<String,String>> res = new ArrayList<>();
+        for (Map<String,String> map : ori){
+            Map<String,String> newMap = new HashMap<>();
+            String name = String.valueOf(map.get("name"));
+            String total_sales = String.valueOf(map.get("total_sales"));
+            String total_profits = String.valueOf(map.get("total_profits"));
+            newMap.put("name",name);
+            newMap.put("total_sales",total_sales);
+            newMap.put("total_profits",total_profits);
+            res.add(newMap);
+        }
+        return res;
     }
 }

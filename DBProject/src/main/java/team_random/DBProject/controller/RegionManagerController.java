@@ -73,24 +73,22 @@ public class RegionManagerController {
 
     @PostMapping(path = "/searchAndSort/stores")
     public @ResponseBody
-    List<Map<String,String>> reviewAllByStoreManager(@RequestParam int region_manager_id,
+    List<Map<String,String>> reviewAllByRegionManager(@RequestParam int region_manager_id,
                                                      @RequestParam String search_keyword,
                                                      @RequestParam String sort_keyword){
         List<Map<String,String>> ori = regionManagerService.reviewAllByStoreManager(region_manager_id,search_keyword);
-        switch (sort_keyword) {
-            case "ProfitHighToLow":
-                ori.sort((p1, p2) -> Integer.parseInt(p2.get("total_profits")) - Integer.parseInt(p1.get("total_profits")));
-                break;
-            case "ProfitLowToHigh":
-                ori.sort(Comparator.comparingInt(p -> Integer.parseInt(p.get("total_profits"))));
+        if (sort_keyword.equals("ProfitHighToLow")){
+            ori.sort( (p1,p2) -> Integer.parseInt(p2.get("total_profits")) - Integer.parseInt(p1.get("total_profits")));
+        }
+        else if (sort_keyword.equals("ProfitLowToHigh")){
+            ori.sort(Comparator.comparingInt(p -> Integer.parseInt(p.get("total_profits"))));
 
-                break;
-            case "SalesHighToLow":
-                ori.sort((p1, p2) -> Integer.parseInt(p2.get("total_sales")) - Integer.parseInt(p1.get("total_sales")));
-                break;
-            case "SalesLowToHigh":
-                ori.sort(Comparator.comparingInt(p -> Integer.parseInt(p.get("total_sales"))));
-                break;
+        }
+        else if (sort_keyword.equals("SalesHighToLow")){
+            ori.sort( (p1,p2) -> Integer.parseInt(p2.get("total_sales")) - Integer.parseInt(p1.get("total_sales")));
+        }
+        else if (sort_keyword.equals("SalesLowToHigh")){
+            ori.sort(Comparator.comparingInt(p -> Integer.parseInt(p.get("total_sales"))));
         }
         return ori;
     }
