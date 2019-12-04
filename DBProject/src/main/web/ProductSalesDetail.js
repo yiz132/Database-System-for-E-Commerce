@@ -98,7 +98,10 @@ function GetRequest() {
     return theRequest;
 }
 
+function LogOut() {
 
+    window.location.href = "SignIn.html";
+}
 
 
 function SortChange(){

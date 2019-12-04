@@ -86,6 +86,11 @@ function SearchProduct() {
     }
 }
 
+function LogOut() {
+
+    window.location.href = "SignIn.html";
+}
+
 function SearchPress() {
 
     if(event.keyCode==13)

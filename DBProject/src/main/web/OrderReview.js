@@ -14,7 +14,10 @@ function GetRequest() {
     }
     return theRequest;
 }
+function LogOut() {
 
+    window.location.href = "SignIn.html";
+}
 function OrderOnload() {
     var Url="http://localhost:8080/dbproject/aggregation/findtransbycid";
     $.ajax({
@@ -43,7 +46,7 @@ function OrderOnload() {
             }
         },
         error: function (request, status, error) {
-            alert(request.responseText);
+          //  alert(request.responseText);
 
         }
     });

@@ -12,9 +12,9 @@
 <div class="TopBar" >
     <div id="LogoDiv" class="LogoDiv"></div>
 <!--    <i class="SearchLogo" id="SearchLogo"></i>-->
-    <input type="text" id="SearchInput" class="SearchInput" onKeyDown="SearchPress()" placeholder="Search key words here" style="width: 800px"></input>
+    <input type="text" id="SearchInput" class="SearchInput" onKeyDown="SearchPress()" placeholder="Search key words here" style="width: 700px"></input>
     <button id="SearchProductButton" onclick="SearchProduct()" style="display: none"></button>
-    <select id="SortCategory" name="Sort"  class="SortDiv" onchange="SortChange()" style="left: 980px">
+    <select id="SortCategory" name="Sort"  class="SortDiv" onchange="SortChange()" style="left: 880px">
         <option value ="AllCategories" >All CATEGORIES</option>
         <option value ="other" >OTHER</option>
         <option value ="skirt" >SKIRT</option>
@@ -28,7 +28,7 @@
         <option value ="PriceHighToLow">PRICE (HIGH TO LOW)</option>
         <option value ="PriceLowToHigh">PRICE (LOW TO HIGH)</option>
     </select>
-
+    <div id="Logout" class="BarButton" onclick="LogOut()" style="left:1330px">Log out</div>
 </div>
 <div id="AllProductDiv" class="AllProductDiv">
 <!--<div  class="ProductDiv" onclick="EnterDetail()">-->
