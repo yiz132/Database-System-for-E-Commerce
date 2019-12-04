@@ -61,23 +61,20 @@ function SearchOrder() {
         "        <th style=\"height: 10px;  border: 1px  lightpink; border-style: none none solid none;\">Total</th>\n" +
         "        <th style=\"height: 10px;  border: 1px  lightpink; border-style: none none solid none;\">Date</th>\n" +
         "    </tr>";
-    // if (keyWord  == ''){
-    //     OrderOnload();
-    // }
-
         $.ajax({
             type: "post",
-            url: "",
+            url: "http://localhost:8080/dbproject/aggregation/orderSearchAndSort/customer",
             data: {
                 search_keyword: keyWord,
                 sort_keyword: sort,
-                name: obj.value,
+                customer_id: obj.value
             },
             dataType: "json",
             success: function(msg){
                 var data=eval(msg);
                 var str = JSON.stringify(data);
                 var order = JSON.parse(str);
+                //alert(order[0].name);
                 for( var i = 0; i<order.length; i++) {
                     var picture = order[i].picture;
                     var name = order[i].name;
@@ -92,7 +89,7 @@ function SearchOrder() {
                 }
             },
             error: function (request, status, error) {
-                //alert("Sign up failed");
+                alert("Sign up failed");
 
             }
         });

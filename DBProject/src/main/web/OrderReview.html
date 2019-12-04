@@ -14,10 +14,12 @@
     <!--    <i class="SearchLogo" id="SearchLogo"></i>-->
     <input type="text" id="SearchInput" class="SearchInput" onKeyDown="SearchPress()" placeholder="Search key words here"></input>
     <button id="SearchOrderButton" onclick="SearchOrder()" style="display: none"></button>
-    <select id="Sort" name="Sort" onchange="SortChange()" class="SortDiv">
+    <select id="Sort" name="Sort" onchange="SearchOrder()" class="SortDiv">
         <option value ="SortBy" >SORT BY</option>
-        <option value ="TotalHighToLow">TOTAL</option>
-        <option value ="DateLastToPast">DATE</option>
+        <option value ="total_HighToLow">TOTAL (HIGH TO LOW)</option>
+        <option value ="total_LowToHigh">TOTAL (LOW TO HIGH)</option>
+        <option value ="date_MostRecent">DATE (MOST RECENT)</option>
+        <option value ="date_LeastRecent">DATE (LEAST RECENT)</option>
     </select>
 
     <div id="Logout" class="BarButton" onclick="LogOut()" style="left:1330px">Log out</div>
