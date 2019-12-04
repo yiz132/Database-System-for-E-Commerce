@@ -15,7 +15,7 @@ public interface RegionManagerRepository extends CrudRepository<RegionManager, I
     List<Map<String, String>> showAllRegionsTrans();
 
     @Query(value = "SELECT s.name, sum(t.num) AS total_sales, sum(t.num*price) AS total_profits FROM " +
-            "stores s, salespersons sp, products p, transactions t WHERE " +
-            "s.rid = ?1 AND sp.sid = s.id AND p.salesperson_id = sp.id AND t.pid=p.id GROUP BY s.name ", nativeQuery = true)
-    List<Map<String, String>> showTransInRegion(int region_id);
+            "stores s, salespersons sp, products p, transactions t,region_managers rm, regions r WHERE " +
+            "rm.id = ?1 AND r.name = rm.region_name AND sp.sid = s.id AND p.salesperson_id = sp.id AND t.pid=p.id GROUP BY s.name ", nativeQuery = true)
+    List<Map<String, String>> showTransInRegion(int region_manager_id);
 }
