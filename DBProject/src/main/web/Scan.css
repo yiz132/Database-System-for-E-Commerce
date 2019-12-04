@@ -103,7 +103,7 @@ body, html {
     margin-left: 50px;
     color: lightpink;
     text-align: center;
-    font-size: 3vw;
+    font-size: 2vw;
     padding-top: 5px;
 }
 .ProductPriceDiv{
@@ -111,7 +111,7 @@ body, html {
     height: 30px;
     border: none;
     margin-left: 50px;
-    margin-top: 10px;
+    margin-top: 25px;
     color: lightpink;
     font-weight: bold;
     text-align: center;
