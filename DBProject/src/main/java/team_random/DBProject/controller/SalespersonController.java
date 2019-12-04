@@ -11,6 +11,7 @@ import team_random.DBProject.service.ProductService;
 import team_random.DBProject.service.SalespersonService;
 import team_random.DBProject.service.StoreService;
 
+import java.util.Comparator;
 import java.util.List;
 
 @CrossOrigin
@@ -104,5 +105,26 @@ public class SalespersonController {
     public @ResponseBody
     List<Product> roughSearch(@RequestParam int id, @RequestParam String keyword){
         return productService.roughSearchForSalesperson(id,keyword);
+    }
+
+    @PostMapping(path ="/searchandsort")
+    public @ResponseBody
+    List<Product> sortByInput(@RequestParam int id, @RequestParam String search_keyword,
+                              @RequestParam String sort_keyword){
+        List<Product> ori= productService.roughSearchForSalesperson(id,search_keyword);
+        if (sort_keyword.equals("PriceHighToLow")){
+            ori.sort( (p1,p2) -> p2.getPrice() - p1.getPrice());
+        }
+        else if (sort_keyword.equals("PriceLowToHigh")){
+            ori.sort(Comparator.comparingInt(Product::getPrice));
+
+        }
+        else if (sort_keyword.equals("StockHighToLow")){
+            ori.sort( (p1,p2) -> p2.getInventory() - p1.getInventory());
+        }
+        else if (sort_keyword.equals("StockLowToHigh")){
+            ori.sort(Comparator.comparingInt(Product::getInventory));
+        }
+        return ori;
     }
 }
