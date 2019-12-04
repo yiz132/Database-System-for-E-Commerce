@@ -61,4 +61,9 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAllBySalesperson_id(spId);
     }
 
+    @Override
+    public List<Product> roughSearchForSalesperson(int id, String keyword) {
+        return productRepository.roughSearchForSalesperson(id,keyword);
+    }
+
 }

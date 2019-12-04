@@ -3,6 +3,7 @@ package team_random.DBProject.repository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import team_random.DBProject.model.Product;
 
 import java.util.List;
@@ -26,4 +27,8 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
 
     @Query(value = "SELECT * FROM products WHERE products.salesperson_id = ?1 ",nativeQuery = true)
     List<Product> findAllBySalesperson_id(int salesperson_id);
+
+    @Query(value = "SELECT * FROM products WHERE products.salesperson_id = :id AND products.name LIKE %:keyword%", nativeQuery = true)
+    List<Product> roughSearchForSalesperson(@Param("id") int id,
+                                            @Param("keyword") String keyword);
 }
