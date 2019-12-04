@@ -2,7 +2,7 @@ function SearchBusiness() {
     var keyWord = document.getElementById('SearchInput').value;
     var sort = document.getElementById('Sort').value;
     if(sort == 'Regions'){
-        window.location.href = "SortByStore.html?value=" + obj.value;
+        window.location.href = "RegionManagerIndex.html?value=" + obj.value;
     }
     else {
         document.getElementById('ListTable').innerHTML = "<tr style=\"height: 10px;\">\n" +
