@@ -38,14 +38,14 @@ function AddBalance() {
     var add_balance = document.getElementById('balanceInput').value;
     $.ajax({
         type: "post",
-        url: "",
+        url: "http://localhost:8080/dbproject/aggregation/addbalance",
         data: {
             add_balance: add_balance,
             customer_id: obj.value
         },
         dataType: "text",
         success: function(msg){
-            document.getElementById('Balance').innerText=document.getElementById('Balance').innerText+msg;
+            document.getElementById('Balance').innerText="Your Balance $"+msg;
         },
         error: function (request, status, error) {
         }
