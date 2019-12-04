@@ -146,7 +146,7 @@ public class AggregationController {
         List<Map<String,String>> allOrders = findTransByCid(customer_id);
         List<Map<String,String>> res = new ArrayList<>();
         for (Map<String,String> map : allOrders){
-            if (map.get("name").contains(search_keyword)) continue;
+            if (!map.get("name").contains(search_keyword)) continue;
             Map<String,String> newMap = new HashMap<>();
             String name = map.get("name");
             String picture = map.get("picture");
@@ -158,7 +158,7 @@ public class AggregationController {
             map.put("date",date);
             res.add(map);
         }
-        SimpleDateFormat format = new SimpleDateFormat();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         if (sort_keyword.equals("total_HighToLow")){
             res.sort( (m1,m2) -> Integer.parseInt(m2.get("total")) - Integer.parseInt(m1.get("total")));
         }
