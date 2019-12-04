@@ -63,15 +63,24 @@ function  ProductOnload() {
 function SearchBusiness() {
 
     var keyWord = document.getElementById('SearchInput').value;
-    if (keyWord  == ''){
-        ProductOnload();
-    }
+    var sort = document.getElementById('Sort').value;
+    document.getElementById('ListTable').innerHTML = "<tr style=\"height: 10px;\">\n" +
+        "        <th style=\"height: 10px; border: 1px  lightpink; border-style: none none solid none;\">Photo</th>\n" +
+        "        <th style=\"height: 10px;  border: 1px  lightpink; border-style: none none solid none;\">Name</th>\n" +
+        "        <th style=\"height: 10px;  border: 1px  lightpink; border-style: none none solid none;\">Sales</th>\n" +
+        "        <th style=\"height: 10px;  border: 1px  lightpink; border-style: none none solid none;\">Profit</th>\n" +
+        "        <th style=\"height: 10px;  border: 1px  lightpink; border-style: none none solid none;\">Inventory</th>\n" +
+        "    </tr>";
+    // if (keyWord  == ''){
+    //     ProductOnload();
+    // }
     var Url="";
     $.ajax({
         type: "post",
         url: Url,
         data: {
-            keyword: keyWord,
+            search_keyword: keyWord,
+            sort_keyword: sort,
             id: obj.value,
         },
         dataType: "json",
@@ -79,21 +88,22 @@ function SearchBusiness() {
             var data=eval(msg);
             var str = JSON.stringify(data);
             var product = JSON.parse(str);
-            var picture = product.picture;
-            var name = product.name;
-            var price = product.price;
-            var sales = product.sales;
-            var profit = parseInt(price) * parseInt(sales);
-            var inventory = product.inventory;
-            document.getElementById('ListTable').innerText =document.getElementById('ListTable').innerText + "\n" +
-                "    <tr>\n" +
-                "        <td style=\"width: 90px;background-image: url("+picture+"); background-size: cover\"></td>\n" +
-                "        <td>"+name+"</td>\n" +
-                "        <td>"+price+"</td>\n" +
-                "        <td>"+sales+"</td>\n" +
-                "        <td>"+profit+"</td>\n" +
-                "        <td>"+inventory+"</td>\n" +
-                "    </tr>";
+            for( var i = 0; i<product.length; i++) {
+                var picture = product[i].picture;
+                var name = product[i].name;
+
+                var sales = product[i].total_sales;
+                var profit = product[i].total_profits;
+                var inventory = product[i].inventory;
+                document.getElementById('ListTable').innerHTML = document.getElementById('ListTable').innerHTML + "\n" +
+                    "    <tr>\n" +
+                    "        <td style=\"width: 90px;background-image: url(" + picture + "); background-size: cover\"></td>\n" +
+                    "        <td>" + name + "</td>\n" +
+                    "        <td>" + sales + "</td>\n" +
+                    "        <td>" + profit + "</td>\n" +
+                    "        <td>" + inventory + "</td>\n" +
+                    "    </tr>";
+            }
 
         },
         error: function (request, status, error) {
@@ -111,47 +121,47 @@ function SearchPress() {
     }
 
 }
-
-function SortChange(){
-    //alert(document.getElementById('Sort').value);
-    var sort = document.getElementById('Sort').value;
-    var Url="";
-    $.ajax({
-        type: "post",
-        url: Url,
-        data: {
-            id: obj.value,
-            sort: sort,
-
-        },
-        dataType: "json",
-        success: function(msg) {
-            var data=eval(msg);
-            var str = JSON.stringify(data);
-            var product = JSON.parse(str);
-            var picture = product.picture;
-            var name = product.name;
-            var price = product.price;
-            var sales = product.sales;
-            var profit = parseInt(price) * parseInt(sales);
-            var inventory = product.inventory;
-            document.getElementById('ListTable').innerText =document.getElementById('ListTable').innerText + "\n" +
-                "    <tr>\n" +
-                "        <td style=\"width: 90px;background-image: url("+picture+"); background-size: cover\"></td>\n" +
-                "        <td>"+name+"</td>\n" +
-                "        <td>"+price+"</td>\n" +
-                "        <td>"+sales+"</td>\n" +
-                "        <td>"+profit+"</td>\n" +
-                "        <td>"+inventory+"</td>\n" +
-                "    </tr>";
-
-        },
-        error: function (request, status, error) {
-            //alert(request.responseText);
-
-        }
-    });
-}
+//
+// function SortChange(){
+//     //alert(document.getElementById('Sort').value);
+//     var sort = document.getElementById('Sort').value;
+//     var Url="";
+//     $.ajax({
+//         type: "post",
+//         url: Url,
+//         data: {
+//             id: obj.value,
+//             sort: sort,
+//
+//         },
+//         dataType: "json",
+//         success: function(msg) {
+//             var data=eval(msg);
+//             var str = JSON.stringify(data);
+//             var product = JSON.parse(str);
+//             var picture = product.picture;
+//             var name = product.name;
+//             var price = product.price;
+//             var sales = product.sales;
+//             var profit = parseInt(price) * parseInt(sales);
+//             var inventory = product.inventory;
+//             document.getElementById('ListTable').innerText =document.getElementById('ListTable').innerText + "\n" +
+//                 "    <tr>\n" +
+//                 "        <td style=\"width: 90px;background-image: url("+picture+"); background-size: cover\"></td>\n" +
+//                 "        <td>"+name+"</td>\n" +
+//                 "        <td>"+price+"</td>\n" +
+//                 "        <td>"+sales+"</td>\n" +
+//                 "        <td>"+profit+"</td>\n" +
+//                 "        <td>"+inventory+"</td>\n" +
+//                 "    </tr>";
+//
+//         },
+//         error: function (request, status, error) {
+//             //alert(request.responseText);
+//
+//         }
+//     });
+// }
 $(document).ready(function(){
     $('#ListTable').on('click','tr', function() {
         EnterProductSalesDetail();

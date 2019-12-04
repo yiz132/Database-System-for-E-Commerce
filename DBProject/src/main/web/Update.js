@@ -19,7 +19,14 @@ function GetRequest() {
     }
     return theRequest;
 }
+function CancelUpdate() {
+    window.location.href =  "SalesPersonIndex.html?value=" + obj.value;
+}
 
+function LogOut() {
+
+    window.location.href = "SignIn.html";
+}
 function OnloadProductInformation(){
     //alert(obj.pid);
     $.ajax({
