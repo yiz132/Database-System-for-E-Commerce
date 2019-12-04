@@ -71,7 +71,7 @@ public class RegionManagerController {
         return regionManagerService.showTransInRegion(region_manager_id);
     }
 
-    @PostMapping(path = "/searchAndSort")
+    @PostMapping(path = "/searchAndSort/stores")
     public @ResponseBody
     List<Map<String,String>> reviewAllByStoreManager(@RequestParam int region_manager_id,
                                                      @RequestParam String search_keyword,
@@ -94,4 +94,10 @@ public class RegionManagerController {
         }
         return ori;
     }
+
+    /*@PostMapping(path = "/searchAndSort/regions")
+    public @ResponseBody
+    List<>
+
+     */
 }
