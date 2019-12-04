@@ -85,7 +85,9 @@ function SearchProduct() {
         });
     }
 }
-
+function HistoryOrder() {
+    window.location.href = "OrderReview.html?value=" + obj.value;
+}
 function LogOut() {
 
     window.location.href = "SignIn.html";
