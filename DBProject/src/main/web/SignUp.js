@@ -174,7 +174,10 @@ function NewHomeCustomer(){
         },
         dataType: "json",
         success: function(msg){
-            window.location.href =  "Scan.html?value=" + name;
+            var data=eval(msg);
+            var str = JSON.stringify(data);
+            var customer = JSON.parse(str);
+            window.location.href =  "Scan.html?value=" + customer.id;
         },
         error: function (request, status, error) {
             alert("Sign up failed");
@@ -208,7 +211,10 @@ function NewBusinessCustomer(){
         },
         dataType: "json",
         success: function(msg){
-            window.location.href =  "Scan.html?value=" + name;
+            var data=eval(msg);
+            var str = JSON.stringify(data);
+            var customer = JSON.parse(str);
+            window.location.href =  "Scan.html?value=" + customer.id;
         },
         error: function (request, status, error) {
             alert("Sign up failed");
@@ -282,7 +288,11 @@ function NewStoreManager(){
         },
         dataType: "json",
         success: function(msg){
-            window.location.href =  "StoreManagerIndex.html?value=" + name;
+
+            var data=eval(msg);
+            var str = JSON.stringify(data);
+            var storemanager = JSON.parse(str);
+            window.location.href =  "StoreManagerIndex.html?value=" + storemanager.id;
         },
         error: function (request, status, error) {
             alert("Sign up failed");
@@ -313,7 +323,11 @@ function NewRegionManager(){
         },
         dataType: "json",
         success: function(msg){
-            window.location.href =  "RegionManagerIndex.html?value=" + name;
+
+            var data=eval(msg);
+            var str = JSON.stringify(data);
+            var regionmanager = JSON.parse(str);
+            window.location.href =  "RegionManagerIndex.html?value=" + regionmanager.id;
         },
         error: function (request, status, error) {
             alert("Sign up failed");
