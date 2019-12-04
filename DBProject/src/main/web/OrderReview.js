@@ -54,16 +54,23 @@ function OrderOnload() {
 
 function SearchOrder() {
     var keyWord = document.getElementById('SearchInput').value;
-    document.getElementById('ListTable').innerText="";
-    if (keyWord  == ''){
-        OrderOnload();
-    }
-    else {
+    var sort = document.getElementById('Sort').value;
+    document.getElementById('ListTable').innerHTML="<tr style=\"height: 10px;\">\n" +
+        "        <th style=\"height: 10px; border: 1px  lightpink; border-style: none none solid none;\">Photo</th>\n" +
+        "        <th style=\"height: 10px;  border: 1px  lightpink; border-style: none none solid none;\">Product Name</th>\n" +
+        "        <th style=\"height: 10px;  border: 1px  lightpink; border-style: none none solid none;\">Total</th>\n" +
+        "        <th style=\"height: 10px;  border: 1px  lightpink; border-style: none none solid none;\">Date</th>\n" +
+        "    </tr>";
+    // if (keyWord  == ''){
+    //     OrderOnload();
+    // }
+
         $.ajax({
             type: "post",
             url: "",
             data: {
-                keyword: keyWord,
+                search_keyword: keyWord,
+                sort_keyword: sort,
                 name: obj.value,
             },
             dataType: "json",
@@ -71,24 +78,25 @@ function SearchOrder() {
                 var data=eval(msg);
                 var str = JSON.stringify(data);
                 var order = JSON.parse(str);
-                var picture = order.picture;
-                var name = order.name;
-                var total = parseInt(order.price)  *parseInt(order.number) ;
-                var date = order.date;
-                document.getElementById('ListTable').innerText =document.getElementById('ListTable').innerText + "\n" +
-                    "    <tr>\n" +
-                    "        <td style=\"width: 90px;background-image: url("+picture+"); background-size: cover\"></td>\n" +
-                    "        <td>"+name<+"/td>\n" +
-                    "        <td>"+total+"</td>\n" +
-                    "        <td>"+date+"</td>\n" +
-                    "    </tr>";
+                for( var i = 0; i<order.length; i++) {
+                    var picture = order[i].picture;
+                    var name = order[i].name;
+                    var total = order[i].total;
+                    var date = order[i].date;
+                    document.getElementById('ListTable').innerHTML = document.getElementById('ListTable').innerHTML + " <tr>\n" +
+                        "        <td style=\"width: 90px;background-image: url(" + picture + "); background-size: cover\"></td>\n" +
+                        "        <td>" + name + "</td>\n" +
+                        "        <td>$" + total + "</td>\n" +
+                        "        <td>" + date + "</td>\n" +
+                        "    </tr>";
+                }
             },
             error: function (request, status, error) {
                 //alert("Sign up failed");
 
             }
         });
-    }
+
 }
 
 function SearchPress() {
@@ -100,39 +108,39 @@ function SearchPress() {
 
 }
 
-function SortChange(){
-    //alert(document.getElementById('Sort').value);
-    var sort = document.getElementById('Sort').value;
-    var Url="";
-    $.ajax({
-        type: "post",
-        url: Url,
-        data: {
-            name: obj.value,
-            sort: sort,
-
-        },
-        dataType: "json",
-        success: function(msg) {
-            var data=eval(msg);
-            var str = JSON.stringify(data);
-            var order = JSON.parse(str);
-            var picture = order.picture;
-            var name = order.name;
-            var total = parseInt(order.price)  *parseInt(order.number) ;
-            var date = order.date;
-            document.getElementById('ListTable').innerText =document.getElementById('ListTable').innerText + "\n" +
-                "    <tr>\n" +
-                "        <td style=\"width: 90px;background-image: url("+picture+"); background-size: cover\"></td>\n" +
-                "        <td>"+name<+"/td>\n" +
-                "        <td>"+total+"</td>\n" +
-                "        <td>"+date+"</td>\n" +
-                "    </tr>";
-
-        },
-        error: function (request, status, error) {
-            //alert(request.responseText);
-
-        }
-    });
-}
+// function SortChange(){
+//     //alert(document.getElementById('Sort').value);
+//     var sort = document.getElementById('Sort').value;
+//     var Url="";
+//     $.ajax({
+//         type: "post",
+//         url: Url,
+//         data: {
+//             name: obj.value,
+//             sort: sort,
+//
+//         },
+//         dataType: "json",
+//         success: function(msg) {
+//             var data=eval(msg);
+//             var str = JSON.stringify(data);
+//             var order = JSON.parse(str);
+//             var picture = order.picture;
+//             var name = order.name;
+//             var total = parseInt(order.price)  *parseInt(order.number) ;
+//             var date = order.date;
+//             document.getElementById('ListTable').innerText =document.getElementById('ListTable').innerText + "\n" +
+//                 "    <tr>\n" +
+//                 "        <td style=\"width: 90px;background-image: url("+picture+"); background-size: cover\"></td>\n" +
+//                 "        <td>"+name<+"/td>\n" +
+//                 "        <td>"+total+"</td>\n" +
+//                 "        <td>"+date+"</td>\n" +
+//                 "    </tr>";
+//
+//         },
+//         error: function (request, status, error) {
+//             //alert(request.responseText);
+//
+//         }
+//     });
+// }
