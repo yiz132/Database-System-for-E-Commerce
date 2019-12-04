@@ -69,6 +69,29 @@ public class StoreManagerServiceImpl implements StoreManagerService {
         return res;
     }
 
+    @Override
+    public List<Map<String, String>> searchProductsByKeywords(int id, String search_keyword) {
+        List<Map<String,String>> res = new ArrayList<>();
+        //only contains name, total_sales,total_profits
+        List<Map<String,String>> raw = storeManagerRepository.searchProductsByKeywords(id,search_keyword);
+        for (Map<String,String> map : raw){
+            Map<String,String> newMap = new HashMap<>();
+            String product_name = map.get("name");
+            String total_sales = String.valueOf(map.get("total_sales"));
+            String total_profits = String.valueOf(map.get("total_profits"));
+            Product product = productService.findByName(product_name);
+            String picture = product.getPicture();
+            String inventory = String.valueOf(product.getInventory());
+            newMap.put("name",product_name);
+            newMap.put("total_sales",total_sales);
+            newMap.put("total_profits",total_profits);
+            newMap.put("picture",picture);
+            newMap.put("inventory",inventory);
+            res.add(newMap);
+        }
+        return res;
+    }
+
     public static void main(String[] args){
         StoreManagerServiceImpl storeManagerService = new StoreManagerServiceImpl();
         List<Transaction> res = storeManagerService.findByStoreId(10);
