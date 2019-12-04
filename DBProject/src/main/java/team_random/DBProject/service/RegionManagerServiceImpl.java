@@ -60,4 +60,21 @@ public class RegionManagerServiceImpl implements RegionManagerService {
         }
         return res;
     }
+
+    @Override
+    public List<Map<String, String>> searchAndSortOfReviewRegions(String search_keyword) {
+        List<Map<String,String>> ori = regionManagerRepository.searchAndSortOfReviewRegions(search_keyword);
+        List<Map<String,String>> res = new ArrayList<>();
+        for (Map<String,String> map : ori){
+            Map<String,String> newMap = new HashMap<>();
+            String name = String.valueOf(map.get("name"));
+            String total_sales = String.valueOf(map.get("total_sales"));
+            String total_profits = String.valueOf(map.get("total_profits"));
+            newMap.put("name",name);
+            newMap.put("total_sales",total_sales);
+            newMap.put("total_profits",total_profits);
+            res.add(newMap);
+        }
+        return res;
+    }
 }

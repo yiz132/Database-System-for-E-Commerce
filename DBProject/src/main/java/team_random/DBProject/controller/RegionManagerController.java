@@ -93,9 +93,31 @@ public class RegionManagerController {
         return ori;
     }
 
-    /*@PostMapping(path = "/searchAndSort/regions")
-    public @ResponseBody
-    List<>
-
+    /**
+     *
+     * @param search_keyword:keyword of region name
+     * @param sort_keyword: ways of sorting
+     * @return
      */
+    @PostMapping(path = "/searchAndSort/regions")
+    public @ResponseBody
+    List<Map<String,String>> searchAndSortOfReviewRegions(@RequestParam String search_keyword,
+                                                          @RequestParam String sort_keyword){
+        List<Map<String,String>> ori = regionManagerService.searchAndSortOfReviewRegions(search_keyword);
+        if (sort_keyword.equals("ProfitHighToLow")){
+            ori.sort( (p1,p2) -> Integer.parseInt(p2.get("total_profits")) - Integer.parseInt(p1.get("total_profits")));
+        }
+        else if (sort_keyword.equals("ProfitLowToHigh")){
+            ori.sort(Comparator.comparingInt(p -> Integer.parseInt(p.get("total_profits"))));
+
+        }
+        else if (sort_keyword.equals("SalesHighToLow")){
+            ori.sort( (p1,p2) -> Integer.parseInt(p2.get("total_sales")) - Integer.parseInt(p1.get("total_sales")));
+        }
+        else if (sort_keyword.equals("SalesLowToHigh")){
+            ori.sort(Comparator.comparingInt(p -> Integer.parseInt(p.get("total_sales"))));
+        }
+        return ori;
+    }
+
 }
