@@ -6,14 +6,13 @@ function SearchBusiness() {
         "        <th style=\"height: 10px;  border: 1px  lightpink; border-style: none none solid none;\">Sales</th>\n" +
         "        <th style=\"height: 10px;  border: 1px  lightpink; border-style: none none solid none;\">Profit</th>\n" +
         "    </tr>";
-    var Url="";
+    var Url="http://localhost:8080/dbproject/regionmanager/searchAndSort/regions";
     $.ajax({
         type: "post",
         url: Url,
         data: {
             search_keyword: keyWord,
             sort_keyword: sort,
-            id: obj.value
         },
         dataType: "json",
         success: function(msg) {
