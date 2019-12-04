@@ -41,4 +41,9 @@ public class RegionManagerServiceImpl implements RegionManagerService {
     public List<Map<String, String>> showTransInRegion(int region_manager_id) {
         return regionManagerRepository.showTransInRegion(region_manager_id);
     }
+
+    @Override
+    public List<Map<String, String>> reviewAllByStoreManager(int region_manager_id, String search_keyword) {
+        return regionManagerRepository.reviewAllByStoreManager(region_manager_id, search_keyword);
+    }
 }

@@ -11,6 +11,7 @@ import team_random.DBProject.service.RegionManagerService;
 import team_random.DBProject.service.RegionService;
 import team_random.DBProject.service.TransactionService;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -68,5 +69,29 @@ public class RegionManagerController {
     public @ResponseBody
     List<Map<String,String>> showTransInRegion(@RequestParam int region_manager_id){
         return regionManagerService.showTransInRegion(region_manager_id);
+    }
+
+    @PostMapping(path = "/searchAndSort")
+    public @ResponseBody
+    List<Map<String,String>> reviewAllByStoreManager(@RequestParam int region_manager_id,
+                                                     @RequestParam String search_keyword,
+                                                     @RequestParam String sort_keyword){
+        List<Map<String,String>> ori = regionManagerService.reviewAllByStoreManager(region_manager_id,search_keyword);
+        switch (sort_keyword) {
+            case "ProfitHighToLow":
+                ori.sort((p1, p2) -> Integer.parseInt(p2.get("total_profits")) - Integer.parseInt(p1.get("total_profits")));
+                break;
+            case "ProfitLowToHigh":
+                ori.sort(Comparator.comparingInt(p -> Integer.parseInt(p.get("total_profits"))));
+
+                break;
+            case "SalesHighToLow":
+                ori.sort((p1, p2) -> Integer.parseInt(p2.get("total_sales")) - Integer.parseInt(p1.get("total_sales")));
+                break;
+            case "SalesLowToHigh":
+                ori.sort(Comparator.comparingInt(p -> Integer.parseInt(p.get("total_sales"))));
+                break;
+        }
+        return ori;
     }
 }

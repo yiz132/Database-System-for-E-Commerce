@@ -12,4 +12,6 @@ public interface RegionManagerService {
     List<Transaction> findByRegionId(int regionId);
     List<Map<String,String>> showAllRegionsTrans();
     List<Map<String, String>> showTransInRegion(int region_manager_id);
+    //keyword: name of store
+    List<Map<String, String>> reviewAllByStoreManager(int region_manager_id, String search_keyword);
 }
