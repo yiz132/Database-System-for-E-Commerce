@@ -3,7 +3,6 @@ package team_random.DBProject.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.w3c.dom.Text;
 import team_random.DBProject.model.Product;
 import team_random.DBProject.model.Salesperson;
 import team_random.DBProject.model.Store;
@@ -11,11 +10,7 @@ import team_random.DBProject.model.Transaction;
 import team_random.DBProject.service.ProductService;
 import team_random.DBProject.service.SalespersonService;
 import team_random.DBProject.service.StoreService;
-import team_random.DBProject.service.TransactionService;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
 import java.util.List;
 
 @CrossOrigin
@@ -103,5 +98,11 @@ public class SalespersonController {
     public @ResponseBody
     List<Transaction> showRegionTrans(@RequestParam int regionId){
         return null;
+    }
+
+    @PostMapping(path ="/roughsearch")
+    public @ResponseBody
+    List<Product> roughSearch(@RequestParam int id, @RequestParam String keyword){
+        return productService.roughSearchForSalesperson(id,keyword);
     }
 }
