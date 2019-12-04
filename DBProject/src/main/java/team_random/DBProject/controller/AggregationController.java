@@ -6,7 +6,10 @@ import org.springframework.web.bind.annotation.*;
 import team_random.DBProject.model.*;
 import team_random.DBProject.service.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.logging.SimpleFormatter;
 
 @CrossOrigin
 @Controller
@@ -107,6 +110,11 @@ public class AggregationController {
         return productService.findById(pid);
     }
 
+    /**
+     *  find order history of specific customer
+     * @param customer_id
+     * @return
+     */
     @PostMapping(path = "/findtransbycid")
     public @ResponseBody
     List<Map<String,String>> findTransByCid(@RequestParam int customer_id){
@@ -127,6 +135,55 @@ public class AggregationController {
             map.put("total",total);
             map.put("date",date);
             res.add(map);
+        }
+        return res;
+    }
+
+    @PostMapping(path = "/orderSearchAndSort/customer")
+    public @ResponseBody
+    List<Map<String,String>> orderSearchAndSort(@RequestParam int customer_id,@RequestParam String search_keyword,
+                                                @RequestParam String sort_keyword){
+        List<Map<String,String>> allOrders = findTransByCid(customer_id);
+        List<Map<String,String>> res = new ArrayList<>();
+        for (Map<String,String> map : allOrders){
+            if (map.get("name").contains(search_keyword)) continue;
+            Map<String,String> newMap = new HashMap<>();
+            String name = map.get("name");
+            String picture = map.get("picture");
+            String total = map.get("total");
+            String date = map.get("date");
+            map.put("picture",picture);
+            map.put("name",name);
+            map.put("total",total);
+            map.put("date",date);
+            res.add(map);
+        }
+        SimpleDateFormat format = new SimpleDateFormat();
+        if (sort_keyword.equals("total_HighToLow")){
+            res.sort( (m1,m2) -> Integer.parseInt(m2.get("total")) - Integer.parseInt(m1.get("total")));
+        }
+        else if (sort_keyword.equals("total_LowToHigh")){
+            res.sort( (m1,m2) -> Integer.parseInt(m1.get("total")) - Integer.parseInt(m2.get("total")));
+        }
+        else if (sort_keyword.equals("date_MostRecent")){
+            res.sort( (m1,m2) -> {
+                try {
+                    return format.parse(m2.get("date")).compareTo(format.parse(m1.get("date")));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                return 0;
+            });
+        }
+        else if (sort_keyword.equals("date_LeastRecent")){
+            res.sort( (m1,m2) -> {
+                try {
+                    return format.parse(m1.get("date")).compareTo(format.parse(m2.get("date")));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                return 0;
+            });
         }
         return res;
     }
