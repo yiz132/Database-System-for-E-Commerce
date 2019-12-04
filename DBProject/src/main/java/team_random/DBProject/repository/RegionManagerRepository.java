@@ -28,6 +28,6 @@ public interface RegionManagerRepository extends CrudRepository<RegionManager, I
                                                       @Param("keyword") String search_keyword);
     @Query(value = "SELECT r.name,sum(t.num) AS total_sales, sum(t.num*p.price) AS total_profits " +
             "FROM regions r, stores s, salespersons sp, products p, transactions t WHERE s.rid = r.id AND sp.sid = s.id " +
-            "AND p.salesperson_id = sp.id AND t.pid=p.id AND r.name LIKE %1?% GROUP BY r.name ", nativeQuery = true)
+            "AND p.salesperson_id = sp.id AND t.pid=p.id AND r.name LIKE %?1% GROUP BY r.name ", nativeQuery = true)
     List<Map<String, String>> searchAndSortOfReviewRegions(String search_keyword);
 }
