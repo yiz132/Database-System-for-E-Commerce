@@ -21,7 +21,22 @@ body, html {
     position: absolute;
     background-color: lightpink;
 }
-
+.BarButton{
+    height: 40px;
+    position: absolute;
+    top:10px;
+    left: 200px;
+    color: white;
+    border: 3px solid white;
+    background-color: lightpink;
+    border-radius: 15px;
+    font-family: "Microsoft Sans Serif";
+    padding-top: 20px;
+    font-size: 20px;
+}
+.BarButton:hover{
+    filter: brightness(0.8);
+}
 .UpdateDiv{
     width: 1200px;
     height: 600px;

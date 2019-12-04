@@ -64,9 +64,9 @@ function SearchProduct() {
         "        <th style=\"height: 10px;  border: 1px  lightpink; border-style: none none solid none;\">Price</th>\n" +
         "        <th style=\"height: 10px;  border: 1px  lightpink; border-style: none none solid none;\">Inventory</th>\n" +
         "    </tr>";
-    if (keyWord  == ''){
-        ProductOnload();
-    }
+    // if (keyWord  == ''){
+    //     ProductOnload();
+    // }
     var Url="http://localhost:8080/dbproject/salesperson/searchandsort";
     $.ajax({
         type: "post",
