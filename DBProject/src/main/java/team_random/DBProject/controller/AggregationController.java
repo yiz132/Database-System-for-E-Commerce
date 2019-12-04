@@ -89,15 +89,14 @@ public class AggregationController {
 
     @PostMapping(path ="/sortallproducts")
     public @ResponseBody
-    List<Product> showHighToLow(@RequestParam String sort, @RequestParam String category){
+    List<Product> sortAllProductsWithCategory(@RequestParam String sort_keyword,@RequestParam String search_keyword, @RequestParam String category){
         //List<Product> ori = showAllProducts();
-        List<Product> ori = category.equals("AllCategories")? showAllProducts() : groupByCategory(category);
-        if (sort.equals("SortBy")) return ori;
-        else if (sort.equals("PriceHighToLow")) {
+        List<Product> ori = productService.sortAllProductsWithCategory(search_keyword,category);
+        if (sort_keyword.equals("PriceHighToLow")) {
             ori.sort((o1, o2) -> o2.getPrice() - o1.getPrice());
             return ori;
         }
-        else if (sort.equals("PriceLowToHigh")) {
+        else if (sort_keyword.equals("PriceLowToHigh")) {
             ori.sort(Comparator.comparingInt(Product::getPrice));
             return ori;
         }

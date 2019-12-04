@@ -16,4 +16,5 @@ public interface ProductService {
     List<Product> roughSearch(String input);
     List<Product> findBySalespersonId(int spId);
     List<Product> roughSearchForSalesperson(int id, String keyword);
+    List<Product> sortAllProductsWithCategory(String search_keyword, String category);
 }

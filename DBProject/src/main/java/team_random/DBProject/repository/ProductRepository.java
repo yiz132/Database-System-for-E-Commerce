@@ -31,4 +31,8 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
     @Query(value = "SELECT * FROM products WHERE products.salesperson_id = :id AND products.name LIKE %:keyword%", nativeQuery = true)
     List<Product> roughSearchForSalesperson(@Param("id") int id,
                                             @Param("keyword") String keyword);
+
+    @Query(value ="SELECT * FROM products WHERE products.category=:category AND products.name LIKE %:keyword% ",nativeQuery = true)
+    List<Product> sortAllProductsWithCategory(@Param("keyword") String search_keyword,
+                                              @Param("category") String category);
 }

@@ -66,4 +66,9 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.roughSearchForSalesperson(id,keyword);
     }
 
+    @Override
+    public List<Product> sortAllProductsWithCategory(String search_keyword, String category) {
+        return productRepository.sortAllProductsWithCategory(search_keyword,category);
+    }
+
 }
