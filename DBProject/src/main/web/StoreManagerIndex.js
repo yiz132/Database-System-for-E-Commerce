@@ -61,7 +61,6 @@ function  ProductOnload() {
 
 
 function SearchBusiness() {
-
     var keyWord = document.getElementById('SearchInput').value;
     var sort = document.getElementById('Sort').value;
     document.getElementById('ListTable').innerHTML = "<tr style=\"height: 10px;\">\n" +

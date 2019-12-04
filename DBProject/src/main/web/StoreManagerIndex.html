@@ -14,7 +14,7 @@
     <!--    <i class="SearchLogo" id="SearchLogo"></i>-->
     <input type="text" class="SearchInput" onKeyDown="SearchPress()" placeholder="Search key words here"></input>
     <button id="SearchBusinessButton" onclick="SearchBusiness()" style="display: none"></button>
-    <select id="Sort" name="Sort" onchange="SortChange()" class="SortDiv">
+    <select id="Sort" name="Sort" onchange="SearchBusiness()" class="SortDiv">
         <option value ="SortBy" >SORT BY</option>
         <option value ="ProfitHighToLow">PROFIT (HIGH TO LOW)</option>
         <option value ="ProfitLowToHigh">PROFIT (LOW TO HIGH)</option>
