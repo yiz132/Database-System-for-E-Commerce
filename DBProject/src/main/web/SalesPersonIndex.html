@@ -12,13 +12,13 @@
 <div class="TopBar" >
     <div id="LogoDiv" class="LogoDiv"></div>
     <!--    <i class="SearchLogo" id="SearchLogo"></i>-->
-    <input type="text" class="SearchInput" onKeyDown="SearchPress()" placeholder="Search key words here"></input>
+    <input type="text" id="SearchInput" class="SearchInput" onKeyDown="SearchPress()" placeholder="Search key words here"></input>
     <button id="SearchBusinessButton" onclick="SearchProduct()" style="display: none"></button>
-    <select id="Sort" name="Sort" onchange="SortChange()" class="SortDiv">
+    <select id="Sort" name="Sort" onchange="SearchProduct()" class="SortDiv">
         <option value ="SortBy" >SORT BY</option>
         <option value ="PriceHighToLow">PRICE (HIGH TO LOW)</option>
         <option value ="PriceLowToHigh">PRICE (LOW TO HIGH)</option>
-        <option value ="StockSHighToLow">STOCK (HIGH TO LOW)</option>
+        <option value ="StockHighToLow">STOCK (HIGH TO LOW)</option>
         <option value ="StockLowToHigh">STOCK (LOW TO HIGH)</option>
     </select>
     <div id="Logout" class="BarButton" onclick="LogOut()" style="left:1330px">Log out</div>

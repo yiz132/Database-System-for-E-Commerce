@@ -56,17 +56,25 @@ function  ProductOnload() {
 
 
 function SearchProduct() {
+    var sort = document.getElementById('Sort').value;
     var keyWord = document.getElementById('SearchInput').value;
+    document.getElementById('ListTable').innerHTML="<tr style=\"height: 10px;\">\n" +
+        "        <th style=\"height: 10px; border: 1px  lightpink; border-style: none none solid none;\">Photo</th>\n" +
+        "        <th style=\"height: 10px;  border: 1px  lightpink; border-style: none none solid none;\">Name</th>\n" +
+        "        <th style=\"height: 10px;  border: 1px  lightpink; border-style: none none solid none;\">Price</th>\n" +
+        "        <th style=\"height: 10px;  border: 1px  lightpink; border-style: none none solid none;\">Inventory</th>\n" +
+        "    </tr>";
     if (keyWord  == ''){
         ProductOnload();
     }
-    var Url="";
+    var Url="http://localhost:8080/dbproject/salesperson/searchandsort";
     $.ajax({
         type: "post",
         url: Url,
         data: {
             id: obj.value,
-            keyword: keyWord
+            search_keyword: keyWord,
+            sort_keyword: sort
         },
         dataType: "json",
         success: function(msg) {
@@ -108,45 +116,45 @@ function LogOut() {
 
     window.location.href = "SignIn.html";
 }
-function SortChange(){
-    //alert(document.getElementById('Sort').value);
-    var sort = document.getElementById('Sort').value;
-    var Url="";
-    $.ajax({
-        type: "post",
-        url: Url,
-        data: {
-            id : obj.value,
-            keyword: sort,
-        },
-        dataType: "json",
-        success: function(msg) {
-            var data=eval(msg);
-            var str = JSON.stringify(data);
-            var product = JSON.parse(str);
-            //alert(product[0].id);
-            for( var i = 0; i<product.length; i++){
-                var picture = product[i].picture;
-                var name = product[i].name;
-                var price = product[i].price;
-                var inventory = product[i].inventory;
-                var pid = product[i].id;
-                document.getElementById('ListTable').innerHTML =document.getElementById('ListTable').innerHTML + " <tr id="+pid+">\n" +
-                    "        <td style=\"width: 90px;background-image: url("+picture+"); background-size: cover\"></td>\n" +
-                    "        <td>"+name+"</td>\n" +
-                    "        <td>$"+price+"</td>\n" +
-                    "        <td>"+inventory+"</td>\n" +
-                    "    </tr>";
-            }
-
-
-        },
-        error: function (request, status, error) {
-            //alert(request.responseText);
-
-        }
-    });
-}
+// function SortChange(){
+//     //alert(document.getElementById('Sort').value);
+//     var sort = document.getElementById('Sort').value;
+//     var Url="";
+//     $.ajax({
+//         type: "post",
+//         url: Url,
+//         data: {
+//             id : obj.value,
+//             sort: sort,
+//         },
+//         dataType: "json",
+//         success: function(msg) {
+//             var data=eval(msg);
+//             var str = JSON.stringify(data);
+//             var product = JSON.parse(str);
+//             //alert(product[0].id);
+//             for( var i = 0; i<product.length; i++){
+//                 var picture = product[i].picture;
+//                 var name = product[i].name;
+//                 var price = product[i].price;
+//                 var inventory = product[i].inventory;
+//                 var pid = product[i].id;
+//                 document.getElementById('ListTable').innerHTML =document.getElementById('ListTable').innerHTML + " <tr id="+pid+">\n" +
+//                     "        <td style=\"width: 90px;background-image: url("+picture+"); background-size: cover\"></td>\n" +
+//                     "        <td>"+name+"</td>\n" +
+//                     "        <td>$"+price+"</td>\n" +
+//                     "        <td>"+inventory+"</td>\n" +
+//                     "    </tr>";
+//             }
+//
+//
+//         },
+//         error: function (request, status, error) {
+//             //alert(request.responseText);
+//
+//         }
+//     });
+// }
 $(document).ready(function(){
 $('#ListTable').on('click','tr', function() {
     //alert(this.id);

@@ -54,6 +54,7 @@ function OrderOnload() {
 
 function SearchOrder() {
     var keyWord = document.getElementById('SearchInput').value;
+    document.getElementById('ListTable').innerText="";
     if (keyWord  == ''){
         OrderOnload();
     }
