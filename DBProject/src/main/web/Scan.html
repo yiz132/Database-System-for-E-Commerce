@@ -14,7 +14,7 @@
 <!--    <i class="SearchLogo" id="SearchLogo"></i>-->
     <input type="text" id="SearchInput" class="SearchInput" onKeyDown="SearchPress()" placeholder="Search key words here" style="width: 700px"></input>
     <button id="SearchProductButton" onclick="SearchProduct()" style="display: none"></button>
-    <select id="SortCategory" name="Sort"  class="SortDiv" onchange="SortChange()" style="left: 880px">
+    <select id="SortCategory" name="Sort"  class="SortDiv" onchange="SearchProduct()" style="left: 880px">
         <option value ="AllCategories" >All CATEGORIES</option>
         <option value ="other" >OTHER</option>
         <option value ="skirt" >SKIRT</option>
@@ -23,7 +23,7 @@
         <option value ="jeans" >JEANS</option>
         <option value ="sweaters" >SWEATERS</option>
     </select>
-    <select id="Sort" name="Sort" onchange="SortChange()" class="SortDiv">
+    <select id="Sort" name="Sort" onchange="SearchProduct()" class="SortDiv">
         <option value ="SortBy" >SORT BY</option>
         <option value ="PriceHighToLow">PRICE (HIGH TO LOW)</option>
         <option value ="PriceLowToHigh">PRICE (LOW TO HIGH)</option>

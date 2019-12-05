@@ -49,16 +49,17 @@ function ScanAllProduct(){
 
 function SearchProduct() {
     var keyWord = document.getElementById('SearchInput').value;
+    var sort = document.getElementById('Sort').value;
+    var category = document.getElementById('SortCategory').value;
     document.getElementById('AllProductDiv').innerHTML="";
-    if (keyWord  == ''){
-        ScanAllProduct();
-    }
-    else {
+
         $.ajax({
             type: "post",
-            url: "http://localhost:8080/dbproject/aggregation/roughsearch",
+            url: "http://localhost:8080/dbproject/aggregation/sortallproducts",
             data: {
-                input: keyWord
+                search_keyword: keyWord,
+                sort_keyword: sort,
+                category:category
             },
             dataType: "json",
             success: function(msg){
@@ -83,7 +84,7 @@ function SearchProduct() {
 
             }
         });
-    }
+
 }
 function HistoryOrder() {
     window.location.href = "OrderReview.html?value=" + obj.value;
@@ -101,42 +102,42 @@ function SearchPress() {
     }
 
 }
-
-function SortChange(){
-    //alert(document.getElementById('Sort').value);
-    var sort = document.getElementById('Sort').value;
-    var category = document.getElementById('SortCategory').value;
-    document.getElementById('AllProductDiv').innerHTML="";
-    var Url="http://localhost:8080/dbproject/aggregation/sortallproducts";
-    $.ajax({
-        type: "post",
-        url: Url,
-        data: {
-            sort: sort,
-            category: category
-        },
-        dataType: "json",
-        success: function(msg) {
-            var data=eval(msg);
-            var str = JSON.stringify(data);
-            var product = JSON.parse(str);
-            for( var i = 0; i<product.length; i++) {
-                var picture = product[i].picture;
-                var name = product[i].name;
-                var price = product[i].price;
-                var pid = product[i].id;
-                document.getElementById('AllProductDiv').innerHTML =document.getElementById('AllProductDiv').innerHTML+ "<div  name=\"ProductDiv\" class=\"ProductDiv\" onclick=\"EnterDetail("+pid+")\" >\n" +
-                    "    <div class=\"ProductPhotoDiv\" style=\"background-image: url(" + picture + ")\"></div>\n" +
-                    "    <div class=\"ProductNameDiv\">" + name + "</div>\n" +
-                    "    <div class=\"ProductPriceDiv\">$" + price + "</div>\n" +
-                    "</div>";
-            }
-
-        },
-        error: function (request, status, error) {
-        }
-    });
-}
+//
+// function SortChange(){
+//     //alert(document.getElementById('Sort').value);
+//     var sort = document.getElementById('Sort').value;
+//     var category = document.getElementById('SortCategory').value;
+//     document.getElementById('AllProductDiv').innerHTML="";
+//     var Url="http://localhost:8080/dbproject/aggregation/sortallproducts";
+//     $.ajax({
+//         type: "post",
+//         url: Url,
+//         data: {
+//             sort: sort,
+//             category: category
+//         },
+//         dataType: "json",
+//         success: function(msg) {
+//             var data=eval(msg);
+//             var str = JSON.stringify(data);
+//             var product = JSON.parse(str);
+//             for( var i = 0; i<product.length; i++) {
+//                 var picture = product[i].picture;
+//                 var name = product[i].name;
+//                 var price = product[i].price;
+//                 var pid = product[i].id;
+//                 document.getElementById('AllProductDiv').innerHTML =document.getElementById('AllProductDiv').innerHTML+ "<div  name=\"ProductDiv\" class=\"ProductDiv\" onclick=\"EnterDetail("+pid+")\" >\n" +
+//                     "    <div class=\"ProductPhotoDiv\" style=\"background-image: url(" + picture + ")\"></div>\n" +
+//                     "    <div class=\"ProductNameDiv\">" + name + "</div>\n" +
+//                     "    <div class=\"ProductPriceDiv\">$" + price + "</div>\n" +
+//                     "</div>";
+//             }
+//
+//         },
+//         error: function (request, status, error) {
+//         }
+//     });
+// }
 
 function EnterDetail(pid){
      window.location.href = "ProductDetail.html?value=" + obj.value + "&pid=" + pid;
