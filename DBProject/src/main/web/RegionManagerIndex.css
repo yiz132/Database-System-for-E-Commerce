@@ -78,21 +78,24 @@ body, html {
     position: absolute;
     top: 100px;
     left: 120px;
-    border: none;
     font-size: 30px;
     padding-left: 10px;
+    border: 1px  lightpink;
+    border-style: none none solid none;
 }
 
 
 td {
     width: 90px;
     height: 10px;
+
 }
 
 tr{
     height: 10px;
     text-align: center;
-    border: none;
+
+    /*border-style: none none solid none;*/
     /*display: block;*/
 }
 
@@ -103,12 +106,10 @@ tr:hover{
 .CanvasDiv{
     height: 700px;
     width: 1000px;
-    position:fixed;
-    bottom:0px;
-    left: 200px;
-
+    position:absolute;
+    top:150px;
+    left: 300px;
 }
 .Canvas{
     float: left;
-
 }

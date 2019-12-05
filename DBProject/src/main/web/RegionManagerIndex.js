@@ -61,14 +61,20 @@ function ShowCanvas(canvasregions,canvassales,canvasprofits) {
         window.location.href = "SortByStore.html?value=" + obj.value;
     }
     else if(sort == 'SalesHighToLow' || sort == 'SalesLowToHigh'){
+        //document.getElementById('ListTable').innerHTML ="";
         document.getElementById('CanvasDiv').innerHTML = "";
         document.getElementById('CanvasDiv').innerHTML = "<canvas id=\"a_canvas\" class=\"Canvas\" width=\"1000\" height=\"700\"></canvas>";
+        document.getElementById('CanvasDiv').style.top = 130 + document.getElementById('ListTable').offsetHeight+"px";
+       // alert(document.getElementById('ListTable').offsetHeight);
         sales(canvasregions,canvassales);
 
     }
     else if(sort == 'ProfitHighToLow' || sort == 'ProfitLowToHigh'){
+        //document.getElementById('ListTable').innerHTML ="";
         document.getElementById('CanvasDiv').innerHTML = "";
         document.getElementById('CanvasDiv').innerHTML = "<canvas id=\"a_canvas\" class=\"Canvas\" width=\"1000\" height=\"700\"></canvas>";
+        document.getElementById('CanvasDiv').style.top = 130 + document.getElementById('ListTable').offsetHeight+"px";
+
         profits(canvasregions,canvasprofits);
 
     }
@@ -226,7 +232,11 @@ function sales(canvasregions,canvassales){
         var p = points[i];
         context.beginPath();
         context.fillStyle = "black";
-        context.fillText(data[i], p.x + 1, p.y - 15);
+        if(p.y < -500)
+        {p.y = 10;}
+        //alert(p.y);
+        context.fillText(data[i], p.x , p.y  );
+        // context.fillText(data[i], p.x + 1, p.y - 15);
         context.fillText(xinforma[i], p.x + 1, realheight + 12);
         context.fillText('Regions', realwidth, realheight + 12);
         context.fillText('Sales', 0, 10);
@@ -257,7 +267,7 @@ function profits(canvasregions,canvasprofits){
 
     var realheight = a_canvas.height - 15;
     var realwidth = a_canvas.width - 40;
-    // 描绘边框
+
     var grid_cols = data.length + 1;
     var grid_rows = 4;
     var cell_height = realheight / grid_rows;
@@ -302,6 +312,7 @@ function profits(canvasregions,canvasprofits){
         var v = data[i];
         var px = cell_width * (i + 1);
         var py = realheight - realheight * (v / max_v);
+        //var py = cell_height * (i+1);
         //alert(py);
         points.push({"x": px, "y": py});
     }
@@ -321,7 +332,10 @@ function profits(canvasregions,canvasprofits){
         var p = points[i];
         context.beginPath();
         context.fillStyle = "black";
-        context.fillText(data[i], p.x + 1, p.y - 15);
+         if(p.y < -500)
+         {p.y = 10;}
+        //alert(p.y);
+        context.fillText(data[i], p.x , p.y  );
         context.fillText(xinforma[i], p.x + 1, realheight + 12);
         context.fillText('Regions', realwidth, realheight + 12);
         context.fillText('Profits', 0, 10);
