@@ -140,7 +140,7 @@ function onloadManager() {
 }
 
 function sales(canvasregions,canvassales){
-    alert(canvasregions);
+    //alert(canvasregions);
     var data = canvassales;
     var xinforma = canvasregions;
 
