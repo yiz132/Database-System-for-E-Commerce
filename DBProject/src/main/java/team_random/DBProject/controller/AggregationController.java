@@ -89,8 +89,7 @@ public class AggregationController {
 
     @PostMapping(path ="/sortallproducts")
     public @ResponseBody
-    List<Product> sortAllProductsWithCategory(@RequestParam String sort_keyword,@RequestParam String search_keyword, @RequestParam String category){
-        //List<Product> ori = showAllProducts();
+    List<Product> sortAllProductsWithCategory(@RequestParam String search_keyword, @RequestParam String sort_keyword,@RequestParam String category){
         List<Product> ori = productService.sortAllProductsWithCategory(search_keyword,category);
         if (sort_keyword.equals("PriceHighToLow")) {
             ori.sort((o1, o2) -> o2.getPrice() - o1.getPrice());
