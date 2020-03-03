@@ -19,8 +19,8 @@ Pull and custormize your database setup in application.yml. Then you can run you
 * [JQuery](https://jquery.com/) - Frontend supports
 
 ## Contributing
-Yixuan Zhang:Designed and developped back-end and database.
-Xiya Liu:Implemented front-end;
-Yi Zhu:Documentation
+<p>Yixuan Zhang:Designed and conduct back-end and database </p>
+<p>Xiya Liu:Implemented front-end </p>
+<p>Yi Zhu:Documentation </p>
 
 
